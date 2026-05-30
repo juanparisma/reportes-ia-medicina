@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA en medicina — Informe semanal (2026-05-30)</title>
+<style>
+  :root{
+    --primary:#1D4E89; --primary-2:#2E6FA8; --accent:#4FB0C6; --warm:#F2A65A;
+    --ink:#16202B; --muted:#5A6675; --bg:#EAF0F8; --panel:#FFFFFF; --panel2:#F1F5FB; --line:#DDE6F0;
+    --hi:#1E7A52; --hi-bg:#E3F3EA; --med:#B26A00; --med-bg:#FBEFD9; --lo:#B3261E; --lo-bg:#FBE6E4;
+    --shadow:0 6px 24px rgba(16,32,43,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:28px 18px 70px}
+  .hero{position:relative;overflow:hidden;border-radius:18px;padding:34px 30px 30px;background:linear-gradient(135deg,#173F70 0%,var(--primary) 45%,var(--accent) 130%);color:#fff;box-shadow:var(--shadow)}
+  .hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%);border-radius:50%}
+  .kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0c2746;background:var(--warm);padding:4px 11px;border-radius:999px;margin-bottom:14px}
+  .hero h1{font-size:28px;line-height:1.22;margin:0 0 16px;font-weight:800;max-width:40ch}
+  .meta{display:flex;gap:8px;flex-wrap:wrap}
+  .meta .pill{font-size:12px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);color:#fff;border-radius:999px;padding:4px 11px}
+  section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 22px 6px;margin:18px 0;box-shadow:var(--shadow)}
+  .sec-head{display:flex;align-items:center;gap:12px;margin:2px 0 14px}
+  .sec-num{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-weight:800;font-size:15px;box-shadow:0 2px 8px rgba(29,78,137,.35)}
+  .sec-head h2{margin:0;font-size:19px;color:var(--ink);font-weight:750}
+  h3{font-size:15px;color:var(--primary);margin:20px 0 8px;font-weight:700}
+  p{margin:10px 0} a{color:var(--primary)}
+  section ul{margin:8px 0 16px;padding-left:20px} section li{margin:7px 0}
+  sup a{color:var(--primary);text-decoration:none;font-weight:700}
+  .chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:6px 0 16px}
+  .chips .item{display:flex;gap:10px;align-items:flex-start;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+  .chips .sig{flex:none;font-size:12px;font-weight:800;color:#fff;background:var(--primary);border-radius:7px;padding:3px 8px;min-width:46px;text-align:center}
+  .chips .term{font-size:13px;color:var(--muted);line-height:1.4}
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:6px 0 18px}
+  .kpi .k{background:var(--panel2);border:1px solid var(--line);border-top:3px solid var(--warm);border-radius:12px;padding:14px}
+  .kpi .v{font-size:22px;font-weight:800;color:var(--primary);letter-spacing:-.01em} .kpi .l{font-size:12px;color:var(--muted);margin-top:3px}
+  .tablewrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:14px 0}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  thead th{background:var(--primary);color:#fff;font-weight:650;border-bottom:none}
+  tbody tr:nth-child(even){background:var(--panel2)} tbody tr:last-child td{border-bottom:none}
+  td code{color:var(--primary);font-weight:600}
+  .badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}
+  .b-hi{background:var(--hi-bg);color:var(--hi);border:1px solid var(--hi)}
+  .b-med{background:var(--med-bg);color:var(--med);border:1px solid var(--med)}
+  .gap{background:#FFF8EF;border:1px solid #F6E0C2;border-left:4px solid var(--warm);border-radius:12px;padding:6px 18px;margin:8px 0 14px}
+  .small{font-size:13px;color:var(--muted)}
+  .refs{counter-reset:r;list-style:none;padding:0;margin:6px 0 8px}
+  .refs li{position:relative;padding:10px 0 10px 40px;border-bottom:1px solid var(--line);font-size:13px;color:#37424d}
+  .refs li:last-child{border-bottom:none}
+  .refs li::before{counter-increment:r;content:counter(r);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:8px;background:var(--panel2);border:1px solid var(--line);color:var(--primary);font-weight:800;font-size:12px;display:grid;place-items:center}
+  .refs a{color:var(--primary);text-decoration:none}
+  .note{font-size:12px;color:var(--muted);margin:10px 0 0}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:26px} footer .sig{font-weight:700;color:var(--primary)}
+  @media(max-width:560px){.hero h1{font-size:23px}.wrap{padding:18px 12px 50px}section{padding:18px 16px 4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="kicker">Informe semanal · Deep research</span>
+    <h1>¿Cómo se está usando la inteligencia artificial en medicina?</h1>
+    <div class="meta">
+      <span class="pill">30 may 2026</span>
+      <span class="pill">Carril mixto · PubMed + web</span>
+      <span class="pill">3 estudios + 4 fuentes institucionales</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Abreviaturas</h2></div>
+    <div class="chips">
+      <div class="item"><span class="sig">IA</span><span class="term">inteligencia artificial</span></div>
+      <div class="item"><span class="sig">LLM</span><span class="term">gran modelo de lenguaje (large language model)</span></div>
+      <div class="item"><span class="sig">FDA</span><span class="term">agencia estadounidense de alimentos y medicamentos</span></div>
+      <div class="item"><span class="sig">SaMD</span><span class="term">software como dispositivo médico</span></div>
+      <div class="item"><span class="sig">TNM</span><span class="term">tumor-ganglio-metástasis (estadificación)</span></div>
+      <div class="item"><span class="sig">NSCLC</span><span class="term">cáncer de pulmón de células no pequeñas</span></div>
+      <div class="item"><span class="sig">UCI</span><span class="term">unidad de cuidados intensivos</span></div>
+      <div class="item"><span class="sig">IC95%</span><span class="term">intervalo de confianza del 95%</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Resumen ejecutivo</h2></div>
+    <div class="kpi">
+      <div class="k"><div class="v">+1.400</div><div class="l">dispositivos IA/ML autorizados por la FDA<sup><a href="#r4">[4]</a></sup></div></div>
+      <div class="k"><div class="v">24 / mes</div><div class="l">SaMD aprobados en marzo 2026 (~1 c/31 h)<sup><a href="#r4">[4]</a></sup></div></div>
+      <div class="k"><div class="v">82% vs 72%</div><div class="l">médicos UCI vs ChatGPT (gases arteriales)<sup><a href="#r3">[3]</a></sup></div></div>
+      <div class="k"><div class="v">90% vs 80%</div><div class="l">modelo afinado vs GPT-4o (estadificación pulmón)<sup><a href="#r1">[1]</a></sup></div></div>
+    </div>
+    <ul>
+      <li><b>El despliegue regulatorio se acelera</b>: ya hay más de 1.400 dispositivos de IA/ML autorizados por la FDA; solo en marzo de 2026 se autorizaron 24 SaMD<sup><a href="#r4">[4]</a></sup>.</li>
+      <li><b>La IA ya está en el flujo clínico real</b>: borradores de notas, triaje de mensajes, lectura de mamografías, alertas de deterioro y chatbots con pacientes<sup><a href="#r5">[5]</a></sup>.</li>
+      <li><b>La brecha es el razonamiento y la seguridad, no la respuesta final</b>: los LLM aciertan el diagnóstico final &gt;90% con datos completos, pero fallan en los pasos intermedios<sup><a href="#r6">[6]</a></sup>.</li>
+      <li><b>En UCI el riesgo es la "falsa tranquilidad"</b>: ChatGPT marcó como normal el 16,7% de trastornos mixtos; los intensivistas, 0%<sup><a href="#r3">[3]</a></sup>.</li>
+      <li><b>Tendencia técnica</b>: modelos pequeños afinados al dominio superan a los generalistas<sup><a href="#r1">[1]</a></sup>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Hallazgos de la semana</h2></div>
+    <h3>Despliegue regulatorio acelerado</h3>
+    <p>EE. UU. supera los 1.400 dispositivos de IA/ML autorizados, con un ritmo que en marzo de 2026 promedió uno cada 31 horas<sup><a href="#r4">[4]</a></sup>. En 2026 la FDA alinea su sistema de calidad con la norma ISO 13485 (QMSR). Clave: la autorización FDA <b>no equivale a validación clínica completa</b> ni garantiza desempeño en tu población<sup><a href="#r4">[4]</a></sup>.</p>
+    <h3>La IA en el flujo de trabajo clínico</h3>
+    <p>Informes institucionales (Stanford–Harvard) describen IA ya embebida en tareas cotidianas: notas, enrutamiento de mensajes, imagen y alertas de deterioro<sup><a href="#r5">[5]</a></sup>. Consenso: los LLM genéricos <b>aún no están listos para uso clínico autónomo</b>; requieren transparencia, monitoreo y supervisión humana<sup><a href="#r5">[5]</a></sup>.</p>
+    <h3>La brecha persiste: razonamiento y seguridad</h3>
+    <ul>
+      <li>Un análisis de <b>21 LLM</b>: llegan al diagnóstico correcto &gt;90% con datos completos, pero flaquean en el razonamiento paso a paso<sup><a href="#r6">[6]</a></sup>.</li>
+      <li>En UCI (50 pacientes): intensivistas 82% vs ChatGPT 72% en gases arteriales; lo grave es la <b>falsa tranquilidad</b> en el 16,7% de casos mixtos (sensibilidad 0,63 vs 0,96)<sup><a href="#r3">[3]</a></sup>.</li>
+      <li>En un examen profesional chino, DeepSeek V3/R1 (93%) superaron a ChatGPT 4o/o1 (73%/69%), pero <b>todos</b> cayeron en los casos complejos<sup><a href="#r2">[2]</a></sup>.</li>
+    </ul>
+    <h3>Modelos pequeños afinados &gt; generalistas</h3>
+    <p>Un GLM-4-Air afinado (ingeniería de prompts + ajuste supervisado) alcanzó 90% en estadificación TNM de NSCLC frente a 80% de GPT-4o, corriendo en hardware de consumo<sup><a href="#r1">[1]</a></sup>.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Conflictos y nivel de confianza</h2></div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Afirmación</th><th>Soporte</th><th>Confianza</th></tr></thead>
+      <tbody>
+        <tr><td>La adopción regulatoria/clínica de IA se acelera</td><td>[4][5]</td><td><span class="badge b-hi">Alta</span></td></tr>
+        <tr><td>Los LLM genéricos NO están listos para uso autónomo</td><td>[3][5][6]</td><td><span class="badge b-hi">Alta</span></td></tr>
+        <tr><td>Modelos afinados al dominio superan a generalistas</td><td>[1]</td><td><span class="badge b-med">Media</span></td></tr>
+        <tr><td>La exactitud global puede ocultar errores peligrosos</td><td>[3]</td><td><span class="badge b-med">Media-Alta</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Vacíos / no verificado</h2></div>
+    <div class="gap">
+      <ul>
+        <li>Los datos de "24 SaMD en marzo" y "51 dispositivos de patología" vienen de fuentes secundarias — <b>confirmar en el portal oficial de la FDA</b> antes de citarlos como dato duro.</li>
+        <li>Varios estudios son de un solo centro o n pequeño (UCI n=50, poder estadístico limitado); no generalizar.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><h2>Referencias</h2></div>
+    <h3>Científicas (Vancouver, vía PubMed)</h3>
+    <ol class="refs">
+      <li id="r1">Jin R, Ling C, Hou Y, et al. Augmenting large language model with prompt engineering and supervised fine-tuning in non-small cell lung cancer tumor-node-metastasis staging: framework development and validation. JMIR AI. 2026;5:e77988. <a href="https://doi.org/10.2196/77988">doi:10.2196/77988</a>. PMID: 41984624.</li>
+      <li id="r2">Xue J, Wang S, Yang J, et al. Performance of DeepSeek V3, DeepSeek R1, ChatGPT 4o, and ChatGPT o1 on the National Health Professional and Technical Qualification Examination (intermediate level) in China: comparative analysis. JMIR Form Res. 2026;10:e90673. <a href="https://doi.org/10.2196/90673">doi:10.2196/90673</a>. PMID: 41941721.</li>
+      <li id="r3">Gulen D, Gözden HE, Ekin S, Ceylan I. Structural error asymmetry and harm-weighted analysis of ChatGPT versus ICU physicians in acid-base interpretation: a prospective observational study. Sci Rep. 2026;16(1). <a href="https://doi.org/10.1038/s41598-026-44576-4">doi:10.1038/s41598-026-44576-4</a>. PMID: 41896626.</li>
+    </ol>
+    <h3>Web / institucionales</h3>
+    <ol class="refs" start="4" style="counter-reset:r 3">
+      <li id="r4">Annals of Internal Medicine. What FDA clearance does, and does not, mean for artificial intelligence. 2026. <a href="https://www.acpjournals.org/doi/10.7326/ANNALS-26-00362">acpjournals.org</a>.</li>
+      <li id="r5">Stanford Medicine. Clinical AI has boomed — State of Clinical AI report (Stanford–Harvard). 2026. <a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html">medicine.stanford.edu</a>.</li>
+      <li id="r6">Mass General Brigham. AI remains lacking in clinical reasoning abilities (study of 21 LLMs). 2026. <a href="https://www.massgeneralbrigham.org/en/about/newsroom/press-releases/ai-chatbot-lacks-clinical-reasoning">massgeneralbrigham.org</a>.</li>
+      <li id="r7">Science. AI can reason like a physician—what comes next? 2026. <a href="https://www.science.org/doi/10.1126/science.aeg8766">science.org</a>.</li>
+    </ol>
+    <p class="note">Datos biomédicos vía <b>PubMed / PubMed Central</b> (NCBI), con DOI en cada referencia científica. Fuentes web consultadas el 2026-05-30.</p>
+  </section>
+
+  <footer><span class="sig">Generado por Dr. Juan Camilo Paris</span></footer>
+
+</div>
+</body>
+</html>
