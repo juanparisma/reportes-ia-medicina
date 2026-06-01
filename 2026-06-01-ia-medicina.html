@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Cómo se está usando la IA en medicina? — Informe semanal (2026-06-01)</title>
+<style>
+  :root{
+    --primary:#1D4E89; --primary-2:#2E6FA8; --accent:#4FB0C6; --warm:#F2A65A;
+    --ink:#16202B; --muted:#5A6675; --bg:#EAF0F8; --panel:#FFFFFF; --panel2:#F1F5FB; --line:#DDE6F0;
+    --hi:#1E7A52; --hi-bg:#E3F3EA; --med:#B26A00; --med-bg:#FBEFD9; --lo:#B3261E; --lo-bg:#FBE6E4;
+    --shadow:0 6px 24px rgba(16,32,43,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:28px 18px 70px}
+  .hero{position:relative;overflow:hidden;border-radius:18px;padding:34px 30px 30px;background:linear-gradient(135deg,#173F70 0%,var(--primary) 45%,var(--accent) 130%);color:#fff;box-shadow:var(--shadow)}
+  .hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%);border-radius:50%}
+  .kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0c2746;background:var(--warm);padding:4px 11px;border-radius:999px;margin-bottom:14px}
+  .hero h1{font-size:29px;line-height:1.22;margin:0 0 16px;font-weight:800;max-width:42ch}
+  .meta{display:flex;gap:8px;flex-wrap:wrap}
+  .meta .pill{font-size:12px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);color:#fff;border-radius:999px;padding:4px 11px}
+  section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 22px 6px;margin:18px 0;box-shadow:var(--shadow)}
+  .sec-head{display:flex;align-items:center;gap:12px;margin:2px 0 14px}
+  .sec-num{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-weight:800;font-size:15px;box-shadow:0 2px 8px rgba(29,78,137,.35)}
+  .sec-head h2{margin:0;font-size:19px;color:var(--ink);font-weight:750}
+  h3{font-size:15px;color:var(--primary);margin:20px 0 8px;font-weight:700}
+  p{margin:10px 0} a{color:var(--primary)}
+  section ul,section ol{margin:8px 0 16px;padding-left:20px} section li{margin:7px 0}
+  sup a{color:var(--primary);text-decoration:none;font-weight:700}
+  .chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:6px 0 16px}
+  .chips .item{display:flex;gap:10px;align-items:flex-start;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+  .chips .sig{flex:none;font-size:12px;font-weight:800;color:#fff;background:var(--primary);border-radius:7px;padding:3px 8px;min-width:46px;text-align:center}
+  .chips .term{font-size:13px;color:var(--muted);line-height:1.4}
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:6px 0 18px}
+  .kpi .k{background:var(--panel2);border:1px solid var(--line);border-top:3px solid var(--warm);border-radius:12px;padding:14px}
+  .kpi .v{font-size:23px;font-weight:800;color:var(--primary);letter-spacing:-.01em} .kpi .l{font-size:12px;color:var(--muted);margin-top:3px}
+  .tablewrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:14px 0}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  thead th{background:var(--primary);color:#fff;font-weight:650;border-bottom:none}
+  tbody tr:nth-child(even){background:var(--panel2)} tbody tr:last-child td{border-bottom:none}
+  td code{color:var(--primary);font-weight:600}
+  .badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}
+  .b-hi{background:var(--hi-bg);color:var(--hi);border:1px solid var(--hi)}
+  .b-med{background:var(--med-bg);color:var(--med);border:1px solid var(--med)}
+  .b-lo{background:var(--lo-bg);color:var(--lo);border:1px solid var(--lo)}
+  .callout{background:var(--panel2);border-left:4px solid var(--accent);border-radius:8px;padding:12px 14px;margin:14px 0;color:#27323c}
+  .gap{background:#FFF8EF;border:1px solid #F6E0C2;border-left:4px solid var(--warm);border-radius:12px;padding:6px 18px;margin:8px 0 14px}
+  .small{font-size:13px;color:var(--muted)}
+  pre,code{font-family:"SF Mono",Monaco,Consolas,monospace;background:#EEF1F6;border-radius:4px;font-size:13px}
+  code{padding:2px 6px} pre{padding:12px;overflow-x:auto}
+  .refs{counter-reset:r;list-style:none;padding:0;margin:6px 0 8px}
+  .refs li{position:relative;padding:10px 0 10px 40px;border-bottom:1px solid var(--line);font-size:13px;color:#37424d}
+  .refs li:last-child{border-bottom:none}
+  .refs li::before{counter-increment:r;content:counter(r);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:8px;background:var(--panel2);border:1px solid var(--line);color:var(--primary);font-weight:800;font-size:12px;display:grid;place-items:center}
+  .refs a{color:var(--primary);text-decoration:none}
+  .note{font-size:12px;color:var(--muted);margin:10px 0 0}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:26px} footer .sig{font-weight:700;color:var(--primary)}
+  @media(max-width:560px){.hero h1{font-size:23px}.wrap{padding:18px 12px 50px}section{padding:18px 16px 4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="kicker">Informe semanal · IA en medicina</span>
+    <h1>¿Cómo se está usando la IA en medicina?</h1>
+    <div class="meta">
+      <span class="pill">2026-06-01</span>
+      <span class="pill">Ventana ~19 may–1 jun</span>
+      <span class="pill">Carril mixto: PubMed + web</span>
+      <span class="pill">Cada dato citado</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Abreviaturas</h2></div>
+    <div class="chips">
+      <div class="item"><span class="sig">IA</span><span class="term">inteligencia artificial (AI)</span></div>
+      <div class="item"><span class="sig">FDA</span><span class="term">Administración de Alimentos y Medicamentos de EE. UU.</span></div>
+      <div class="item"><span class="sig">EMA</span><span class="term">Agencia Europea de Medicamentos</span></div>
+      <div class="item"><span class="sig">AMA</span><span class="term">Asociación Médica Estadounidense</span></div>
+      <div class="item"><span class="sig">LLM</span><span class="term">modelo de lenguaje grande (large language model)</span></div>
+      <div class="item"><span class="sig">GPT</span><span class="term">transformador generativo preentrenado</span></div>
+      <div class="item"><span class="sig">ECA</span><span class="term">ensayo clínico aleatorizado</span></div>
+      <div class="item"><span class="sig">ML</span><span class="term">aprendizaje automático (machine learning)</span></div>
+      <div class="item"><span class="sig">GenAI</span><span class="term">IA generativa (texto/imágenes)</span></div>
+      <div class="item"><span class="sig">VAS</span><span class="term">escala visual analógica de dolor</span></div>
+      <div class="item"><span class="sig">EFeCT</span><span class="term">herramienta de evaluación de la retroalimentación capturada</span></div>
+      <div class="item"><span class="sig">PECS II</span><span class="term">bloqueo interpectoral tipo II (anestesia regional)</span></div>
+      <div class="item"><span class="sig">Mini-CEX</span><span class="term">mini ejercicio de evaluación clínica</span></div>
+      <div class="item"><span class="sig">OSCE</span><span class="term">examen clínico objetivo estructurado</span></div>
+      <div class="item"><span class="sig">AI Act</span><span class="term">Reglamento de IA de la Unión Europea</span></div>
+    </div>
+    <p class="small">Cada afirmación factual lleva su cita <code>[n]</code> (ver sección 06). Lo no verificado contra fuente primaria se marca explícitamente. Datos biomédicos según <b>PubMed / PubMed Central (NCBI)</b>, con DOI enlazado.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Resumen ejecutivo</h2></div>
+    <div class="kpi">
+      <div class="k"><div class="v">37% vs 94%</div><div class="l">reproducción de equipos liderados por IA vs solo-humanos<sup><a href="#r1">1</a></sup></div></div>
+      <div class="k"><div class="v">1,7%</div><div class="l">tasa de alucinación del escriba de IA en feedback educativo<sup><a href="#r3">3</a></sup></div></div>
+      <div class="k"><div class="v">5%</div><div class="l">de &gt;500 estudios de IA médica usó datos de pacientes reales<sup><a href="#r5">5</a></sup></div></div>
+      <div class="k"><div class="v">&gt;1.400</div><div class="l">dispositivos médicos con IA/ML autorizados por la FDA<sup><a href="#r7">7</a></sup></div></div>
+      <div class="k"><div class="v">10</div><div class="l">principios comunes EMA–FDA de buena práctica de IA<sup><a href="#r6">6</a></sup></div></div>
+    </div>
+    <ul>
+      <li>En <i>PNAS</i> (28-may), los equipos <b>liderados por IA</b> reprodujeron solo el 37% de resultados vs 94% (solo-humanos) y 91% (asistidos); "el juicio humano experto sigue siendo indispensable".<sup><a href="#r1">1</a></sup></li>
+      <li>La IA generativa (GenAI) funciona como <b>apoyo, no sustituto</b>: en un ECA doble ciego (69 enfermeras), no hubo diferencias frente al experto humano en utilidad ni exactitud; la valoran más quienes tienen <b>menos</b> experiencia.<sup><a href="#r2">2</a></sup></li>
+      <li>Un escriba ambiental de IA mejoró la calidad del feedback escrito a estudiantes (mediana EFeCT 3,00 vs 2,00; p&lt;0,001) sin más esfuerzo del docente; alucinación 1,7%.<sup><a href="#r3">3</a></sup></li>
+      <li>Ecografía con IA en bloqueo PECS II: menor dolor (VAS) a 12 y 24 h y procedimientos más cortos, con resultados mixtos (más dolor inicial, menor satisfacción del cirujano).<sup><a href="#r4">4</a></sup></li>
+      <li>Informe Stanford–Harvard: solo el 5% de &gt;500 estudios de IA usó datos reales y el rendimiento cae &gt;⅓ al cambiar levemente las condiciones; la IA "aguanta" como apoyo, no como reemplazo.<sup><a href="#r5">5</a></sup></li>
+      <li>Regulación: EMA y FDA publicaron 10 principios comunes de buena práctica de IA en desarrollo de medicamentos (contexto, ene-2026).<sup><a href="#r6">6</a></sup></li>
+      <li>Adopción (señal periodística, no verificada en primaria): ~65% de médicos de EE. UU. usó OpenEvidence en abril, en ~27 M de encuentros.<sup><a href="#r8">8</a></sup></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Hallazgos</h2></div>
+
+    <h3>Estudios y ensayos recientes (PubMed, dentro de ventana)</h3>
+    <p><b>Límites de la autonomía de la IA (PNAS).</b> Experimento aleatorizado: 288 investigadores en 103 equipos reprodujeron resultados de revistas líderes bajo tres condiciones (solo-humano, asistido por IA y liderado por IA con supervisión mínima). Solo-humanos y asistidos lograron tasas comparables (94% vs 91%), pero los solo-humanos detectaron <b>más errores graves de código</b>. Ambos superaron a los liderados por IA (37%). Los autores matizan que ese 37% es un "límite inferior" de la capacidad autónoma.<sup><a href="#r1">1</a></sup> <span class="badge b-hi">Confianza Alta</span></p>
+    <p><b>IA generativa en decisiones de enfermería (ECA doble ciego, n=69).</b> Consejos de un modelo GPT (ChatGPT-4.0, temperatura 0,2) vs expertos humanos: sin diferencias en utilidad (p=0,89), complejidad (p=0,29) ni ayuda percibida (p=0,73), y exactitud clínica similar (p=0,45). La experiencia clínica fue un predictor <b>negativo</b> del valor percibido: la IA aporta más a quien tiene menos experiencia. Recomiendan usarla como "apoyo secundario, sin comprometer la autonomía clínica".<sup><a href="#r2">2</a></sup> <span class="badge b-med">Confianza Media</span></p>
+    <p><b>Escribas ambientales de IA para feedback educativo (ECA, 13 instructores).</b> En un taller de entrevista clínica, las narrativas asistidas por IA puntuaron más alto en la escala EFeCT (mediana 3,00 vs 2,00; p&lt;0,001) sin aumento del esfuerzo. De 117 elementos generados: 6,8% de mischaracterización y <b>1,7% de alucinación</b>, corregidos en su mayoría al editar.<sup><a href="#r3">3</a></sup> <span class="badge b-med">Confianza Media</span></p>
+    <p><b>Ecografía con IA en bloqueo PECS II (ECA, n=70).</b> En mastectomía radical modificada, ecografía convencional vs integrada con IA (bloqueo realizado por un residente). Dolor (VAS) <b>menor con IA a 12 y 24 h</b> (p=0,005 y p&lt;0,001) y anestesia/cirugía más cortas (p=0,005 y p=0,008); pero mayor dolor inicial en recuperación y menor satisfacción del cirujano (p=0,037).<sup><a href="#r4">4</a></sup> <span class="badge b-med">Confianza Media</span></p>
+    <p><b>IA en educación clínica (ECA, n=50).</b> En medicina reproductiva, el grupo con IA (casos + aula invertida con pacientes virtuales) superó al control en conocimiento teórico, evaluación clínica (Mini-CEX) y examen clínico estructurado (OSCE).<sup><a href="#r9">9</a></sup> <span class="badge b-med">Confianza Media</span></p>
+
+    <h3>Estado del arte y debates de seguridad</h3>
+    <p><b>Brecha entre laboratorio y práctica real.</b> El informe <i>State of Clinical AI</i> (Stanford–Harvard, 15-ene-2026): casi la mitad de &gt;500 estudios de IA médica usó preguntas tipo examen y <b>solo el 5% usó datos de pacientes reales</b>; el rendimiento cayó <b>más de un tercio</b> al cambiar levemente las condiciones. Lo que "aguanta": la IA como <b>apoyo</b> (radiólogos con IA opcional detectaron más cánceres de mama sin más falsos positivos; predicción de deterioro 8–24 h antes que las alertas estándar), no como reemplazo.<sup><a href="#r5">5</a></sup> <span class="badge b-med">Confianza Media-Alta</span></p>
+
+    <h3>Regulación y adopción</h3>
+    <p><b>Principios comunes EMA–FDA (contexto, 14-ene-2026).</b> Diez principios de buena práctica de IA que cubren todo el ciclo de vida del medicamento (investigación, ensayos, fabricación y farmacovigilancia), con foco en gestión basada en riesgo, gobernanza de datos, <b>supervisión humana</b> y transparencia.<sup><a href="#r6">6</a></sup> <span class="badge b-hi">Confianza Alta</span></p>
+    <p><b>Volumen de dispositivos (conflicto de cifras).</b> Una publicación de mayo de 2026 cifra en <b>&gt;1.400</b> los dispositivos con IA/ML autorizados por la FDA<sup><a href="#r7">7</a></sup>; el informe de Stanford habla de &gt;1.200.<sup><a href="#r5">5</a></sup> Se reportan ambas; depende de la fecha de corte. <span class="badge b-med">Confianza Media</span></p>
+    <p><b>Adopción real (señal, Tier 2).</b> Se reporta que ~65% de los médicos de EE. UU. usó OpenEvidence en abril (~27 M de encuentros)<sup><a href="#r8">8</a></sup>; la AMA reporta que &gt;80% de los médicos usa IA, el doble que en 2023.<sup><a href="#r10">10</a></sup> <span class="badge b-lo">Confianza Baja-Media</span></p>
+
+    <div class="callout"><b>Lectura clínica:</b> la quincena no trae una "IA que diagnostica sola", sino IA que <i>asiste</i> (documentación, anestesia regional, feedback educativo, predicción). El mensaje regulatorio y académico converge: el límite de seguridad es la <b>supervisión humana</b>, y la exactitud de laboratorio no garantiza el rendimiento en la práctica real.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Conflictos y nivel de confianza</h2></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Afirmación</th><th>A favor</th><th>Matices / en contra</th><th>Confianza</th></tr></thead>
+        <tbody>
+          <tr><td>La supervisión humana sigue siendo necesaria; la IA autónoma rinde peor</td><td>[1]</td><td>—</td><td><span class="badge b-hi">Alta</span></td></tr>
+          <tr><td>La IA generativa iguala al experto como <i>apoyo</i>, no lo sustituye</td><td>[2][5]</td><td>simulaciones / síntesis; no resultados clínicos duros</td><td><span class="badge b-hi">Media-Alta</span></td></tr>
+          <tr><td>La IA mejora resultados asistiendo a operadores noveles</td><td>[3][4]</td><td>muestras pequeñas, un centro, resultados mixtos</td><td><span class="badge b-med">Media</span></td></tr>
+          <tr><td>El rendimiento de la IA cae al salir del entorno de prueba</td><td>[5]</td><td>informe de síntesis, no estudio primario</td><td><span class="badge b-med">Media-Alta</span></td></tr>
+          <tr><td>Nº de dispositivos con IA autorizados por la FDA</td><td>[7] (&gt;1.400)</td><td>[5] dice &gt;1.200; depende de fecha de corte</td><td><span class="badge b-med">Media</span></td></tr>
+          <tr><td>Adopción masiva de OpenEvidence (~65% médicos EE. UU.)</td><td>[8]</td><td>solo prensa; sin fuente primaria (403)</td><td><span class="badge b-lo">Baja-Media</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Vacíos / no verificado</h2></div>
+    <div class="gap">
+      <ul>
+        <li><b>OpenEvidence (~65%, 27 M encuentros):</b> la fuente primaria (NBC News) devolvió error 403; cifra tomada de la síntesis de búsqueda, no confirmada en la página original.<sup><a href="#r8">8</a></sup></li>
+        <li><b>Mount Sinai (ecografía con IA, cardiopatía congénita &gt;97%):</b> la nota institucional devolvió 403; no se cita como evidencia esta semana.</li>
+        <li><b>Número exacto de dispositivos FDA:</b> la página viva de la FDA no se confirmó en esta corrida; cifras de publicaciones secundarias/síntesis.<sup><a href="#r7">7</a></sup></li>
+        <li><b>EU AI Act:</b> se reporta que las obligaciones de alto riesgo entran en vigor en agosto de 2026 y la conformidad plena para IA de dispositivos médicos en agosto de 2027; dato de síntesis, no contrastado con el texto oficial.</li>
+        <li><b>Recencia del marco regulatorio:</b> los principios EMA–FDA<sup><a href="#r6">6</a></sup> y el informe Stanford<sup><a href="#r5">5</a></sup> son de enero de 2026; incluidos como <b>contexto</b>, no como novedad de la quincena.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><h2>Referencias</h2></div>
+    <h3>Fuentes científicas (Vancouver) — según PubMed / PubMed Central (NCBI)</h3>
+    <ol class="refs">
+      <li id="r1">Brodeur A, Valenta D, Marcoci A, Aparicio JP, Mikola D, Barbarioli B, et al. AI-assisted teams outperform AI-led teams but not human-only teams in assessing research reproducibility in quantitative social science. Proc Natl Acad Sci U S A. 2026;123(22):e2524747123. <a href="https://doi.org/10.1073/pnas.2524747123">doi:10.1073/pnas.2524747123</a>. PMID: 42207915.</li>
+      <li id="r2">Filshtinski R, Barnoy S, Saban M. Bridging Expertise with Algorithms: Evaluation of Generative AI in Nursing Decisions. Stud Health Technol Inform. 2026;336:278-282. <a href="https://doi.org/10.3233/SHTI260161">doi:10.3233/SHTI260161</a>. PMID: 42174837.</li>
+      <li id="r3">Talwalkar JS, Chartash D, Zhang L, Makutonin M, Safranek CW, Sidamon-Eristoff AE, et al. Ambient AI Scribes to Create Educational Feedback Notes for Medical Students: Randomized Trial. JMIR Med Educ. 2026;12:e89996. <a href="https://doi.org/10.2196/89996">doi:10.2196/89996</a>. PMID: 42208058.</li>
+      <li id="r4">Yazar Ç, Kesimci E. AI-assisted versus conventional ultrasound-guided PECS II block: A randomized study in mastectomy patients. Agri. 2026;38(2):111-118. <a href="https://doi.org/10.5606/agri.2026.53">doi:10.5606/agri.2026.53</a>. PMID: 42172520.</li>
+      <li id="r9">Wang Q, Hu C, Li Y, Zhang T, Zhang S. AI-assisted case-based learning and flipped classroom to improve clinical decision-making: a randomized controlled trial in reproductive medicine. Med Educ Online. 2026;31(1):2670047. <a href="https://doi.org/10.1080/10872981.2026.2670047">doi:10.1080/10872981.2026.2670047</a>. PMID: 42200362. PMCID: PMC13218306.</li>
+    </ol>
+    <p class="note">Datos biomédicos obtenidos de <b>PubMed / PubMed Central (NCBI)</b>; DOI enlazado según la licencia de uso del recurso.</p>
+
+    <h3>Fuentes web / regulatorias / industria</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Título</th><th>Organismo</th><th>Tier</th><th>Publicado</th></tr></thead>
+        <tbody>
+          <tr><td id="r5">5</td><td><a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html">State of Clinical AI — qué aguanta en la práctica</a></td><td>Stanford Medicine</td><td>1</td><td>2026-01-15</td></tr>
+          <tr><td id="r6">6</td><td><a href="https://www.ema.europa.eu/en/news/ema-fda-set-common-principles-ai-medicine-development-0">EMA y FDA: principios comunes para la IA en desarrollo de medicamentos</a></td><td>EMA (web oficial)</td><td>0</td><td>2026-01-14</td></tr>
+          <tr><td id="r7">7</td><td><a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices">Dispositivos médicos habilitados por IA (&gt;1.400)</a></td><td>FDA (web oficial)</td><td>0</td><td>2026 (corte may)</td></tr>
+          <tr><td id="r8">8</td><td><a href="https://www.nbcnews.com/tech/tech-news/openevidence-ai-doctor-medical-physician-login-app-what-npi-uptodate-rcna341064">OpenEvidence: la mayoría de médicos de EE. UU. la usa</a></td><td>NBC News (prensa)</td><td>2</td><td>2026-05 (403 al acceder)</td></tr>
+          <tr><td id="r10">10</td><td><a href="https://www.ama-assn.org/practice-management/digital-health/augmented-intelligence-medicine">Augmented intelligence in medicine (uso de IA por médicos)</a></td><td>American Medical Association</td><td>0</td><td>2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Metodología: modo mixto. PubMed (fecha de entrada 2026-05-15 a 2026-06-01 para la ventana) + verificación de fuentes oficiales priorizando fuente primaria. Solo Tier 0–1 se tratan como evidencia; Tier 2 marcadas como reportadas. Nada se afirma sin cita.</p>
+  </section>
+
+  <footer><span class="sig">Generado por Dr. Juan Camilo Paris</span></footer>
+
+</div>
+</body>
+</html>
