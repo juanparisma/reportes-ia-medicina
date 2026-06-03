@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-02</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  .note{background:rgba(242,166,90,.10);border-left:3px solid var(--ambar);border-radius:8px;padding:10px 14px;font-size:13px;color:#7a4a12;margin-top:12px}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Martes 2 de junio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">12</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">9</div><div class="l">commits en urgencias-hgm</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">modo nuevo (ARC-Whisper)</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada dominada por <strong>urgencias-hgm</strong>: se construyó el <strong>export de nómina ALBA</strong>
+      (Excel + PDF) con grilla de indicativos por turno, cálculos por fila y resúmenes — el formato que sube
+      directo a la nómina del HGM. En paralelo, <strong>ARC-Whisper</strong> ganó un <strong>modo reunión</strong>
+      que trocea el audio largo y lo transcribe en paralelo contra Groq (bajó una reunión de ~38 min de ~18 min de
+      proceso a menos de 1 min) y genera acta automática. El <strong>segundo cerebro</strong> documentó ambos frentes.</p>
+      <p>
+        <span class="tag">export ALBA</span>
+        <span class="tag">nómina HGM</span>
+        <span class="tag">PDF cuadro</span>
+        <span class="tag">horas ROUNDUP</span>
+        <span class="tag">modo reunión</span>
+        <span class="tag">troceo paralelo</span>
+        <span class="tag">acta automática</span>
+      </p>
+      <div class="note">El daily summary en disco de hoy describe sobre todo <code>plataforma-videos-medicos</code>
+      (sesión anterior); este informe se basa en los <strong>commits reales de las últimas 24 h</strong>, que son los
+      de urgencias-hgm, arc-whisper y cerebro.</div>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>urgencias-hgm · <span class="pill">export ALBA de nómina</span></h3>
+      <ul>
+        <li><strong>Export ALBA</strong> (Excel + PDF): grilla de indicativos de turno con colores y cálculos por fila — el formato oficial para subir a nómina del HGM.</li>
+        <li><strong>PDF ALBA</strong> de todos los médicos: solo la grilla + resúmenes, sin sala ni consultorio (lo que ALBA no necesita).</li>
+        <li>Posición visible en la celda <strong>solo para MA21 / NO04 / PS</strong>, de forma consistente.</li>
+        <li>Horas mostradas como <strong>enteros redondeados hacia arriba</strong> (ROUNDUP) en todos los Excel.</li>
+        <li><strong>+3 h fijas mensuales</strong> para médicos PS, sumadas al total a pagar.</li>
+        <li>Contabilización de horas <strong>fila por fila</strong> en el PDF de vinculados; restauración de la tabla de asignaciones + fila de Ginecología.</li>
+        <li class="commit">9 commits · e017a68 · 4718fb3 · 47aea37 · e2da724 · 4be4d2f · 86fe5b3 · 0a286b5 · 874902c · 945e8ed</li>
+      </ul>
+
+      <h3>arc-whisper · <span class="pill">modo reunión</span></h3>
+      <ul>
+        <li><strong>Fix de raíz:</strong> el audio &gt;9 min ahora se trocea en pedazos de ~8 min alineados a silencio y se transcribe <strong>en paralelo</strong> contra Groq (con retry y fallback local por trozo). Una reunión de ~38 min pasó de ~18 min a menos de 1 min.</li>
+        <li><strong>Nuevo modo reunión</strong> (Ctrl der + M): transcribe troceado y genera <strong>acta estructurada</strong> (resumen, participantes, temas, decisiones, tareas, pendientes), guardando transcripción + acta por reunión.</li>
+        <li class="commit">1 commit · 162767b</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Documentado el frente <strong>trabajo clínico</strong>: junio publicado + export de nómina ALBA, y el modo reunión de ARC-Whisper.</li>
+        <li class="commit">2 commits · 0bac507 · 429b431</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Celdas ALBA solo con código</strong> (sin sala/consultorio): ALBA sube los indicativos a la nómina del HGM, no necesita ubicación.</li>
+        <li><strong>Horas siempre redondeadas hacia arriba</strong> (ROUNDUP) en todos los Excel, para criterio único de pago.</li>
+        <li><strong>Posición en celda solo para MA21 / NO04 / PS</strong>, evitando ruido en el resto de turnos.</li>
+        <li><strong>Trocear y paralelizar el audio largo</strong> en ARC-Whisper como solución estructural al timeout de Groq, en lugar de subir un único WAV grande.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Aligerar a mano <strong>Mesa y Rodríguez</strong> en el borrador de julio para drenar deuda (el motor no lo hace solo) y <strong>publicar julio</strong>.</li>
+        <li class="ambar">Hoja "Vinculados — horas": usa fórmula en vez del <strong>saldo bloqueado oficial</strong> en meses congelados (Cadavid −43 vs −38 por capacitaciones) — corregir.</li>
+        <li class="ambar">Validar el <strong>export ALBA</strong> con datos reales en producción.</li>
+        <li class="ambar">Probar el <strong>modo reunión</strong> de ARC-Whisper con una reunión real (calidad acústica de sala con mic lejano sigue siendo el límite).</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
