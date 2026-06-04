@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-03</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Miércoles 3 de junio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">16</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">7</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">sesiones activas</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">plugin nuevo</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada dominada por las <strong>apps clínicas del HGM</strong>. En
+      <strong>historias-clínicas-oncología</strong> se construyó el <strong>tablero de ronda diaria</strong>
+      (feature grande, flujo por zonas y estados) y se cazó un <strong>bug de pérdida de datos</strong> de React 19;
+      además, un banco A/B de modelos confirmó la decisión de seguir en GPT-5.4 (los modelos abiertos alucinaban
+      datos clínicos). En <strong>urgencias-hgm</strong> se completó la migración de UI del dashboard y se
+      <strong>revirtió</strong> un cambio de exports porque el cuadro publicado manda. En la capa OS se publicó la
+      skill de epidemiología <strong>v2</strong> empaquetada en un <strong>plugin nuevo</strong>, y el segundo
+      cerebro ingirió la metodología epidemiológica y el trabajo clínico del día.</p>
+      <p>
+        <span class="tag">tablero de ronda</span>
+        <span class="tag">bug React 19</span>
+        <span class="tag">A/B de LLM</span>
+        <span class="tag">epi-studies v2</span>
+        <span class="tag">plugin investigación</span>
+        <span class="tag">revert exports</span>
+        <span class="tag">migración UI</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>historias-clinicas-oncologia · <span class="pill">feature grande</span></h3>
+      <ul>
+        <li><strong>Tablero de ronda diaria</strong> por zona (urgencias / torre sur / torre norte) con estados de flujo del día, contadores y filtros; alta de paciente desde la tarjeta.</li>
+        <li><strong>Bug fix de pérdida de datos</strong>: React 19 reseteaba los campos no controlados del formulario tras cada submit → textareas pasados a controlados (el SUBJETIVO salía vacío).</li>
+        <li><strong>Prefill</strong> de las instrucciones del oncólogo desde la última visita.</li>
+        <li><strong>Banco A/B de modelos</strong>: se confirma seguir en GPT-5.4 — los modelos abiertos alucinaban datos clínicos no presentes en el input (inaceptable).</li>
+        <li>Ajustes de la ronda al flujo real de la operación + limpieza de redundancias en la tarjeta.</li>
+        <li class="commit">7 commits · 8bb823f · a58b2b4 · f1d6081 · db1c93b · 2b2bd0d · bd19cdf · db4edca</li>
+      </ul>
+
+      <h3>urgencias-hgm · <span class="pill">app en producción</span></h3>
+      <ul>
+        <li><strong>Revert</strong> del "fix" de saldo bloqueado de exports: el cuadro publicado usa la fórmula (no acredita capacitaciones), así que prima lo publicado.</li>
+        <li><strong>Migración de UI</strong> del dashboard de <code>ChartHelp</code> a <code>ChartCard / InfoTooltip</code> (coherencia visual completa).</li>
+        <li class="commit">3 commits · ec2bcda · 7926219 · 25b8355</li>
+      </ul>
+
+      <h3>iamasters-os (capa OS)</h3>
+      <ul>
+        <li>Orquestador modular <strong>strategy-epi-studies v2</strong> (de la pregunta clínica al manuscrito, con gate anti-alucinación) empaquetado en el <strong>plugin investigacion-cientifica</strong>.</li>
+        <li class="commit">1 commit · 89932a2</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Ingesta de <strong>metodología epidemiológica</strong> (diseños, EQUATOR, gate de IA) + skill epi-studies + caso de melanoma anorrectal.</li>
+        <li>Ingesta del trabajo clínico del día: <strong>A/B de LLM</strong> + tablero de ronda de la app de HC oncológica.</li>
+        <li class="commit">2 commits · fde0b21 · 678243b</li>
+      </ul>
+
+      <h3>arc-whisper</h3>
+      <ul>
+        <li>Endurecimiento del <strong>autostart</strong> al inicio de sesión (sin guard de batería, retraso de 20 s, reintentos) + entrypoint resistente a crashes.</li>
+        <li class="commit">1 commit · de66bf2</li>
+      </ul>
+
+      <h3>qr-demanda-no-atendida</h3>
+      <ul>
+        <li>Cierre del proyecto (en pausa): la construcción terminó; solo quedan acciones operativas humanas.</li>
+        <li class="commit">1 commit · a5a28d9</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Publicación del informe diario de ayer (corrida programada).</li>
+        <li class="commit">1 commit · ef4d4e8</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Seguir en GPT-5.4</strong> para la app de HC oncológica: el A/B mostró que los modelos abiertos (Groq/OpenRouter) alucinan datos clínicos; GPT-5.4 y DeepSeek no inventaron.</li>
+        <li><strong>El cuadro publicado manda</strong> en urgencias-hgm: el export debe recalcular la fórmula, no mostrar el saldo con capacitaciones (de ahí el revert).</li>
+        <li><strong>Epidemiología empaquetada como plugin</strong>: la skill epi-studies v2 viaja dentro del bundle <code>investigacion-cientifica</code>.</li>
+        <li>Privacidad: el informe diario se publica <strong>no listado</strong> (URL directa), sin datos de pacientes.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>HC oncológica</strong>: validar el ciclo de ronda en producción con un paciente real.</li>
+        <li class="ambar"><strong>urgencias-hgm — julio</strong>: aligerar a mano a Mesa y Rodríguez en el borrador (la regeneración no drenó su deuda) y publicar julio cuando esté validado.</li>
+        <li class="ambar"><strong>urgencias-hgm</strong>: validar el export ALBA (Excel + PDF) en producción con datos reales.</li>
+        <li class="ambar"><strong>HTML de semaglutida</strong> (deep research médico): decidir destino — la publicación a Pages quedó bloqueada por el harness (datos de salud); revisar en el computador o agregar permiso.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
