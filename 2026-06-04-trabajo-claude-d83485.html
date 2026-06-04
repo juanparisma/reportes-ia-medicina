@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-04</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Jueves 4 de junio de 2026 · trabajo global de la jornada (cierre nocturno)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">16</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">7</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">sesiones activas</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">plugin nuevo</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada doble. En la capa <strong>OS</strong>, el hito fue el patrón completo
+      <strong>deep research → skill modular → plugin</strong>: se convirtió
+      <strong>strategy-epi-studies</strong> en un orquestador modular (rutas = diseños de estudio,
+      módulos = partes del manuscrito, con gate anti-alucinación) y se empaquetó junto a otras 7 skills en el
+      nuevo plugin <strong>investigacion-cientifica</strong>. En el frente <strong>clínico</strong>, la app de
+      historias oncológicas estrenó un <strong>tablero de ronda diaria</strong> por zona y se cerró un A/B de
+      proveedores LLM (decisión: seguir en GPT-5.4); en urgencias se <strong>revirtió</strong> un cambio de
+      exportación para respetar el cuadro publicado, y se cerró formalmente el proyecto del QR de demanda no
+      atendida.</p>
+      <p>
+        <span class="tag">plugin nuevo</span>
+        <span class="tag">orquestador modular</span>
+        <span class="tag">gate anti-alucinación</span>
+        <span class="tag">tablero de ronda</span>
+        <span class="tag">A/B LLM</span>
+        <span class="tag">revert seguro</span>
+        <span class="tag">segundo cerebro</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>iamasters-os (capa OS) · <span class="pill">plugin nuevo</span></h3>
+      <ul>
+        <li><strong>Deep research citado</strong> sobre estudios epidemiológicos (5 subagentes en paralelo, modo médico PubMed): taxonomía/GRADE, sesgos, guías EQUATOR y ética. Reporte con 41 referencias Vancouver, solo fuentes Tier 0–1.</li>
+        <li><strong>strategy-epi-studies v2</strong>: reestructurada de monolítica a <strong>orquestador modular</strong> (rutas = diseños, módulos 00-intake→08-manuscrito, persistencia en disco, capa de rigor científico).</li>
+        <li><strong>Plugin investigacion-cientifica</strong>: bundle de 8 skills (2 propias + 6 vendoradas con atribución); excluidas las de licencia conflictiva (NC/GPL).</li>
+        <li>PRD + paso a paso de la skill y arranque de un <strong>reporte de caso</strong> (ruta CARE): melanoma anorrectal de presentación atípica.</li>
+        <li class="commit">1 commit · 89932a2</li>
+      </ul>
+
+      <h3>historias-clinicas-oncologia · <span class="pill">tablero de ronda</span></h3>
+      <ul>
+        <li><strong>Tablero de ronda diaria</strong> por zona + estados de flujo (migración 0007); alta desde la tarjeta, alineado al flujo real del HGM.</li>
+        <li>Fix React 19: campos de <code>&lt;form action&gt;</code> a controlados (evita el borrado del bloque SUBJETIVO).</li>
+        <li>Prefill de instrucciones del oncólogo desde la última visita.</li>
+        <li><strong>A/B de proveedores LLM</strong> → decisión: seguir en GPT-5.4 (los modelos abiertos alucinan datos clínicos).</li>
+        <li class="commit">7 commits · 8bb823f · a58b2b4 · f1d6081 · db1c93b · 2b2bd0d · bd19cdf · db4edca</li>
+      </ul>
+
+      <h3>urgencias-hgm</h3>
+      <ul>
+        <li><strong>Revert</strong> del cambio que mostraba el neto bloqueado oficial en meses congelados: el cuadro publicado manda, el export recalcula la fórmula.</li>
+        <li>Migración de las páginas de analítica de <code>ChartHelp</code> a <code>ChartCard/InfoTooltip</code> (coherencia visual).</li>
+        <li class="commit">3 commits · ec2bcda · 25b8355 · 7926219</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Ingesta de la <strong>metodología epidemiológica</strong> (diseños, EQUATOR, gate de IA) + la skill strategy-epi-studies + el caso del melanoma anorrectal.</li>
+        <li>Documentado el frente clínico: A/B de LLM y tablero de ronda de la app oncológica.</li>
+        <li class="commit">2 commits · 678243b · fde0b21</li>
+      </ul>
+
+      <h3>arc-whisper</h3>
+      <ul>
+        <li>Endurecido el arranque automático al iniciar sesión (sin guardia de batería, 20 s de retardo, reintentos, entrypoint a prueba de fallos).</li>
+        <li class="commit">1 commit · de66bf2</li>
+      </ul>
+
+      <h3>qr-demanda-no-atendida · <span class="pill">cerrado (en pausa)</span></h3>
+      <ul>
+        <li>Cierre formal del proyecto: construcción terminada; solo quedan acciones humanas operativas.</li>
+        <li class="commit">1 commit · a5a28d9</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Se publicó el informe diario de la jornada anterior (corrida programada nocturna).</li>
+        <li class="commit">1 commit · c15024a</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>GPT-5.4 se queda</strong> en historias oncológicas: el A/B mostró que los modelos abiertos alucinan datos clínicos no presentes en el input.</li>
+        <li><strong>El cuadro publicado manda</strong> (urgencias): se revierte el "fix" de neto bloqueado; el export debe recalcular la fórmula oficial, no sobrescribirla.</li>
+        <li><strong>strategy-epi-studies como orquestador modular</strong>: rutas = diseños de estudio, módulos = partes del manuscrito, con gate anti-alucinación de citas.</li>
+        <li><strong>Higiene de licencias</strong>: del plugin se excluyen las skills NC/GPL; solo entran las compatibles, con atribución.</li>
+        <li><strong>Cierre del QR de demanda no atendida</strong>: nada de código pendiente, solo coordinación humana.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Reporte de caso <strong>melanoma anorrectal</strong>: traer del hospital la IHC del ganglio inguinal, el desenlace y el consentimiento, y correr el Módulo 03 con literatura verificada.</li>
+        <li class="ambar">historias-clinicas-oncologia: <strong>commitear</strong> el cambio de ruta del <code>CLAUDE.md</code> y validar el ciclo de ronda en producción con paciente real.</li>
+        <li class="ambar">Decidir si publicar el plugin <strong>investigacion-cientifica</strong> en su propio repo + marketplace, y probar el orquestador con un segundo diseño (p. ej. caso-control).</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
