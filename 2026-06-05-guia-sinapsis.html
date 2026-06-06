@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinapsis v4.6.1 — Guía de uso + Calendario de automatización</title>
+<style>
+  :root{
+    --primary:#1D4E89; --accent:#4FB0C6; --warm:#F2A65A;
+    --ink:#16202B; --muted:#5A6675; --bg:#F5F8FC; --panel:#FFFFFF; --line:#DDE6F0;
+    --ok-t:#1E7A52; --ok-b:#E3F3EA; --mid-t:#B26A00; --mid-b:#FBEFD9; --bad-t:#B3261E; --bad-b:#FBE6E4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 18px 64px}
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);
+    color:#fff;padding:48px 24px 40px;text-align:center;border-radius:0 0 24px 24px;margin-bottom:32px}
+  .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    padding:5px 14px;border-radius:999px;font-size:12.5px;letter-spacing:.5px;margin-bottom:16px;font-weight:600}
+  .hero h1{font-size:27px;line-height:1.25;font-weight:800;margin-bottom:10px}
+  .hero p{font-size:15px;opacity:.94;max-width:620px;margin:0 auto}
+  /* SECTION */
+  section{background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:24px 22px;margin-bottom:20px;box-shadow:0 1px 3px rgba(29,78,137,.05)}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+    background:var(--primary);color:#fff;border-radius:9px;font-weight:800;font-size:15px;margin-bottom:12px}
+  h2{font-size:20px;color:var(--primary);font-weight:800;margin-bottom:6px}
+  .sub{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+  h3{font-size:15.5px;color:var(--ink);font-weight:700;margin:18px 0 8px}
+  p{margin-bottom:10px;font-size:14.5px}
+  ul{margin:0 0 10px 20px}li{margin-bottom:6px;font-size:14.5px}
+  code{background:#EEF3FA;color:var(--primary);padding:2px 6px;border-radius:5px;
+    font-family:"SF Mono",Consolas,Monaco,monospace;font-size:12.5px;font-weight:600}
+  .flow{background:#EEF3FA;border-left:4px solid var(--primary);border-radius:8px;padding:14px 16px;
+    font-family:"SF Mono",Consolas,monospace;font-size:12.5px;color:var(--ink);white-space:pre-wrap;margin:8px 0 4px}
+  .callout{background:var(--mid-b);border-left:4px solid var(--warm);border-radius:8px;padding:14px 16px;font-size:14px;margin:14px 0}
+  .callout b{color:var(--mid-t)}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th{background:var(--primary);color:#fff;text-align:left;padding:9px 11px;font-weight:600;font-size:12.5px}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:#FAFCFE}
+  .cmd{font-family:"SF Mono",Consolas,monospace;color:var(--primary);font-weight:700;font-size:12.5px;white-space:nowrap}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+  .p-ok{background:var(--ok-b);color:var(--ok-t)}
+  .p-mid{background:var(--mid-b);color:var(--mid-t)}
+  .p-bad{background:var(--bad-b);color:var(--bad-t)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+  .card{border:1px solid var(--line);border-radius:11px;padding:14px}
+  .card .t{font-weight:700;color:var(--primary);font-size:14px;margin-bottom:4px}
+  .card .d{font-size:13px;color:var(--muted)}
+  .leg{font-size:12.5px;color:var(--muted);margin-top:8px}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px;padding-top:18px;border-top:1px solid var(--line)}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}.hero h1{font-size:22px}table{font-size:12.5px}td,th{padding:7px 8px}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="badge">SINAPSIS v4.6.1 · INSTALACIÓN VERIFICADA</div>
+  <h1>Cómo sacarle el máximo a Sinapsis</h1>
+  <p>Guía de uso real + calendario de automatización para que no pierdas ni una función. Anclada en tu instalación: 5 instintos, 8 reglas pasivas, 7 proyectos.</p>
+</div>
+<div class="wrap">
+
+  <section>
+    <div class="num">01</div>
+    <h2>El modelo mental</h2>
+    <div class="sub">Entendé esto y todo lo demás cae solo.</div>
+    <p>Sinapsis es un <b>bucle de aprendizaje</b> que envuelve a Claude Code. La mayor parte es automática; vos solo intervenís para <b>revisar y confirmar</b>.</p>
+    <div class="flow">Trabajás normal  →  Sinapsis OBSERVA cada acción (sin que hagas nada)
+        ↓
+Detecta PATRONES al cerrar sesión  →  te los PROPONE
+        ↓
+Vos confirmás los buenos  →  se vuelven INSTINTOS
+        ↓
+Los instintos se INYECTAN solos cuando aplican
+        ↓
+Los maduros se EVOLUCIONAN a reglas / skills permanentes</div>
+    <div class="callout"><b>La clave:</b> el 90% es automático. El valor está en TU revisión, no en el volumen. Un instinto no se inyecta hasta que vos le das el OK.</div>
+  </section>
+
+  <section>
+    <div class="num">02</div>
+    <h2>La capa automática (los hooks)</h2>
+    <div class="sub">Esto pasa solo, en cada sesión. Tu trabajo aquí: ninguno.</div>
+    <table>
+      <tr><th>Hook</th><th>Cuándo</th><th>Qué hace</th></tr>
+      <tr><td><span class="cmd">observe</span></td><td>cada acción</td><td>Graba qué herramienta usaste → memoria por proyecto</td></tr>
+      <tr><td><span class="cmd">instinct-activator</span></td><td>cada acción</td><td>Inyecta hasta 8 instintos relevantes (lo que aprendió de vos)</td></tr>
+      <tr><td><span class="cmd">passive-activator</span></td><td>cada acción</td><td>Inyecta guardrails (ej: verificar datos, no commitear secrets)</td></tr>
+      <tr><td><span class="cmd">project-context</span></td><td>al abrir sesión</td><td>Te trae el contexto de ayer ("Ayer dejaste X")</td></tr>
+      <tr><td><span class="cmd">session-learner</span></td><td>al cerrar sesión</td><td>Analiza la sesión y propone instintos nuevos</td></tr>
+      <tr><td><span class="cmd">precompact-guard</span></td><td>antes de comprimir</td><td>Salva el aprendizaje antes de que se pierda</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="num">03</div>
+    <h2>Los comandos por grupo</h2>
+    <div class="sub">16 comandos. Lo que de verdad usás día a día son pocos.</div>
+
+    <h3>🔍 Ver el estado</h3>
+    <table>
+      <tr><th>Comando</th><th>Para qué</th></tr>
+      <tr><td><span class="cmd">/system-status</span></td><td>Panorama textual rápido de todo</td></tr>
+      <tr><td><span class="cmd">/dashboard-sinapsis</span></td><td>Dashboard visual: KPIs, heatmap, leaderboards, decisiones</td></tr>
+      <tr><td><span class="cmd">/instinct-status</span></td><td>Tus instintos con nivel, dominio y activaciones</td></tr>
+      <tr><td><span class="cmd">/passive-status</span></td><td>Las reglas pasivas activas y su telemetría</td></tr>
+      <tr><td><span class="cmd">/projects</span></td><td>Tus proyectos registrados</td></tr>
+    </table>
+
+    <h3>🧠 El ciclo de aprendizaje (el corazón)</h3>
+    <table>
+      <tr><th>Comando</th><th>Para qué</th></tr>
+      <tr><td><span class="cmd">/analyze-session</span></td><td><b>El más importante.</b> Revisa la sesión a fondo y te muestra patrones reales para confirmar</td></tr>
+      <tr><td><span class="cmd">/promote</span></td><td>Sube un instinto a permanente (máxima prioridad)</td></tr>
+      <tr><td><span class="cmd">/downvote</span></td><td>Baja/archiva un instinto que dio mal consejo</td></tr>
+      <tr><td><span class="cmd">/evolve</span></td><td>Convierte instintos maduros en skills / reglas / comandos</td></tr>
+    </table>
+
+    <h3>📅 Rituales · 🧹 Mantenimiento · 💾 Respaldo</h3>
+    <table>
+      <tr><th>Comando</th><th>Para qué</th></tr>
+      <tr><td><span class="cmd">/eod</span></td><td>Resume el día y deja prioridades para mañana</td></tr>
+      <tr><td><span class="cmd">/session-end</span></td><td>Cierre formal con documentación (tu protocolo dual)</td></tr>
+      <tr><td><span class="cmd">/dream</span></td><td>Limpia instintos dormidos/duplicados</td></tr>
+      <tr><td><span class="cmd">/cleanup</span></td><td>Limpia archivos legacy y proyectos huérfanos</td></tr>
+      <tr><td><span class="cmd">/skill-audit</span></td><td>Análisis profundo de skills; detecta las que no usás</td></tr>
+      <tr><td><span class="cmd">/backup</span> · <span class="cmd">/restore</span></td><td>Exporta / importa todo el estado (migrar de máquina)</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="num">04</div>
+    <h2>El ritmo de uso recomendado</h2>
+    <div class="sub">Manual, sin automatizar. Lo mínimo para que el bucle se cierre.</div>
+    <div class="grid">
+      <div class="card"><div class="t">Diario · 2 min</div><div class="d">Al abrir: leé el "Ayer dejaste X". Al cerrar: <code>/eod</code> o <code>/session-end</code>.</div></div>
+      <div class="card"><div class="t">Semanal · 10 min</div><div class="d"><code>/analyze-session</code> tras una sesión cargada → confirmá 1-2 instintos. Mirá el <code>/dashboard-sinapsis</code>.</div></div>
+      <div class="card"><div class="t">Mensual · 15 min</div><div class="d"><code>/evolve</code> los maduros + <code>/dream</code> + <code>/cleanup</code> + <code>/backup</code>.</div></div>
+      <div class="card"><div class="t">Cuando pase · 30 seg</div><div class="d"><code>/promote</code> un instinto bueno · <code>/downvote</code> uno que falló.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">05</div>
+    <h2>Calendario de automatización</h2>
+    <div class="sub">Qué se puede dejar en piloto automático, en qué horario y con qué nivel de autonomía.</div>
+    <table>
+      <tr><th>Tarea</th><th>Frecuencia</th><th>Horario sugerido</th><th>Nivel</th></tr>
+      <tr><td><span class="cmd">dashboard</span> (regenerar)</td><td>Diario</td><td>02:00 + 13:00*</td><td><span class="pill p-ok">✅ Total</span></td></tr>
+      <tr><td><span class="cmd">/eod</span> (resumen del día)</td><td>Diario</td><td>22:30 + 00:30*</td><td><span class="pill p-mid">🟡 Semi</span></td></tr>
+      <tr><td><span class="cmd">/backup</span></td><td>Semanal</td><td>Dom 20:00</td><td><span class="pill p-ok">✅ Total</span></td></tr>
+      <tr><td><span class="cmd">/analyze-session</span> (digest + ping)</td><td>Semanal</td><td>Dom 20:15</td><td><span class="pill p-mid">🟡 Semi</span></td></tr>
+      <tr><td><span class="cmd">/dream</span> + <span class="cmd">/cleanup</span></td><td>Mensual</td><td>Día 1, 09:00</td><td><span class="pill p-ok">✅ Total</span></td></tr>
+      <tr><td><span class="cmd">/skill-audit</span> (reporte)</td><td>Mensual</td><td>Día 1, 09:30</td><td><span class="pill p-mid">🟡 Semi</span></td></tr>
+      <tr><td><span class="cmd">/evolve</span> (candidatos + ping)</td><td>Mensual</td><td>Día 1, 10:00</td><td><span class="pill p-mid">🟡 Semi</span></td></tr>
+      <tr><td><span class="cmd">/promote</span> · <span class="cmd">/downvote</span></td><td>Al ocurrir</td><td>—</td><td><span class="pill p-bad">🔴 Manual</span></td></tr>
+    </table>
+    <div class="leg"><b>* Ventana redundante:</b> las tareas locales solo corren con la PC encendida. Programar cada una en <b>dos horarios</b> (mañana + tarde) garantiza que si la PC estaba apagada en el primero, el segundo la recupera. La tarea es idempotente: si ya corrió ese día, el segundo intento no duplica nada.</div>
+    <div class="leg">✅ <b>Total</b> = determinista, se ejecuta sola de punta a punta. &nbsp; 🟡 <b>Semi</b> = prepara el análisis y te avisa por WhatsApp; vos confirmás. &nbsp; 🔴 <b>Manual</b> = es puro juicio tuyo, no se programa.</div>
+  </section>
+
+  <section>
+    <div class="num">06</div>
+    <h2>Qué NO se automatiza (y por qué)</h2>
+    <div class="sub">Honestidad: automatizar esto rompería el valor de Sinapsis.</div>
+    <ul>
+      <li><b>Confirmar instintos</b> (<code>/promote</code>, el OK en <code>/analyze-session</code>): es tu juicio el que separa la señal del ruido. Auto-confirmar llenaría el sistema de basura — justo lo que limpiamos hoy (eran 80+ propuestas-ruido).</li>
+      <li><b>Elegir qué evolucionar</b> (<code>/evolve</code>): decidir si un patrón es skill, regla o comando es estratégico. La automatización solo <i>prepara los candidatos</i>.</li>
+      <li><b>Descartar lo malo</b> (<code>/downvote</code>): nadie sabe mejor que vos cuándo un consejo fue malo.</li>
+    </ul>
+    <div class="callout"><b>Regla de oro:</b> automatizá lo determinista (regenerar, respaldar, limpiar). Dejá que tu juicio decida lo que entra a tu memoria. Sinapsis es tan bueno como las confirmaciones que le das.</div>
+  </section>
+
+  <section>
+    <div class="num">07</div>
+    <h2>Cómo crear las tareas programadas</h2>
+    <div class="sub">El mismo mecanismo que ya usás para el informe diario.</div>
+    <p>Las automatizaciones viven como <b>tareas programadas locales</b> en <code>~/.claude/scheduled-tasks/</code> (corren con la PC encendida). Para crearlas, en una sesión de Claude Code decís, por ejemplo:</p>
+    <div class="flow">"Programá una tarea diaria 02:00 que regenere el dashboard de Sinapsis"
+"Programá una tarea semanal domingo 20:00 que corra /backup y me avise por WhatsApp"
+"Programá mensual día 1 09:00 que corra /dream + /cleanup"</div>
+    <p>Las <b>deterministas (✅)</b> quedan 100% solas. Las <b>semi (🟡)</b> preparan el análisis y te mandan el resumen por WhatsApp con el enlace para que entres a confirmar en 2 minutos.</p>
+    <div class="callout"><b>Recomendación de arranque:</b> activá primero solo las ✅ (dashboard diario, backup semanal, dream+cleanup mensual). Sumá las 🟡 cuando te acostumbres al ritmo. Así nunca pierdes funcionalidad y no te abruma.</div>
+  </section>
+
+  <footer>
+    Generado por Dr. Juan Camilo Paris · iAmasters OS · Sinapsis v4.6.1<br>
+    Documento de uso interno · 2026-06-05
+  </footer>
+</div>
+</body>
+</html>
