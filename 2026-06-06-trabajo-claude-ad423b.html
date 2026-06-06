@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-06</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Sábado 6 de junio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">29</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">6</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">sesiones activas</div></div>
+    <div class="kpi"><div class="n">7</div><div class="l">PRs a producción</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de dos frentes grandes. Por el lado <strong>clínico</strong>, el <strong>módulo de
+      Urgencias</strong> entró en producción dentro de la app de historias clínicas: 7 PRs mergeados en una
+      sola tanda — scribe SOAP con IA, tablero triage-first del turno, paraclínicos sugeridos por CIE-10 y
+      panel de administración separado por módulo (oncología / urgencias). Por el lado de <strong>plataforma
+      (Sinapsis)</strong>, se reinstaló el engine a <strong>v4.6.1</strong> con la causa raíz de los installs
+      rotos arreglada, se montaron <strong>9 automatizaciones programadas</strong> y se invirtió el ritual de
+      cierre para que la escritura al segundo cerebro nunca se salte.</p>
+      <p>
+        <span class="tag">módulo Urgencias en prod</span>
+        <span class="tag">7 PRs</span>
+        <span class="tag">scribe SOAP IA</span>
+        <span class="tag">paraclínicos por CIE-10</span>
+        <span class="tag">Sinapsis v4.6.1</span>
+        <span class="tag">9 automatizaciones</span>
+        <span class="tag">formato WhatsApp de marca</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>historias-clinicas · <span class="pill">módulo Urgencias en prod</span></h3>
+      <ul>
+        <li><strong>Scribe SOAP con IA + tablero triage-first</strong> del turno de urgencias (módulo nuevo, aditivo, sin tocar oncología en producción).</li>
+        <li>Sugerencia de <strong>paraclínicos por CIE-10</strong> aprobado (labs/imágenes/interconsultas/medicamentos).</li>
+        <li>Listado <code>/urgencias/pacientes</code> + fixes de <code>encounter_date</code> (pacientes "perdidos" entre franjas UTC) y hooks de React 19.</li>
+        <li>Panel <strong>/admin separado por módulo</strong> (oncología vs urgencias) + consumo de tokens discriminado por módulo.</li>
+        <li>Resiliencia: <code>useTheme()</code> con fallback, script anti-FOUC + redirects compat, micrófono habilitado por Permissions-Policy.</li>
+        <li><strong>7 PRs mergeados a producción</strong> en la jornada.</li>
+        <li class="commit">17 commits · 21cbfad · 933635a · 481fc21 · 2c83a13 · 2933a5b · 48c8d3e · 06ce171 · b611ade · d8dcbf8</li>
+      </ul>
+
+      <h3>iamasters-os (capa OS)</h3>
+      <ul>
+        <li><strong>Sinapsis vendored a v4.6.1</strong> + fixes de instalación en Windows.</li>
+        <li><strong>Formato de marca de WhatsApp estandarizado</strong> en todas las automatizaciones (cabecera + firma unificadas).</li>
+        <li>Mapa de proyectos del operador (PROJECTS-MAP) + carpeta paraguas HGM documentada.</li>
+        <li class="commit">3 commits · 63dd21d · 184d236 · b3744d1</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Ingesta 2026-06-06: infraestructura Sinapsis v4.6.1 + automatizaciones + plan espejo de PCs.</li>
+        <li>Ingesta 2026-06-05: módulo urgencias en producción (7 PRs) + concepto de paraclínicos asistidos por IA.</li>
+        <li>README del segundo cerebro (arquitectura de 3 capas + 9 dominios).</li>
+        <li class="commit">3 commits · 1b09092 · e02da98 · 85ba467</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (publicación)</h3>
+      <ul>
+        <li>Publicadas dos <strong>guías HTML de Sinapsis + Cerebro</strong> (enviadas por WhatsApp).</li>
+        <li><code>diagnostico-pc-casa.sh</code> publicado para la evaluación del PC de casa + README descriptivo.</li>
+        <li class="commit">4 commits · 8fdc71e · 32fcac9 · 2d2fd6f · 8db1fb0</li>
+      </ul>
+
+      <h3>plataforma-videos-medicos · cuadros-turnos-urgencias (docs)</h3>
+      <ul>
+        <li>README de la plataforma actualizado al <strong>pivote a funnel</strong> (Skool + recortes IG/TikTok, OpenRouter eliminado).</li>
+        <li>README de cuadros de turnos: app, roles, stack y exports.</li>
+        <li class="commit">2 commits · 128a784 · 517c2a3</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>/eod es ahora el comando paraguas</strong> de cierre (resumen + session log + escritura dual a cerebro con gate); <code>/session-end</code> queda como alias. Garantía: el cerebro nunca se salta.</li>
+        <li><strong>Reinstalación a Sinapsis v4.6.1</strong> con verificación profunda y cero pérdida de datos; causa raíz de installs rotos encontrada (shim de <code>python3</code> del Microsoft Store abortaba bajo <code>set -e</code>).</li>
+        <li><strong>9 automatizaciones programadas</strong> creadas (cierre, dashboard, backup, dream/cleanup + avisos de mantenimiento).</li>
+        <li>Nueva passive rule <strong>verify-numbers-source</strong> (anti-invención de cifras).</li>
+        <li>Plan de <strong>espejo vivo de 2 PCs</strong> (Tailscale + Syncthing) decidido vía Seis Sombreros — <strong>en pausa</strong> hasta formatear el PC de casa.</li>
+        <li>Clínica: el módulo Urgencias se construye <strong>aditivo</strong>, sin tocar oncología en producción.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Pre-aprobar permisos de las tareas programadas: "Run now" en <code>sinapsis-eod</code> (node / scripts / git push).</li>
+        <li class="ambar">Espejo de PCs: cuando el de casa vuelva formateado, instalar Git/Node/Python/Claude Code → correr <code>diagnostico-pc-casa.sh</code> → resumen → Fases 1-3 (4 decisiones abiertas en el plan).</li>
+        <li class="ambar">Seguir los PRs upstream a <code>Luispitik/sinapsis</code> (#23 dashboard+telemetría, #24 fix Windows python3).</li>
+        <li class="ambar">Calibrar <code>master_prompt_urgencias_es.md</code> y <code>master_prompt_paraclinicos_urgencias.md</code> con casos reales del turno.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
