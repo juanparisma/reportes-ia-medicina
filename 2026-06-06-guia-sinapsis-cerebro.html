@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinapsis + Cerebro — Guía de uso y automatización</title>
+<style>
+  :root{
+    --primary:#1D4E89; --accent:#4FB0C6; --warm:#F2A65A;
+    --ink:#16202B; --muted:#5A6675; --bg:#F5F8FC; --panel:#FFFFFF; --line:#DDE6F0;
+    --ok-t:#1E7A52; --ok-b:#E3F3EA; --mid-t:#B26A00; --mid-b:#FBEFD9; --bad-t:#B3261E; --bad-b:#FBE6E4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 18px 64px}
+  .hero{background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);
+    color:#fff;padding:46px 24px 38px;text-align:center;border-radius:0 0 24px 24px;margin-bottom:30px}
+  .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    padding:5px 14px;border-radius:999px;font-size:12px;letter-spacing:.5px;margin-bottom:14px;font-weight:600}
+  .hero h1{font-size:26px;line-height:1.25;font-weight:800;margin-bottom:10px}
+  .hero p{font-size:14.5px;opacity:.94;max-width:640px;margin:0 auto}
+  section{background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:24px 22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(29,78,137,.05)}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+    background:var(--primary);color:#fff;border-radius:9px;font-weight:800;font-size:15px;margin-bottom:12px}
+  .num.warm{background:var(--warm)}
+  h2{font-size:20px;color:var(--primary);font-weight:800;margin-bottom:6px}
+  .sub{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+  h3{font-size:15px;color:var(--ink);font-weight:700;margin:18px 0 8px}
+  p{margin-bottom:10px;font-size:14.5px}
+  ul{margin:0 0 10px 20px}li{margin-bottom:6px;font-size:14.5px}
+  code{background:#EEF3FA;color:var(--primary);padding:2px 6px;border-radius:5px;
+    font-family:"SF Mono",Consolas,Monaco,monospace;font-size:12.5px;font-weight:600}
+  .flow{background:#EEF3FA;border-left:4px solid var(--primary);border-radius:8px;padding:14px 16px;
+    font-family:"SF Mono",Consolas,monospace;font-size:12px;color:var(--ink);white-space:pre-wrap;margin:8px 0}
+  .callout{background:var(--mid-b);border-left:4px solid var(--warm);border-radius:8px;padding:14px 16px;font-size:14px;margin:14px 0}
+  .callout b{color:var(--mid-t)}
+  .lock{background:var(--bad-b);border-left:4px solid var(--bad-t);border-radius:8px;padding:14px 16px;font-size:14px;margin:14px 0}
+  .lock b{color:var(--bad-t)}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+  th{background:var(--primary);color:#fff;text-align:left;padding:9px 11px;font-weight:600;font-size:12px}
+  td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:#FAFCFE}
+  .cmd{font-family:"SF Mono",Consolas,monospace;color:var(--primary);font-weight:700;font-size:12px;white-space:nowrap}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+  .p-ok{background:var(--ok-b);color:var(--ok-t)}
+  .p-mid{background:var(--mid-b);color:var(--mid-t)}
+  .p-bad{background:var(--bad-b);color:var(--bad-t)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+  .card{border:1px solid var(--line);border-radius:11px;padding:14px}
+  .card .t{font-weight:700;color:var(--primary);font-size:14px;margin-bottom:4px}
+  .card .d{font-size:13px;color:var(--muted)}
+  .leg{font-size:12px;color:var(--muted);margin-top:8px}
+  .you{background:#EAF4EE;border:1px solid #BFE3CC;border-radius:11px;padding:14px 16px;margin:8px 0}
+  .you .t{font-weight:800;color:var(--ok-t);margin-bottom:6px;font-size:14.5px}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}.hero h1{font-size:21px}table{font-size:12px}td,th{padding:7px 7px}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="badge">SINAPSIS v4.6.1 + CEREBRO · ACTUALIZADO 2026-06-06</div>
+  <h1>Sinapsis + Cerebro: cómo funciona y qué corre solo</h1>
+  <p>Tu sistema de memoria (Sinapsis) y tu segundo cerebro (vault wiki) trabajando juntos, con el cierre del día y la guardada dual ya automatizados. Esta guía te dice qué pasa solo y lo poquito que tenés que hacer vos.</p>
+</div>
+<div class="wrap">
+
+  <section>
+    <div class="num">01</div>
+    <h2>El modelo mental</h2>
+    <div class="sub">Dos sistemas de memoria que se nutren con tu trabajo.</div>
+    <div class="flow">SINAPSIS  = memoria del AGENTE (instintos, reglas, observaciones)
+            → hace que Claude aprenda CÓMO trabajás.
+
+CEREBRO   = tu segundo cerebro (wiki Obsidian + repo git)
+            → guarda QUÉ sabés: conceptos, fuentes, decisiones, dominios.
+
+El CIERRE del día (/eod) alimenta a LOS DOS de una sola pasada.</div>
+    <p>El bucle de Sinapsis: trabajás → observa → detecta patrones → vos confirmás → se vuelven instintos → se inyectan solos. El 90% es automático; el valor está en tu revisión.</p>
+  </section>
+
+  <section>
+    <div class="num">02</div>
+    <h2>La capa automática (hooks)</h2>
+    <div class="sub">Pasa solo, en cada sesión. Tu trabajo aquí: ninguno.</div>
+    <table>
+      <tr><th>Hook</th><th>Cuándo</th><th>Qué hace</th></tr>
+      <tr><td><span class="cmd">observe</span></td><td>cada acción</td><td>Graba cada herramienta usada → memoria por proyecto (base de todo)</td></tr>
+      <tr><td><span class="cmd">instinct-activator</span></td><td>cada acción</td><td>Inyecta hasta 8 instintos relevantes</td></tr>
+      <tr><td><span class="cmd">passive-activator</span></td><td>cada acción</td><td>Inyecta guardrails (verificar datos, no commitear secrets…)</td></tr>
+      <tr><td><span class="cmd">project-context</span></td><td>al abrir sesión</td><td>"Ayer dejaste X" — puente entre sesiones</td></tr>
+      <tr><td><span class="cmd">session-learner</span></td><td>al cerrar</td><td>Detecta patrones nuevos y los propone</td></tr>
+      <tr><td><span class="cmd">precompact-guard</span></td><td>antes de comprimir</td><td>Salva el aprendizaje antes de perderlo</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="num">03</div>
+    <h2>Cómo funciona Cerebro (tu segundo cerebro)</h2>
+    <div class="sub">Vault wiki en Obsidian + repo git privado (<code>juanparisma/segundo-cerebro</code>).</div>
+    <p>Mientras Sinapsis recuerda <i>cómo</i> trabajás, Cerebro guarda <i>qué</i> sabés, como una wiki personal enlazada (estilo Karpathy). Cada cierre lo nutre con lo aprendido ese día.</p>
+    <h3>Qué guarda (estructura del vault)</h3>
+    <table>
+      <tr><th>Carpeta</th><th>Contenido</th></tr>
+      <tr><td><code>wiki/dominios/</code></td><td>Hubs por ámbito de vida (tesis, decisiones, preguntas abiertas)</td></tr>
+      <tr><td><code>wiki/fuentes/</code></td><td>Papers, PDFs, URLs, notas referenciadas</td></tr>
+      <tr><td><code>wiki/entidades/</code></td><td>Personas, organizaciones, herramientas, modelos de IA</td></tr>
+      <tr><td><code>wiki/conceptos/</code> · <code>sintesis/</code> · <code>hilos/</code></td><td>Conceptos elaborados, respuestas valiosas, líneas de investigación</td></tr>
+      <tr><td><code>sesiones/</code> · <code>log.md</code> · <code>hot.md</code></td><td>Bitácora diaria + índice + estado "caliente" actual</td></tr>
+    </table>
+    <div class="callout"><b>Regla de oro (tuya):</b> "documentá absolutamente todo + ningún ítem queda huérfano". Cada entidad/concepto/fuente que se nombre se enlaza con <code>[[link]]</code>, y cada sesión queda conectada al grafo en ambas direcciones.</div>
+  </section>
+
+  <section>
+    <div class="num warm">04</div>
+    <h2>El cierre del día: <code>/eod</code> es el paraguas</h2>
+    <div class="sub">Cambio de arquitectura (2026-06-06): <code>/eod</code> envuelve todo. <code>/session-end</code> quedó como alias.</div>
+    <p>Antes <code>/session-end</code> era el grande. Ahora <b><code>/eod</code> es el comando paraguas</b> que hace TODO el cierre de una pasada:</p>
+    <div class="flow">/eod  (un solo comando, el grande)
+  1. Resumen del día (multi-proyecto, determinista)
+  2. Session log + compliance  ← lo que antes hacía /session-end
+  3. 🧠 Escritura DUAL a cerebro
+       audit de dominio → páginas wiki → linking → bitácora → git push
+  4. ✅ GATE de verificación: confirma commit-de-hoy + push a cerebro
+       si no pasa → la sesión NO está cerrada</div>
+    <div class="lock"><b>⛔ Cerebro NUNCA se salta.</b> Está dentro de <code>/eod</code> (pasos 6-7) con un gate que verifica el commit+push real. Única excepción: días con cero actividad. Triple respaldo: el comando lo exige + protocolo en memoria + passive rule.</div>
+    <h3>Idempotente y en dos modos</h3>
+    <div class="grid">
+      <div class="card"><div class="t">🤖 Automático (headless)</div><div class="d">Reconstruye el día desde las observaciones. Cierra + cerebro solos cada noche. Máx 8 páginas wiki nuevas/corrida. <b>Nunca se te olvida.</b></div></div>
+      <div class="card"><div class="t">✍️ En vivo (vos cerrás)</div><div class="d">Razono sobre la conversación real → cerebro <b>más rico</b>. Una corrida en vivo enriquece/reemplaza la entrada automática del día.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">05</div>
+    <h2>Los comandos (actualizado)</h2>
+    <div class="sub">Lo que de verdad usás es poco.</div>
+    <h3>🔁 Cierre y aprendizaje</h3>
+    <table>
+      <tr><th>Comando</th><th>Para qué</th></tr>
+      <tr><td><span class="cmd">/eod</span></td><td><b>Paraguas del cierre</b>: resumen + session log + cerebro + gate. Corre solo; corrélo en vivo para el cerebro más rico</td></tr>
+      <tr><td><span class="cmd">/session-end</span></td><td>Alias de <code>/eod</code> (mismo cierre completo)</td></tr>
+      <tr><td><span class="cmd">/analyze-session</span></td><td><b>Lo único que necesita tu juicio a diario</b>: confirma lo aprendido</td></tr>
+      <tr><td><span class="cmd">/promote</span> · <span class="cmd">/downvote</span></td><td>Subir un instinto bueno / bajar uno que falló</td></tr>
+      <tr><td><span class="cmd">/evolve</span></td><td>Convertir instintos maduros en reglas/skills</td></tr>
+    </table>
+    <h3>🔍 Estado · 🧹 Mantenimiento · 💾 Respaldo</h3>
+    <table>
+      <tr><th>Comando</th><th>Para qué</th></tr>
+      <tr><td><span class="cmd">/dashboard-sinapsis</span></td><td>Dashboard visual (corre solo a diario)</td></tr>
+      <tr><td><span class="cmd">/system-status</span> · <span class="cmd">/instinct-status</span> · <span class="cmd">/passive-status</span> · <span class="cmd">/projects</span></td><td>Consultas de estado on-demand</td></tr>
+      <tr><td><span class="cmd">/dream</span> · <span class="cmd">/cleanup</span></td><td>Higiene (corre sola mensual)</td></tr>
+      <tr><td><span class="cmd">/skill-audit</span></td><td>Skills sin usar (reporte mensual)</td></tr>
+      <tr><td><span class="cmd">/backup</span> · <span class="cmd">/restore</span></td><td>Exportar/importar estado (migrar de máquina)</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="num">06</div>
+    <h2>Calendario de automatización (lo que quedó montado)</h2>
+    <div class="sub">9 tareas. Triple redundancia + idempotencia: corren varias veces pero hacen el trabajo y mandan 1 WhatsApp por período.</div>
+    <table>
+      <tr><th>Tarea</th><th>Cadencia · momentos</th><th>Qué hace</th><th>Tipo</th></tr>
+      <tr><td><span class="cmd">sinapsis-eod</span></td><td>Diario · 19:00 + 21:00</td><td>Cierre completo (/eod + cerebro + gate)</td><td><span class="pill p-ok">auto</span></td></tr>
+      <tr><td><span class="cmd">sinapsis-eod-cierre</span></td><td>Diario · 23:30</td><td>Cierre (3er momento, idempotente)</td><td><span class="pill p-ok">auto</span></td></tr>
+      <tr><td><span class="cmd">sinapsis-dashboard</span></td><td>Diario · 23:45 + 08:45</td><td>Regenera y te envía el dashboard 📊</td><td><span class="pill p-ok">auto</span></td></tr>
+      <tr><td><span class="cmd">sinapsis-analyze-digest</span></td><td>Diario · 18/20/22h</td><td>Te recuerda <code>/analyze-session</code></td><td><span class="pill p-mid">aviso</span></td></tr>
+      <tr><td><span class="cmd">sinapsis-backup</span></td><td>Semanal · Dom 18/20/22h</td><td><code>/backup</code> del estado 💾</td><td><span class="pill p-ok">auto</span></td></tr>
+      <tr><td><span class="cmd">sinapsis-promover-degradar-aviso</span></td><td>Quincenal · Dom 22:30</td><td>Aviso para <code>/promote</code> y <code>/downvote</code> ⚖️</td><td><span class="pill p-mid">aviso</span></td></tr>
+      <tr><td><span class="cmd">sinapsis-dream-cleanup</span></td><td>Mensual · día 1 · 09/13/17h</td><td><code>/dream</code> + <code>/cleanup</code> 🧹</td><td><span class="pill p-ok">auto</span></td></tr>
+      <tr><td><span class="cmd">sinapsis-skill-audit</span></td><td>Mensual · día 1 · 09:30/13:30/17:30</td><td>Reporte <code>/skill-audit</code> 🔍</td><td><span class="pill p-mid">aviso</span></td></tr>
+      <tr><td><span class="cmd">sinapsis-evolve-candidatos</span></td><td>Mensual · día 1 · 10/14/18h</td><td>Candidatos a <code>/evolve</code> 🧬</td><td><span class="pill p-mid">aviso</span></td></tr>
+    </table>
+    <div class="leg"><span class="pill p-ok">auto</span> se ejecuta solo de punta a punta. &nbsp; <span class="pill p-mid">aviso</span> te llega un WhatsApp para que lo hagas vos (necesita tu juicio). &nbsp; Todo llega a WhatsApp. Corren solo con la PC encendida; por eso hay 3 momentos (si está apagada en uno, otro lo recupera).</div>
+  </section>
+
+  <section>
+    <div class="num warm">07</div>
+    <h2>Tu rutina: qué corre solo vs qué hacés vos</h2>
+    <div class="sub">Para tenerlo presente y no perder nada.</div>
+    <div class="you">
+      <div class="t">✅ Corre SOLO (no hacés nada)</div>
+      <div class="d">Observación · cierre del día + escritura a cerebro · dashboard diario · backup semanal · limpieza mensual. Todo te avisa por WhatsApp.</div>
+    </div>
+    <div class="you" style="background:#FBEFD9;border-color:#F0D9A8">
+      <div class="t" style="color:#B26A00">✍️ HACÉS VOS cuando llega el WhatsApp</div>
+      <div class="d">
+        <b>Diario (opcional):</b> <code>/analyze-session</code> para confirmar lo aprendido. Si fue un día importante, cerrá en vivo con <code>/eod</code> (cerebro más rico).<br>
+        <b>Quincenal (Dom):</b> al llegar el aviso → <code>/promote</code> y <code>/downvote</code>.<br>
+        <b>Mensual (día 1):</b> al llegar los avisos → <code>/evolve</code> y revisar <code>/skill-audit</code>.
+      </div>
+    </div>
+    <div class="callout"><b>En una frase:</b> el cierre y la memoria se cuidan solos; vos solo entrás a <i>confirmar y decidir</i> cuando te llega el aviso.</div>
+  </section>
+
+  <footer>
+    Generado por Dr. Juan Camilo Paris · iAmasters OS · Sinapsis v4.6.1 + Cerebro<br>
+    Documento de uso interno · actualizado 2026-06-06
+  </footer>
+</div>
+</body>
+</html>
