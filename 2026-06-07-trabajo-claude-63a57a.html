@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-07</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .note{background:rgba(79,176,198,.08);border:1px dashed var(--line);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Domingo 7 de junio de 2026 · trabajo global de las últimas 24 h</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">2</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">proyectos con commit</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">workspaces activos</div></div>
+    <div class="kpi"><div class="n">0</div><div class="l">apps nuevas</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada <strong>ligera y de mantenimiento</strong>, cola de la maratón de infraestructura del día anterior.
+      Dos commits puntuales: se publicó un <strong>reporte de dashboard de Sinapsis</strong> en el repo de reportes y
+      se <strong>enriqueció el cierre de la sesión del 6-jun en el segundo cerebro</strong> con la consolidación de
+      <code>MEMORY.md</code>. Hubo actividad de sesión en dos workspaces (iAmasters OS y el de escritorio) sin que
+      derivara en nuevos commits — trabajo de lectura/contexto más que de código.</p>
+      <p>
+        <span class="tag">mantenimiento</span>
+        <span class="tag">dashboard Sinapsis</span>
+        <span class="tag">consolidación memoria</span>
+        <span class="tag">cierre en cerebro</span>
+        <span class="tag">día ligero</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>reportes-ia-medicina</h3>
+      <ul>
+        <li>Publicado el reporte <strong>2026-06-06 · dashboard de Sinapsis</strong> (snapshot de métricas del sistema).</li>
+        <li class="commit">1 commit · 2db832b</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Enriquecida la <strong>sesión del 6-jun</strong> con la consolidación de <code>MEMORY.md</code>
+        (índice + fichas <code>proyecto_*.md</code>), dejando el cierre coherente con lo que quedó en Sinapsis.</li>
+        <li class="commit">1 commit · 6cdd692</li>
+      </ul>
+
+      <div class="note">Los commits de <strong>iamasters-os</strong> del 6-jun (formato WhatsApp estático) quedaron justo
+      fuera de la ventana de 24 h y ya se reportaron ayer. Hoy ese repo tuvo sesión activa pero sin commits nuevos.
+      El daily summary de Sinapsis de hoy aún no existe; el contexto narrativo proviene del de ayer (06-06) + los commits.</div>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li>Sin decisiones estratégicas nuevas. Día de <strong>consolidación</strong>: se cerró el rastro documental
+        de la jornada de infraestructura anterior (memoria + cerebro) en vez de abrir frentes.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>Pre-aprobar permisos</strong> de las tareas programadas: "Run now" en <code>sinapsis-eod</code> (node/scripts/git push).</li>
+        <li class="ambar"><strong>Espejo de PCs</strong>: cuando el PC de casa vuelva formateado, instalar Git/Node/Python/Claude Code → correr <code>diagnostico-pc-casa.sh</code> → Fases 1-3 y resolver las 4 decisiones abiertas.</li>
+        <li class="ambar"><strong>Upstream Sinapsis</strong>: seguir los PRs #23 y #24 en <code>Luispitik/sinapsis</code>.</li>
+        <li class="ambar">(Clínico) Calibrar <code>master_prompt_urgencias_es.md</code> y <code>master_prompt_paraclinicos_urgencias.md</code> con casos reales.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
