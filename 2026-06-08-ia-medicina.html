@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>IA en medicina — Informe semanal · 8 jun 2026</title>
+<style>
+  :root{ --azul:#1D4E89; --cyan:#4FB0C6; --tinta:#16202b; --suave:#5b6b7a; --linea:#e6ecf1; --bg:#f4f7fa; --ok:#1a7f5a; --warn:#b54708; --kill:#b42318; }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--tinta);background:var(--bg);line-height:1.65}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .hero{background:linear-gradient(135deg,var(--azul),var(--cyan));color:#fff;padding:54px 0 46px}
+  .hero .wrap{padding:0 24px}
+  .kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.9;margin:0 0 10px}
+  .hero h1{margin:0 0 10px;font-size:33px;line-height:1.2;font-weight:800}
+  .hero p.sub{margin:0;font-size:17px;opacity:.95}
+  .kpis{display:flex;flex-wrap:wrap;gap:12px;margin:34px auto 0;max-width:860px;padding:0 20px}
+  .kpi{flex:1 1 150px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:14px 16px}
+  .kpi b{display:block;font-size:24px;font-weight:800;line-height:1}
+  .kpi span{font-size:12.5px;opacity:.92}
+  .banner{margin:26px auto 0;max-width:820px;background:#fff7ed;border:1px solid #fed7aa;border-left:5px solid var(--warn);border-radius:10px;padding:16px 18px;color:#7c3a06;font-size:15px}
+  .banner b{color:var(--warn)}
+  section{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:24px 26px;margin:22px 0;box-shadow:0 1px 2px rgba(16,32,43,.04)}
+  h2{font-size:21px;margin:0 0 6px;color:var(--azul);display:flex;gap:12px;align-items:baseline}
+  h2 .n{flex:0 0 auto;width:30px;height:30px;background:linear-gradient(135deg,var(--azul),var(--cyan));color:#fff;border-radius:8px;font-size:15px;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+  ul{margin:12px 0 0;padding-left:4px;list-style:none}
+  li{position:relative;padding:8px 0 8px 26px;border-bottom:1px solid #f2f5f8}
+  li:last-child{border-bottom:0}
+  li:before{content:"";position:absolute;left:4px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+  .take{margin-top:14px;background:#eef6f9;border-radius:10px;padding:12px 14px;font-size:14.5px;color:#0f3a4a}
+  .take b{color:var(--azul)}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;vertical-align:middle}
+  .pill.ok{background:#e7f6ef;color:var(--ok)} .pill.kill{background:#fdecec;color:var(--kill)}
+  .refuted li:before{background:var(--kill)}
+  .small{color:var(--suave);font-size:13.5px}
+  .refs{font-size:13.5px;color:var(--suave)} .refs a{color:var(--azul);word-break:break-all;text-decoration:none} .refs a:hover{text-decoration:underline}
+  .refs li:before{background:var(--azul)}
+  footer{text-align:center;color:var(--suave);font-size:13px;padding:30px 20px 50px}
+  abbr{text-decoration:none;border-bottom:1px dotted var(--suave)}
+  @media(max-width:620px){.hero h1{font-size:26px}.kpi b{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">🧠 Dr. Juan Camilo Paris · Informe semanal</p>
+    <h1>¿Cómo se está usando la IA en medicina?</h1>
+    <p class="sub">Panorama clínico verificado · lunes 8 de junio de 2026</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><b>5</b><span>ángulos de búsqueda</span></div>
+    <div class="kpi"><b>24</b><span>fuentes leídas</span></div>
+    <div class="kpi"><b>23 ✓ / 2 ✗</b><span>afirmaciones verificadas</span></div>
+    <div class="kpi"><b>3 votos</b><span>verificación adversarial</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="banner">
+    <b>Aviso de recencia (honesto).</b> La búsqueda dirigida a la ventana <b>25-may → 8-jun-2026</b> no arrojó desarrollos primarios <em>fechados dentro de ese rango</em>. Lo que sigue es el <b>estado del arte verificado más reciente</b> (ago-2025 a abr-2026), filtrado a fuentes primarias/oficiales. Lo no verificable se marca explícitamente.
+  </div>
+
+  <section>
+    <h2><span class="n">1</span> Escribas ambientales de IA: el beneficio depende del producto</h2>
+    <p class="small">Los <abbr title="ambient AI scribes">escribas ambientales</abbr> transcriben la consulta y redactan la nota clínica. Es la aplicación con evidencia más sólida — pero el efecto varía mucho según la herramienta.</p>
+    <ul>
+      <li><b>RCT stepped-wedge, 66 profesionales</b> (NEJM AI, nov-2025): redujo el <b>agotamiento</b> −0.44 (IC95% −0.62 a −0.25; P&lt;0.001), pero <b>no</b> mejoró la realización profesional (+0.14; P=0.04, bajo el umbral 0.025 del Stanford PFI).</li>
+      <li><b>RCT paralelo, 238 médicos</b> (DAX vs Nabla vs control): <b>Nabla −9.5%</b> en tiempo por nota (P=0.02); <b>DAX no significativo</b> (−1.7%; P=0.66).</li>
+      <li><b>Time-motion, Singapore General Hospital</b> (Note Buddy, JMIR 2026): <b>−15.0%</b> documentación (P=.04) y <b>+10.6%</b> contacto visual con el paciente (P=.009).</li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> ayudan al bienestar y a la documentación, pero el rango (de no-significativo a −15%) obliga a evaluar <em>cada producto</em> antes de adoptarlo.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span> Diagnóstico conversacional: iguala en calidad, pierde en aplicabilidad</h2>
+    <ul>
+      <li><b>AMIE</b> (IA diagnóstica sobre Gemini 2.5), viabilidad de un solo brazo, atención primaria (Beth Israel, NCT06911398), 98 casos: diagnóstico correcto en <b>90% (top-7), 75% (top-3), 56% (top-1)</b>. Sin diferencia vs médicos en calidad (p=0.6), adecuación (p=0.1) ni seguridad (p=1.0); pero los <b>médicos fueron mejores en practicidad</b> (p=0.003) y <b>costo</b> (p=0.004).</li>
+      <li><b>Benchmark Mass General Brigham</b> (JAMA Network Open, abr-2026, 21 LLM): diagnóstico final correcto en <b>&gt;90%</b> con información completa, pero <b>todos fallaron el diferencial en &gt;80%</b> de las veces.</li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> útiles para el diagnóstico final con datos completos; <b>débiles en el razonamiento diferencial</b>, que es el núcleo del juicio clínico. Soporte, no reemplazo.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span> Seguridad, regulación y oncología</h2>
+    <ul>
+      <li><b>Alucinación ante datos falsos</b> (Mount Sinai / Communications Medicine–Nature, ago-2025): 6 LLM × 300 viñetas con un dato fabricado → <b>65.9%</b> de alucinación (rango 50–82.7%). <b>Una advertencia en el prompt la baja del 66% al 44%</b> (P&lt;0.001); GPT-4o de 53% a 23%.</li>
+      <li><b>ECRI</b> (21-ene-2026): el <b>mal uso de chatbots</b> es el <b>riesgo sanitario nº 1 de 2026</b>.</li>
+      <li><b>FDA y EMA</b> (14-ene-2026): publicaron <b>diez principios de Buenas Prácticas de IA</b> en el desarrollo de medicamentos.</li>
+      <li><b>Oncología (mieloma múltiple)</b> (Frontiers in AI, dic-2025): el sistema agéntico <b>HopeAI 82.0%</b> &gt; o1-preview 64.7% &gt; Myelo 58.7% &gt; Claude 3.5 Sonnet 50.0% &gt; Gemini 1.5 Pro 48.0%; pero <b>solo 25.3% utilizable sin modificación</b> (el 82% es exactitud, no usabilidad).</li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> la IA repite con seguridad la desinformación que recibe; una salvaguarda ayuda pero deja ~44% de error residual. La regulación avanza hacia buenas prácticas comunes FDA/EMA.</p>
+  </section>
+
+  <section class="refuted">
+    <h2><span class="n">!</span> Afirmaciones refutadas <span class="pill kill">transparencia</span></h2>
+    <p class="small">La verificación adversarial <b>descartó</b> dos afirmaciones que circulan pero la fuente no respalda con esa contundencia:</p>
+    <ul>
+      <li><b>"El MGB concluye que la IA no puede reemplazar al médico (exige 'humano en el bucle')."</b> → <span class="pill kill">refutada 1-2</span> El dato verificable es el fallo del diferencial (&gt;80%); la atribución "anti-reemplazo" es interpretación, no afirmación del estudio.</li>
+      <li><b>"En despliegues reales la IA médica cae 15-30% frente a su benchmark."</b> → <span class="pill kill">refutada 1-2</span> No se sostuvo con la fuente citada.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">?</span> Vacíos y preguntas abiertas</h2>
+    <ul>
+      <li>¿Hubo desarrollos primarios fechados <b>entre el 25-may y el 8-jun-2026</b>? Conviene una búsqueda dirigida en PubMed/FDA por ese rango exacto.</li>
+      <li>¿Qué arquitecturas bajan la alucinación por debajo del <b>~44% residual</b> a niveles clínicamente seguros?</li>
+      <li><b>Limitaciones:</b> predominan estudios de viabilidad o muestra pequeña (AMIE n=100, un brazo; Singapur 9 clínicos; NEJM 66). Algunos editores devolvieron HTTP 403; lo verificado se confirmó vía PMC/medRxiv.</li>
+    </ul>
+  </section>
+
+  <section class="refs">
+    <h2><span class="n">§</span> Referencias (fuentes primarias/oficiales)</h2>
+    <ul>
+      <li>1. NEJM AI 2025 — RCT escribas ambientales (burnout). <a href="https://ai.nejm.org/doi/abs/10.1056/AIoa2500945">ai.nejm.org/…/AIoa2500945</a></li>
+      <li>2. NEJM AI 2025 — RCT paralelo DAX vs Nabla. <a href="https://ai.nejm.org/doi/abs/10.1056/AIoa2501000">ai.nejm.org/…/AIoa2501000</a></li>
+      <li>3. JMIR Medical Informatics 2026;e85580 — Note Buddy, Singapore General Hospital. <a href="https://medinform.jmir.org/2026/1/e85580">medinform.jmir.org/2026/1/e85580</a></li>
+      <li>4. arXiv 2603.08448v2 — AMIE, viabilidad (BIDMC + Google). <a href="https://arxiv.org/html/2603.08448v2">arxiv.org/html/2603.08448v2</a></li>
+      <li>5. Mass General Brigham — razonamiento clínico (JAMA Network Open, abr-2026). <a href="https://www.massgeneralbrigham.org/en/about/newsroom/press-releases/ai-chatbot-lacks-clinical-reasoning">massgeneralbrigham.org/…/ai-chatbot-lacks-clinical-reasoning</a></li>
+      <li>6. Communications Medicine (Nature) / Mount Sinai, ago-2025. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12318031/">pmc.ncbi.nlm.nih.gov/…/PMC12318031</a></li>
+      <li>7. ECRI, 21-ene-2026 — mal uso de chatbots. <a href="https://home.ecri.org/blogs/ecri-news/misuse-of-ai-chatbots-tops-annual-list-of-health-technology-hazards">home.ecri.org/…/misuse-of-ai-chatbots</a></li>
+      <li>8. FDA — Guiding Principles of Good AI Practice in Drug Development. <a href="https://www.fda.gov/about-fda/artificial-intelligence-drug-development/guiding-principles-good-ai-practice-drug-development">fda.gov/…/guiding-principles-good-ai-practice</a></li>
+      <li>9. EMA — common principles for AI in medicine development. <a href="https://www.ema.europa.eu/en/news/ema-fda-set-common-principles-ai-medicine-development-0">ema.europa.eu/…/ema-fda-common-principles</a></li>
+      <li>10. Frontiers in AI, dic-2025 — IA agéntica en mieloma múltiple. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12722510/">pmc.ncbi.nlm.nih.gov/…/PMC12722510</a></li>
+      <li>11. OMS/WHO — modelos multimodales grandes en salud. <a href="https://www.who.int/publications/i/item/9789240084759">who.int/…/9789240084759</a></li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  Generado por <b>Dr. Juan Camilo Paris</b> · investigación verificada de forma adversarial (3 votos por afirmación).<br>
+  Documento no listado — solo accesible por su enlace directo.
+</footer>
+</body>
+</html>
