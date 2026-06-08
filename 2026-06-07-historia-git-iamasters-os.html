@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>🧠 Historia de iAmasters OS · Mapa de commits y ramas</title>
+<style>
+  :root{
+    --bg:#0a1628; --bg2:#0d1d33; --panel:#102542; --panel2:#13294d; --line:#1e3a5f;
+    --txt:#e6eef8; --muted:#93a7c4; --dim:#5f78a0;
+    --accent:#3b82f6; --cyan:#38bdf8;
+    --feat:#22c55e; --chore:#f59e0b; --refactor:#a855f7; --docs:#38bdf8; --merge:#3b82f6; --fork:#7c8aa0;
+    --shadow:0 10px 40px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;
+    background:radial-gradient(1200px 600px at 20% -5%,#143257 0%,var(--bg) 55%) fixed,var(--bg);
+    color:var(--txt); line-height:1.55; padding-bottom:80px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+
+  /* ---------- HEADER ---------- */
+  header.hero{padding:46px 0 26px;text-align:center}
+  .hero h1{font-size:2.05rem;letter-spacing:-.5px;margin-bottom:8px}
+  .hero h1 .em{font-size:2.2rem}
+  .hero .sub{color:var(--cyan);font-weight:600;font-size:1.02rem}
+  .hero .who{color:var(--muted);font-size:.9rem;margin-top:6px}
+  .hero .who b{color:var(--txt)}
+
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:26px 0 6px}
+  .stat{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);
+        border-radius:14px;padding:16px 10px;text-align:center;box-shadow:var(--shadow)}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--cyan);line-height:1}
+  .stat .l{font-size:.72rem;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:.5px}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:1.55rem}}
+
+  /* ---------- CONTROLS ---------- */
+  .controls{position:sticky;top:0;z-index:30;background:rgba(10,22,40,.86);backdrop-filter:blur(10px);
+            border-bottom:1px solid var(--line);padding:12px 0;margin:24px 0 8px}
+  .controls .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+  .chip{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:6px 13px;
+        border-radius:999px;font-size:.8rem;cursor:pointer;transition:.18s;user-select:none;font-weight:600}
+  .chip:hover{border-color:var(--accent);color:var(--txt)}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
+  .hint{text-align:center;color:var(--dim);font-size:.78rem;margin:8px 0 0;color:var(--muted)}
+
+  /* ---------- PHASE LABEL ---------- */
+  .phase{display:flex;align-items:center;gap:14px;margin:34px 0 20px}
+  .phase .bar{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+  .phase .txt{font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);
+              white-space:nowrap;background:var(--panel);border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .phase.early .txt{color:var(--chore)}
+  .phase.today .txt{color:var(--feat)}
+
+  /* ---------- TIMELINE / GRAPH ---------- */
+  .tl{position:relative;padding-left:46px}
+  .rail{position:absolute;left:19px;top:6px;bottom:0;width:3px;
+        background:linear-gradient(180deg,var(--fork),var(--accent) 18%,var(--cyan));border-radius:3px;opacity:.55}
+  .node{position:relative;margin:0 0 16px}
+  .node .gdot{position:absolute;left:-34px;top:20px;width:18px;height:18px;border-radius:50%;
+              border:3px solid var(--bg);box-shadow:0 0 0 2px currentColor;background:currentColor;z-index:2;transition:.2s}
+  .node:hover .gdot{transform:scale(1.18)}
+  .node.merge .gdot{width:22px;height:22px;left:-36px;border-radius:6px;transform:rotate(45deg)}
+  .node.merge:hover .gdot{transform:rotate(45deg) scale(1.12)}
+
+  /* card */
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);
+        border-left:4px solid currentColor;border-radius:13px;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
+  .card:hover{border-color:var(--accent);transform:translateX(2px)}
+  .chead{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;flex-wrap:wrap}
+  .hash{font-family:'Cascadia Code',Consolas,monospace;font-size:.74rem;background:#0a1a30;border:1px solid var(--line);
+        color:var(--cyan);padding:2px 7px;border-radius:6px}
+  .ctype{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:2px 8px;border-radius:6px;color:#04121f}
+  .ctitle{flex:1;min-width:200px;font-weight:600;font-size:.97rem;color:var(--txt)}
+  .cdate{font-size:.74rem;color:var(--muted);white-space:nowrap}
+  .caret{color:var(--muted);transition:.25s;font-size:.8rem}
+  .card.open .caret{transform:rotate(90deg)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px}
+  .tag{font-size:.7rem;background:#0a1a30;border:1px solid var(--line);color:var(--muted);padding:2px 9px;border-radius:999px}
+  .tag.proj{color:var(--cyan);border-color:#1d4e6b}
+
+  /* body (expandable) */
+  .cbody{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .card.open .cbody{max-height:1400px}
+  .cbody-in{padding:4px 16px 16px;border-top:1px dashed var(--line);margin-top:2px}
+  .qlabel{font-size:.7rem;text-transform:uppercase;letter-spacing:.6px;color:var(--cyan);font-weight:700;margin:12px 0 4px}
+  .qtext{font-size:.9rem;color:#cdddf0}
+  .files{margin-top:10px;display:grid;gap:5px}
+  .file{display:flex;align-items:center;gap:8px;font-size:.78rem;background:#0a1a30;border:1px solid var(--line);
+        border-radius:7px;padding:5px 9px}
+  .file .fn{font-family:'Cascadia Code',Consolas,monospace;color:#bcd4ee;flex:1;word-break:break-all}
+  .file .fs{color:var(--muted);font-size:.72rem;white-space:nowrap}
+  .more{display:inline-block;margin-top:12px;font-size:.8rem;color:var(--cyan);background:#0a1a30;border:1px solid #1d4e6b;
+        padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:600;transition:.18s}
+  .more:hover{background:#12365a}
+
+  /* branch container (PR#1) */
+  .branch{position:relative;margin:6px 0 16px;border:1px dashed #2a5a86;border-radius:14px;
+          background:rgba(56,189,248,.045);padding:14px 12px 12px 14px}
+  .branch::before{content:"";position:absolute;left:-27px;top:-2px;width:27px;height:34px;
+          border-left:3px solid var(--cyan);border-bottom:3px solid var(--cyan);border-bottom-left-radius:14px;opacity:.6}
+  .bhead{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--cyan);font-weight:700;margin-bottom:12px}
+  .bhead .br{font-family:'Cascadia Code',Consolas,monospace;background:#0a1a30;border:1px solid #1d4e6b;padding:2px 8px;border-radius:6px}
+  .branch .tl{padding-left:38px}
+  .branch .rail{background:var(--cyan);opacity:.4;left:15px}
+  .branch .node .gdot{left:-30px}
+  .bmerge{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--merge);font-weight:700;margin-top:4px;
+          padding-left:6px}
+  .bmerge .arrow{font-size:1rem}
+
+  /* squash ribbon */
+  .ribbon{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;color:var(--chore);
+          background:rgba(245,158,11,.1);border:1px solid #5a4413;padding:2px 9px;border-radius:999px;font-weight:700}
+
+  /* ---------- MODAL ---------- */
+  .ov{position:fixed;inset:0;background:rgba(4,10,20,.78);backdrop-filter:blur(4px);z-index:100;
+      display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
+  .ov.show{display:flex}
+  .modal{max-width:760px;width:100%;background:linear-gradient(180deg,var(--panel2),var(--bg2));
+         border:1px solid var(--accent);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:pop .25s ease}
+  @keyframes pop{from{transform:translateY(18px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+  .mhead{display:flex;align-items:flex-start;gap:12px;padding:20px 22px 14px;border-bottom:1px solid var(--line)}
+  .mhead .mt{flex:1}
+  .mhead h3{font-size:1.12rem;margin-bottom:6px}
+  .mclose{background:#0a1a30;border:1px solid var(--line);color:var(--muted);width:32px;height:32px;border-radius:8px;
+          cursor:pointer;font-size:1.1rem;line-height:1;flex-shrink:0}
+  .mclose:hover{color:#fff;border-color:var(--accent)}
+  .mbody{padding:18px 22px 24px}
+  .msec{margin-bottom:18px}
+  .msec h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;color:var(--cyan);margin-bottom:7px}
+  .commitmsg{font-family:'Cascadia Code',Consolas,monospace;font-size:.8rem;white-space:pre-wrap;color:#cdddf0;
+             background:#081525;border:1px solid var(--line);border-radius:9px;padding:13px 14px}
+  .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+  .meta-grid .m{background:#081525;border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+  .meta-grid .m .k{font-size:.66rem;color:var(--muted);text-transform:uppercase}
+  .meta-grid .m .v{font-size:.84rem;color:var(--txt);font-weight:600;word-break:break-all}
+  .statbar{height:7px;border-radius:4px;background:#0a1a30;overflow:hidden;display:flex;margin-top:3px}
+  .statbar .add{background:var(--feat)} .statbar .del{background:#ef4444}
+
+  /* footer */
+  footer{text-align:center;margin-top:50px;padding:26px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  footer .bld{color:var(--cyan);font-weight:700}
+  .legend-mini{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px;font-size:.72rem;color:var(--muted)}
+  .legend-mini span .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1><span class="em">🧠</span> Historia de iAmasters OS</h1>
+    <div class="sub">Cómo se construyó el repositorio, commit a commit, rama a rama</div>
+    <div class="who"><b>Dr. Juan Camilo París</b> · Claude Code · fork <code>juanparisma/iamasters-os</code></div>
+
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="controls">
+    <div class="row" id="filters"></div>
+    <div class="hint">👆 Toca cualquier tarjeta para expandirla · botón <b>“Ver detalle completo”</b> abre el mensaje y los archivos · filtra por tipo arriba</div>
+  </div>
+
+  <div id="timeline"></div>
+
+  <footer>
+    <div>Generado el <span class="bld">7 de junio de 2026</span> · 16 commits · 19 días · 4 Pull Requests</div>
+    <div class="legend-mini" id="legend"></div>
+    <div style="margin-top:12px">🧠 Dr. Juan Camilo Paris — Claude Code</div>
+  </footer>
+</div>
+
+<!-- MODAL -->
+<div class="ov" id="ov" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+/* ============ DATOS REALES (git log) ============ */
+const TYPES = {
+  fork:    {c:'#7c8aa0', l:'fork'},
+  feat:    {c:'#22c55e', l:'feat'},
+  chore:   {c:'#f59e0b', l:'chore'},
+  refactor:{c:'#a855f7', l:'refactor'},
+  docs:    {c:'#38bdf8', l:'docs'},
+  merge:   {c:'#3b82f6', l:'merge'}
+};
+
+const COMMITS = [
+  {
+    id:'0cd2b68', type:'fork', date:'2026-05-20', dateL:'20 may · 19:55', author:'Angel Aparicio (upstream)',
+    title:'Punto de fork — base v0.8.0 (skill arnes)', proj:['Base del OS','upstream'],
+    subject:'Merge pull request #2 from iamasters-academy/feat/arnes-integration-v0.8.0',
+    explain:'El punto de partida. Tu fork personal arranca aquí, heredado del repo de la academia (iamasters-academy). Trae toda la base v0.8.0: los comandos (/install, /doctor, /aprende…), las skills curadas y la skill opt-in arnes. Todo lo que viene después lo construiste tú encima de esta base.',
+    files:[{n:'.claude/commands/*.md (install, doctor, aprende, add-client…)',s:'+800'},{n:'.claude/skills/** (base curada)',s:'+muchos'},{n:'README.md · CLAUDE.md',s:'base'}],
+    body:'feat: integrar skill opt-in arnes v0.2.4 (v0.8.0)',
+    parents:'(raíz del historial / grafted)', branch:'main', stat:'base completa del OS'
+  },
+  {
+    id:'f577716', type:'feat', date:'2026-05-29', dateL:'29 may · 13:07', author:'juanparisma',
+    title:'Primera skill propia: strategy-deep-research', proj:['skill: strategy-deep-research'],
+    subject:'feat(skills): add strategy-deep-research skill',
+    explain:'Tu primer aporte propio al OS. Skill de investigación profunda e iterativa que prioriza fuentes primarias/oficiales sobre blogs, con citas verificables. Modo médico: usa el MCP de PubMed como fuente primaria (con ruta de proxy universitario para full-text de pago) y formatea referencias en estilo Vancouver. Salida: reporte Markdown citado + HTML compartible.',
+    files:[{n:'.claude/skills/strategy/strategy-deep-research/SKILL.md',s:'+153'},{n:'references/citation-format.md',s:'+130'},{n:'references/medical-sources.md',s:'+73'},{n:'references/source-tiers.md',s:'+53'},{n:'.env.example · CLAUDE.md · README.md',s:'+24'}],
+    body:'Iterative deep-research skill that prioritizes primary/official sources over blogs, with verifiable citations. Medical mode uses the PubMed MCP as primary source (with university EZProxy path for paywalled full text) and formats references in Vancouver style. Outputs a cited Markdown report plus a shareable HTML.\n\nRegistered in CLAUDE.md (strategy 2->3, core 25->26).',
+    parents:'0cd2b68', branch:'main', stat:'9 archivos · +514'
+  },
+  {
+    id:'1ded0a3', type:'feat', date:'2026-06-01', dateL:'1 jun · 14:01', author:'juanparisma',
+    title:'Skill strategy-prd-builder (PRD + paso a paso)', proj:['skill: strategy-prd-builder'],
+    subject:'feat(skills): add strategy-prd-builder skill',
+    explain:'Skill que convierte una idea en dos archivos revisables en bloc de notas: PRD.md (documento de decisión) + PASO-A-PASO.md (playbook de construcción numerado). Regla central: el paso a paso NUNCA va embebido en el PRD. 👉 Esta skill es la semilla de la “convención única de briefs” que unificarías el 7 de junio (PR #3).',
+    files:[{n:'.claude/skills/strategy/strategy-prd-builder/SKILL.md',s:'+112'},{n:'references/prd-best-practices.md',s:'+61'},{n:'templates/prd-template.md',s:'+70'},{n:'templates/paso-a-paso-template.md',s:'+47'}],
+    body:'Generates PRDs for any product category (app/SaaS/no-code/content). Core rule: always outputs two separate .md files — PRD.md (decision doc) + PASO-A-PASO.md (numbered build playbook). The step-by-step is never embedded in the PRD.\n\nBased on the ARC-Whisper "PASO A PASO Windows.md" format plus PRD best practices (Atlassian/Maze/Product School).',
+    parents:'f577716', branch:'main', stat:'4 archivos · +290'
+  },
+  {
+    id:'8b1f886', type:'chore', date:'2026-06-01', dateL:'1 jun · 14:01', author:'juanparisma',
+    title:'Informe semanal IA-medicina + retoques visual-explainer', proj:['automatización: informe semanal','skill: tool-visual-explainer'],
+    subject:'chore(os): weekly IA-medicina report command + visual-explainer/deep-research updates',
+    explain:'Nace la maquinaria de informes a WhatsApp: el comando /informe-ia-medicina y scripts/enviar-informe-whatsapp.sh (HTML/PDF → WhatsApp vía CallMeBot). Además refina el template de marca “azul confianza” del tool-visual-explainer (el mismo estilo de este HTML que estás viendo).',
+    files:[{n:'.claude/commands/informe-ia-medicina.md',s:'+56'},{n:'visualization/tool-visual-explainer/SKILL.md',s:'259'},{n:'scripts/enviar-informe-whatsapp.sh',s:'+81'},{n:'.claude/settings.json (WebFetch callmebot)',s:'+3'}],
+    body:'- add /informe-ia-medicina command and scripts/enviar-informe-whatsapp.sh (weekly report -> HTML/PDF -> WhatsApp via CallMeBot)\n- tool-visual-explainer: brand template "azul confianza" refinements\n- settings.json: scoped WebFetch allow for api.callmebot.com',
+    parents:'1ded0a3', branch:'main', stat:'6 archivos · +287 / −126'
+  },
+  {
+    id:'8d9ec75', type:'docs', date:'2026-06-01', dateL:'1 jun · 15:34', author:'juanparisma',
+    title:'Organizar projects/ por ámbitos de vida', proj:['estructura del OS'],
+    subject:'docs(os): organize projects/ by life ámbitos + rule for new projects',
+    explain:'Aquí nace la organización de projects/ por ámbitos de vida (espejando a jcpm-asistente): TRABAJO_CLINICO, EMPRENDIMIENTO, FINANZAS… en MAYÚSCULA. Y la regla: los proyectos viven en briefs/ mientras se diseñan, y se mueven a su ámbito al desplegar. ⚠️ Este es el commit que introdujo los nombres en mayúscula… que el 7 de junio (PR #4) pasarías a kebab-case para cerrar el círculo.',
+    files:[{n:'CLAUDE.md (sección ámbitos + flujo obligatorio)',s:'+19'}],
+    body:'projects/ now mirrors jcpm-asistente ámbitos (TRABAJO_CLINICO, EMPRENDIMIENTO, FINANZAS, etc.). Clinical apps moved under TRABAJO_CLINICO/. Rule: new projects live in briefs/ while in design, then move to their ámbito on deploy.',
+    parents:'8b1f886', branch:'main', stat:'1 archivo · +19'
+  },
+  {
+    id:'caa5350', type:'feat', date:'2026-06-01', dateL:'1 jun · 16:56', author:'juanparisma',
+    title:'Informe diario nocturno (HTML + WhatsApp ~2am)', proj:['automatización: informe diario'],
+    subject:'feat(os): nightly Claude Code daily report (HTML + WhatsApp)',
+    explain:'Una rutina automática ~2am que resume el trabajo global del día en Claude Code (commits de todos tus repos + sesiones activas + resumen de Sinapsis) y lo entrega como HTML de marca + WhatsApp, igual que el informe semanal. Privacidad: excluye datos de pacientes y secretos; se publica “no listado” (solo por URL directa).',
+    files:[{n:'.claude/commands/informe-diario-claude.md',s:'+73'},{n:'scripts/recolectar-trabajo-claude.sh',s:'+86'},{n:'scripts/enviar-informe-whatsapp.sh (SLUG/NO_PDF/SKIP_INDEX)',s:'+15'}],
+    body:'Adds a daily ~2am routine that summarizes the day\'s global work in Claude Code and delivers it like the weekly IA-medicina report.\n\n- recolectar-trabajo-claude.sh: read-only collector of the last 24h of signals — git commits across all operator repos, active Claude sessions, and the Sinapsis daily summary.\n- branded HTML (azul confianza, noindex) → publish unlisted → WhatsApp via CallMeBot.\n\nPrivacy: report excludes patient data and secrets.',
+    parents:'8d9ec75', branch:'main', stat:'3 archivos · +170'
+  },
+  {
+    id:'89932a2', type:'feat', date:'2026-06-03', dateL:'3 jun · 22:47', author:'juanparisma',
+    title:'strategy-epi-studies modular + plugin investigación', proj:['skill: strategy-epi-studies','plugin: investigacion-cientifica'],
+    subject:'feat(skills): orquestador modular strategy-epi-studies v2 + plugin investigacion-cientifica',
+    explain:'Reestructura la skill de estudios epidemiológicos de monolítica a orquestador modular (rutas = diseños de estudio, módulos = partes del estudio, config en disco, y una capa rigor-cientifico que es el gate anti-alucinación). Patrón inspirado en el business-launcher de Luis Salgado. Además crea el plugin investigacion-cientifica: bundle de 8 skills (2 tuyas + 6 de MIT vendoradas con atribución; excluidas las de licencia conflictiva).',
+    files:[{n:'strategy-epi-studies/SKILL.md',s:'+121'},{n:'config/route-profiles.md · state-schema.md',s:'+153'},{n:'layers/rigor-cientifico.md (gate anti-alucinación)',s:'+43'},{n:'modules/00-intake … 08-manuscrito (9 módulos)',s:'+317'},{n:'plugins/investigacion-cientifica/** (8 skills)',s:'+bundle'}],
+    body:'- Reestructura strategy-epi-studies de monolitica a orquestador modular (rutas=disenos, modulos=partes del estudio, config/route-profiles + state-schema en disco, layers/rigor-cientifico = gate anti-alucinacion). Patron inspirado en business-launcher de Luis Salgado.\n- Nuevo plugin plugins/investigacion-cientifica: bundle de 8 skills (2 propias + 6 de k-dense-ai MIT, con atribucion). Excluidas licencias conflictivas (NC, GPL) y OpenRouter.',
+    parents:'caa5350', branch:'main', stat:'14+ archivos'
+  },
+  {
+    id:'b3744d1', type:'docs', date:'2026-06-05', dateL:'5 jun · 11:25', author:'juanparisma',
+    title:'PROJECTS-MAP + carpeta paraguas HGM', proj:['estructura/mapa','HGM'],
+    subject:'docs(map): proyectos del operador (PROJECTS-MAP + carpeta paraguas HGM)',
+    explain:'Hace que GitHub refleje cómo está organizado tu filesystem sin volver el OS un monorepo. PROJECTS-MAP.md = fuente única de verdad de los 11 repos (HGM, briefs, skills, cerebro, OS). Crea la carpeta paraguas TRABAJO_CLINICO/HGM/ con su CLAUDE/README, y excepciones en .gitignore para trackear solo el árbol organizativo, no el código de los sub-repos. El fork pasó a privado este día. 🔚 Último commit directo a main — después empieza el flujo de Pull Requests.',
+    files:[{n:'projects/PROJECTS-MAP.md',s:'+91'},{n:'projects/TRABAJO_CLINICO/HGM/CLAUDE.md',s:'+61'},{n:'projects/TRABAJO_CLINICO/HGM/README.md',s:'+17'},{n:'.gitignore (excepciones HGM)',s:'+11'}],
+    body:'Hace que GitHub refleje cómo está organizado el filesystem del operador sin convertir el OS en monorepo:\n- PROJECTS-MAP.md: fuente única de verdad de los 11 repos con ruta local, repo, visibilidad y estado.\n- TRABAJO_CLINICO/HGM/{CLAUDE,README}.md: doc paraguas del Hospital General de Medellín.\n- .gitignore: excepciones para trackear sólo el árbol organizativo sin filtrar el código de los sub-repos.\n\nEl fork iamasters-os pasó a privado el 2026-06-05.',
+    parents:'89932a2', branch:'main', stat:'5 archivos · +181'
+  },
+  /* ===== PR #1 (rama real, merge commit) ===== */
+  {
+    id:'184d236', type:'feat', date:'2026-06-05', dateL:'5 jun · 14:33', author:'juanparisma',
+    title:'Formato de marca único para WhatsApp', proj:['automatización: WhatsApp'], pr:1, lane:'pr1',
+    subject:'feat(whatsapp): standardize branded message format across automations',
+    explain:'Crea scripts/whatsapp-notificar.mjs como fuente ÚNICA del formato de los WhatsApp (cabecera de marca, negritas, emojis, firma) y del envío (fetch nativo de node, sin curl/WebFetch). Conecta los comandos informe-diario e informe-ia-medicina. Identidad fija: “🧠 Dr. Juan Camilo Paris - Claude Code”.',
+    files:[{n:'scripts/whatsapp-notificar.mjs',s:'+138'},{n:'docs/whatsapp-formato.md',s:'+67'},{n:'.claude/commands/informe-diario-claude.md',s:'+23'},{n:'.claude/commands/informe-ia-medicina.md',s:'17'}],
+    body:'Add scripts/whatsapp-notificar.mjs as the single source of truth for the WhatsApp message format (branded header, bold, emojis, signature) and sender (node fetch, no curl/WebFetch). Wire informe-diario-claude and informe-ia-medicina commands to it; document the standard in docs/whatsapp-formato.md.\n\nHeader identity: \'🧠 Dr. Juan Camilo Paris - Claude Code\'.',
+    parents:'b3744d1', branch:'feat/whatsapp-formato-marca', stat:'5 archivos · +229 / −24'
+  },
+  {
+    id:'63dd21d', type:'chore', date:'2026-06-05', dateL:'5 jun · 22:22', author:'juanparisma',
+    title:'Bump Sinapsis a v4.6.1 + fixes de Windows', proj:['engine: Sinapsis'], pr:1, lane:'pr1',
+    subject:'chore(vendor): bump Sinapsis to v4.6.1 + Windows install fixes',
+    explain:'Sube el engine Sinapsis vendored de v4.5.0 a v4.6.1 (aislamiento del registry, ajuste de cap Opus 4.8, fixes de eod-gather) + 5 arreglos para que la reinstalación funcione en Windows. La causa raíz de instalaciones rotas: validar python con “py -3” antes que el shim de la Microsoft Store. Fixes también enviados upstream a Sinapsis.',
+    files:[{n:'vendor/sinapsis/install.sh · observe.sh (python py -3)',s:'+46'},{n:'vendor/sinapsis/core/_eod-gather.sh',s:'253'},{n:'vendor/sinapsis/core/_generate-dashboard.py',s:'+46'},{n:'vendor/sinapsis/CHANGELOG.md + 12 archivos más',s:'…'}],
+    body:'Updates vendored Sinapsis from v4.5.0 to v4.6.1 and applies 5 local fixes so the OS reinstall path produces a working install on Windows:\n- install.sh + observe.sh: validate python --version (try \'py -3\' first) so the Microsoft Store python3 shim can\'t abort the install. Root cause of repeated broken installs.\n- _generate-dashboard.py: tolerate string-form strategicDecisions.\n- _passive-activator.sh: log fired rules for telemetry.\n\nWindows fixes also submitted upstream (Luispitik/sinapsis#24).',
+    parents:'184d236', branch:'feat/whatsapp-formato-marca', stat:'16 archivos · +300 / −151'
+  },
+  {
+    id:'9a7e55d', type:'refactor', date:'2026-06-06', dateL:'6 jun · 08:14', author:'juanparisma',
+    title:'--diario: comando estático para rutinas', proj:['automatización: WhatsApp'], pr:1, lane:'pr1',
+    subject:'refactor(whatsapp): add --diario mode so the publish command is static',
+    explain:'Mueve la lógica dinámica (fecha, slug aleatorio, no-PDF) DENTRO del script bajo un flag --diario. ¿Por qué? Las rutinas programadas no permiten “Siempre permitir” a comandos con expansión de shell ($(...)). Al dejar el comando estático, la rutina nocturna corre desatendida sin pedir permiso.',
+    files:[{n:'scripts/enviar-informe-whatsapp.sh (--diario)',s:'+24 / −4'},{n:'.claude/commands/informe-diario-claude.md',s:'+8 / −5'}],
+    body:'Move the date/random-slug/no-PDF logic into enviar-informe-whatsapp.sh behind a --diario flag. The command the scheduled routine runs no longer contains shell command-substitution, so it matches the existing Bash allow and runs unattended.',
+    parents:'63dd21d', branch:'feat/whatsapp-formato-marca', stat:'2 archivos · +23 / −9'
+  },
+  {
+    id:'0a06e2d', type:'feat', date:'2026-06-06', dateL:'6 jun · 09:21', author:'juanparisma',
+    title:'Presets --dashboard / --slug-suffix / --no-listar', proj:['automatización: WhatsApp'], pr:1, lane:'pr1',
+    subject:'feat(whatsapp): add --dashboard/--slug-suffix/--no-listar static presets',
+    explain:'Generaliza el script para que las rutinas que publican el dashboard de Sinapsis (y la de promover/degradar instintos) también corran con un comando totalmente estático. Cierra la auditoría de las 12 rutinas: todas corren sin pedir permiso, salvo /cleanup 1×/mes.',
+    files:[{n:'scripts/enviar-informe-whatsapp.sh (presets)',s:'+29 / −7'}],
+    body:'Generalize enviar-informe-whatsapp.sh so the Sinapsis dashboard publishers can run a fully static command (no shell command-substitution). Used by the sinapsis-dashboard and sinapsis-promover-degradar-aviso routines.',
+    parents:'9a7e55d', branch:'feat/whatsapp-formato-marca', stat:'1 archivo · +29 / −7'
+  },
+  {
+    id:'4ca8467', type:'merge', date:'2026-06-07', dateL:'7 jun · 17:16', author:'Juan Camilo Paris',
+    title:'Merge PR #1 → main (WhatsApp + bump Sinapsis)', proj:['merge a main'], pr:1, isMerge:true,
+    subject:'Merge pull request #1 from juanparisma/feat/whatsapp-formato-marca',
+    explain:'🎉 Primer uso del flujo profesional rama → PR → merge. Mergea las 4 commits de la rama feat/whatsapp-formato-marca a main con un merge commit (conserva los 4 commits en la historia, por eso ves la rama abrirse y volver). De aquí en adelante, todo entra por Pull Request.',
+    files:[{n:'(merge de los 4 commits anteriores)',s:'—'}],
+    body:'feat(whatsapp): formato de marca + rutinas desatendidas + bump Sinapsis v4.6.1\n\n(Merge commit — dos padres: b3744d1 [main] + 0a06e2d [rama])',
+    parents:'b3744d1 + 0a06e2d', branch:'main', stat:'merge de 21 archivos'
+  },
+  /* ===== PR #2/#3/#4 squash ===== */
+  {
+    id:'4866b65', type:'chore', date:'2026-06-07', dateL:'7 jun · 17:43', author:'Juan Camilo Paris',
+    title:'Higiene del repo: gitignore', proj:['higiene del repo'], pr:2, squash:'chore/gitignore-hygiene',
+    subject:'chore(gitignore): ignore synapsis/, .agents/ and vendor backups (#2)',
+    explain:'Tras el bump de Sinapsis quedaron carpetas sin trackear. Ignora synapsis/ (tus logs de continuidad diaria), .agents/ (artefacto de export) y vendor/*.bak-* (backup de la versión anterior). El patrón *.bak previo no cazaba sinapsis.bak-v450-… (sufijo más largo). Mergeado con squash (la rama tenía 1 commit).',
+    files:[{n:'.gitignore (+ synapsis/, .agents/, vendor/*.bak-*)',s:'+8'}],
+    body:'Tras el bump a Sinapsis v4.6.1 quedaron sin trackear:\n- synapsis/         → logs de continuidad diaria (personales)\n- .agents/          → artefacto de export de skills (generado)\n- vendor/*.bak-*    → backup de la version anterior de Sinapsis\n\nEl patron *.bak previo no cazaba sinapsis.bak-v450-... (sufijo mas largo).',
+    parents:'4ca8467', branch:'main', stat:'1 archivo · +8'
+  },
+  {
+    id:'36f85a2', type:'feat', date:'2026-06-07', dateL:'7 jun · 18:09', author:'Juan Camilo Paris',
+    title:'Convención única de briefs (control + contenido)', proj:['convención: briefs','skill: strategy-prd-builder'], pr:3, squash:'feat/convencion-unica-briefs',
+    subject:'feat(briefs): unify brief.md control + PRD content into one convention (#3)',
+    explain:'briefs/ tenía DOS rutas que no convivían: brief.md (con status:) y el output del prd-builder (PRD.md + PASO-A-PASO.md). Las herramientas solo leían la primera. La convención única: cada carpeta de briefs/ tiene SIEMPRE un brief.md de control (su frontmatter = el estado), y el contenido pesado convive como docs enlazados. 👉 Cierra el bucle abierto por el commit 1ded0a3 (prd-builder).',
+    files:[{n:'CLAUDE.md (convención + schema + ciclo de vida)',s:'+37'},{n:'strategy-prd-builder/SKILL.md (genera brief.md)',s:'+31'},{n:'projects/PROJECTS-MAP.md',s:'+20'}],
+    body:'briefs/ tenia dos rutas que no convivian: brief.md (frontmatter status:) y el output del strategy-prd-builder (PRD.md + PASO-A-PASO.md).\n\nConvencion unica: cada carpeta de briefs/ tiene SIEMPRE un brief.md de control (frontmatter legible = estado), y el contenido pesado (PRD + paso a paso) convive como docs enlazados. Una sola ruta, dos profundidades.\n\nCiclo de vida: scoping → active → built → paused → graduated | done.',
+    parents:'4866b65', branch:'main', stat:'3 archivos · +76 / −12'
+  },
+  {
+    id:'fc73644', type:'chore', date:'2026-06-07', dateL:'7 jun · 18:51', author:'Juan Camilo Paris',
+    title:'Ámbitos de vida → kebab-case', proj:['nomenclatura'], pr:4, squash:'chore/ambitos-kebab-case', head:true,
+    subject:'chore(projects): rename ámbito folders to kebab-case (#4)',
+    explain:'Cierra el círculo del commit 8d9ec75: las carpetas de ámbito estaban en SCREAMING_SNAKE_CASE, chocando con tu convención (carpetas en kebab-case). Renombra las 9 (TRABAJO_CLINICO → trabajo-clinico, etc.). 8 estaban vacías; solo trabajo-clinico tenía contenido (HGM, movido como rename de git sin pérdida). ✅ Estado actual del repo (HEAD).',
+    files:[{n:'.gitignore (excepciones HGM al nuevo path)',s:'14'},{n:'CLAUDE.md (tabla ámbitos + flujo)',s:'10'},{n:'projects/PROJECTS-MAP.md',s:'10'},{n:'TRABAJO_CLINICO → trabajo-clinico /HGM/* (rename)',s:'0'}],
+    body:'Las carpetas de ámbito de vida estaban en SCREAMING_SNAKE_CASE (TRABAJO_CLINICO, PERFIL_PERSONAL, EMPRENDIMIENTO...) lo que chocaba con la convención del repo (Carpetas en kebab-case).\n\nRenombradas las 9: trabajo-clinico, emprendimiento, finanzas, familia, salud, aprendizaje, boda, perfil-personal, neo. 8 estaban vacías; solo trabajo-clinico tenia contenido (HGM/ con 2 archivos trackeados, movidos como rename).',
+    parents:'36f85a2', branch:'main', stat:'5 archivos · +17 / −17'
+  }
+];
+
+/* ============ STATS ============ */
+const stats = [
+  {n:COMMITS.length, l:'commits'},
+  {n:'19', l:'días (20 may–7 jun)'},
+  {n:'4', l:'Pull Requests'},
+  {n:'1', l:'merge real + 3 squash'},
+  {n:'8', l:'skills / proyectos'}
+];
+const statsEl = document.getElementById('stats');
+stats.forEach(s=>{
+  const d=document.createElement('div'); d.className='stat';
+  d.innerHTML=`<div class="n" data-target="${s.n}">0</div><div class="l">${s.l}</div>`;
+  statsEl.appendChild(d);
+});
+
+/* ============ FILTERS ============ */
+const order=['feat','chore','refactor','docs','merge','fork'];
+const filtersEl=document.getElementById('filters');
+const allChip=document.createElement('div'); allChip.className='chip on'; allChip.textContent='Todos'; allChip.dataset.t='all';
+filtersEl.appendChild(allChip);
+order.forEach(t=>{
+  const c=document.createElement('div'); c.className='chip'; c.dataset.t=t;
+  c.innerHTML=`<span class="dot" style="background:${TYPES[t].c}"></span>${TYPES[t].l}`;
+  filtersEl.appendChild(c);
+});
+const legendEl=document.getElementById('legend');
+order.forEach(t=>{const s=document.createElement('span');s.innerHTML=`<span class="dot" style="background:${TYPES[t].c}"></span>${TYPES[t].l}`;legendEl.appendChild(s);});
+
+let activeFilter='all';
+filtersEl.addEventListener('click',e=>{
+  const chip=e.target.closest('.chip'); if(!chip)return;
+  [...filtersEl.children].forEach(c=>c.classList.remove('on'));
+  chip.classList.add('on'); activeFilter=chip.dataset.t; applyFilter();
+});
+function applyFilter(){
+  document.querySelectorAll('[data-type]').forEach(el=>{
+    el.style.display=(activeFilter==='all'||el.dataset.type===activeFilter)?'':'none';
+  });
+}
+
+/* ============ RENDER TIMELINE ============ */
+const tl=document.getElementById('timeline');
+
+function cardHTML(c){
+  const col=TYPES[c.type].c;
+  const tags=(c.proj||[]).map(p=>`<span class="tag proj">${p}</span>`).join('')
+    + (c.pr?`<span class="tag">PR #${c.pr}</span>`:'')
+    + (c.squash?`<span class="ribbon">⤿ squash · ${c.squash}</span>`:'')
+    + (c.head?`<span class="tag" style="color:#22c55e;border-color:#1d6b3a">● HEAD actual</span>`:'');
+  const files=(c.files||[]).map(f=>`<div class="file"><span class="fn">${f.n}</span><span class="fs">${f.s}</span></div>`).join('');
+  return `
+  <div class="card" style="color:${col}" data-type="${c.type}">
+    <div class="chead" onclick="this.parentNode.classList.toggle('open')">
+      <span class="hash">${c.id}</span>
+      <span class="ctype" style="background:${col}">${TYPES[c.type].l}</span>
+      <span class="ctitle" style="color:var(--txt)">${c.title}</span>
+      <span class="cdate">${c.dateL}</span>
+      <span class="caret">▶</span>
+    </div>
+    <div class="tags">${tags}</div>
+    <div class="cbody"><div class="cbody-in">
+      <div class="qlabel">Qué es y por qué</div>
+      <div class="qtext">${c.explain}</div>
+      <div class="qlabel">Archivos tocados <span style="color:var(--muted);font-weight:400">· ${c.stat}</span></div>
+      <div class="files">${files}</div>
+      <span class="more" onclick="openModal('${c.id}')">📄 Ver detalle completo (mensaje + metadatos)</span>
+    </div></div>
+  </div>`;
+}
+
+function nodeHTML(c){
+  const col=TYPES[c.type].c;
+  return `<div class="node ${c.isMerge?'merge':''}" data-type="${c.type}">
+    <span class="gdot" style="color:${col}"></span>${cardHTML(c)}</div>`;
+}
+
+// Build with phases + PR#1 branch grouping
+function render(){
+  let html='';
+  // ORIGEN
+  html+=`<div class="phase"><span class="bar"></span><span class="txt">⚓ Origen · fork desde la academia</span><span class="bar"></span></div>`;
+  html+=`<div class="tl"><div class="rail"></div>`;
+  html+=nodeHTML(COMMITS[0]); // fork
+  html+=`</div>`;
+
+  // FASE TEMPRANA (commits 1..7 -> ids index 1..7, hasta b3744d1)
+  html+=`<div class="phase early"><span class="bar"></span><span class="txt">🛠️ Fase temprana · commits directos a main (29 may – 5 jun)</span><span class="bar"></span></div>`;
+  html+=`<div class="tl"><div class="rail"></div>`;
+  for(let i=1;i<=7;i++) html+=nodeHTML(COMMITS[i]);
+  html+=`</div>`;
+
+  // FASE HOY
+  html+=`<div class="phase today"><span class="bar"></span><span class="txt">🚀 Hoy · flujo rama → Pull Request → merge (5–7 jun)</span><span class="bar"></span></div>`;
+  html+=`<div class="tl"><div class="rail"></div>`;
+  // PR#1 branch container (commits index 8..11) + merge (index 12)
+  html+=`<div class="branch">
+      <div class="bhead">🌿 Se abre la rama <span class="br">feat/whatsapp-formato-marca</span> desde <span class="hash">b3744d1</span></div>
+      <div class="tl"><div class="rail"></div>`;
+  for(let i=8;i<=11;i++) html+=nodeHTML(COMMITS[i]);
+  html+=`</div>
+      <div class="bmerge"><span class="arrow">⤵</span> se anexa a <b>main</b> vía merge commit (PR #1)</div>
+    </div>`;
+  html+=nodeHTML(COMMITS[12]); // merge commit
+  // squash PRs 13,14,15
+  for(let i=13;i<=15;i++) html+=nodeHTML(COMMITS[i]);
+  html+=`</div>`;
+
+  tl.innerHTML=html;
+}
+render();
+
+/* ============ MODAL ============ */
+function openModal(id){
+  const c=COMMITS.find(x=>x.id===id); if(!c)return;
+  const col=TYPES[c.type].c;
+  const files=(c.files||[]).map(f=>`<div class="file"><span class="fn">${f.n}</span><span class="fs">${f.s}</span></div>`).join('');
+  document.getElementById('modal').innerHTML=`
+    <div class="mhead">
+      <div class="mt">
+        <h3>${c.title}</h3>
+        <div><span class="hash">${c.id}</span> <span class="ctype" style="background:${col}">${TYPES[c.type].l}</span></div>
+      </div>
+      <button class="mclose" onclick="closeModal()">✕</button>
+    </div>
+    <div class="mbody">
+      <div class="msec"><h4>Subject (git)</h4><div class="qtext" style="font-weight:600">${c.subject}</div></div>
+      <div class="msec"><h4>Qué es y por qué</h4><div class="qtext">${c.explain}</div></div>
+      <div class="msec"><h4>Mensaje del commit (cuerpo real)</h4><div class="commitmsg">${c.body}</div></div>
+      <div class="msec"><h4>Metadatos</h4>
+        <div class="meta-grid">
+          <div class="m"><div class="k">Fecha</div><div class="v">${c.dateL}</div></div>
+          <div class="m"><div class="k">Autor</div><div class="v">${c.author}</div></div>
+          <div class="m"><div class="k">Rama</div><div class="v">${c.branch}</div></div>
+          <div class="m"><div class="k">Padre(s)</div><div class="v">${c.parents}</div></div>
+          <div class="m"><div class="k">Cambios</div><div class="v">${c.stat}</div></div>
+          ${c.pr?`<div class="m"><div class="k">Pull Request</div><div class="v">#${c.pr}</div></div>`:''}
+        </div>
+      </div>
+      <div class="msec"><h4>Archivos (${(c.files||[]).length})</h4><div class="files">${files}</div></div>
+    </div>`;
+  document.getElementById('ov').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('ov').classList.remove('show');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* ============ ANIMATED COUNTERS ============ */
+function animateCounters(){
+  document.querySelectorAll('.stat .n').forEach(el=>{
+    const t=el.dataset.target; const num=parseInt(t);
+    if(isNaN(num)){el.textContent=t;return;}
+    let cur=0; const step=Math.max(1,Math.ceil(num/28));
+    const iv=setInterval(()=>{cur+=step;if(cur>=num){cur=num;clearInterval(iv);}el.textContent=cur;},28);
+  });
+}
+window.addEventListener('load',animateCounters);
+</script>
+</body>
+</html>
