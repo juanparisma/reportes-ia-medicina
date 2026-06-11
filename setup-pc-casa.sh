@@ -3,7 +3,7 @@
 # setup-pc-casa.sh — Fase 0 del "espejo vivo": deja el PC de casa a punto.
 #
 # Hace de un tirón (idempotente — se puede correr varias veces sin daño):
-#   1. Instala Python 3 y gh CLI si faltan (vía winget)
+#   1. Instala Python 3, gh CLI y FFmpeg si faltan (vía winget)
 #   2. Login de GitHub (gh auth login) si hace falta
 #   3. Clona los 4 repos privados (o los actualiza si ya están)
 #   4. Restaura Sinapsis (~/.claude) desde sinapsis-config
@@ -14,8 +14,7 @@
 #
 # NO hace (a propósito):
 #   - NO registra las tareas programadas (eso es Fase 3; siguen en el itinerante)
-#   - NO copia secrets (.env.local) — van a mano o por Syncthing en Fase 2
-#   - NO instala FFmpeg (solo si algún día se renderiza video en casa)
+#   - NO copia secrets (.env.local) — llegan por Syncthing en Fase 2 (decisión 2026-06-10)
 # ============================================================================
 
 echo "==================================================================="
@@ -65,6 +64,21 @@ else
     ok "gh CLI instalado: $(gh --version | head -1)"
   else
     warn "gh instalado pero no visible aún → cerrá Git-Bash, reabrilo y corré este script de nuevo"
+    REABRIR=1
+  fi
+fi
+
+# ── 2b. FFmpeg (casa también edita video — decisión 2026-06-10) ──
+echo; echo "── 2b. FFmpeg ──"
+if command -v ffmpeg >/dev/null 2>&1; then
+  ok "FFmpeg ya está: $(ffmpeg -version 2>/dev/null | head -1 | cut -d' ' -f1-3)"
+else
+  echo "  Instalando FFmpeg con winget..."
+  winget install -e --id Gyan.FFmpeg --accept-package-agreements --accept-source-agreements
+  if command -v ffmpeg >/dev/null 2>&1; then
+    ok "FFmpeg instalado"
+  else
+    warn "FFmpeg instalado pero no visible aún → reabrí Git-Bash y corré este script de nuevo"
     REABRIR=1
   fi
 fi
@@ -138,8 +152,8 @@ echo "  RESUMEN:  🟢 $PASS    🟡 $WARN    🔴 $FAIL"
 if [ "$FAIL" -eq 0 ]; then
   echo "  ✅ Fase 0 COMPLETA. Quedan a mano:"
   echo "     1. Energía → Suspender/Hibernar = NUNCA (si no lo hiciste ya)"
-  echo "     2. Secrets: copiar iamasters-os/.env.local desde el otro PC"
-  echo "        (o esperar a que Syncthing lo traiga en la Fase 2)"
+  echo "     2. Secrets (.env.local): llegan solos por Syncthing en Fase 2;"
+  echo "        si los necesitás antes, copialos a mano desde el otro PC"
   echo "     3. NO actives tareas programadas acá todavía — eso es Fase 3"
   echo "  ➡️  SIGUIENTE: Fase 1 — instalar Tailscale en los DOS PCs."
 else
