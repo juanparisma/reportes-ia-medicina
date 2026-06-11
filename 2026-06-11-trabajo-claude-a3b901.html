@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-11</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .note{font-size:12px;color:var(--muted);margin-top:10px;font-style:italic}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Jueves 11 de junio de 2026 · trabajo global de la jornada (cierre nocturno)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">10</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">repos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">grandes frentes</div></div>
+    <div class="kpi"><div class="n">0</div><div class="l">errores</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada partida en dos grandes frentes que cerraron completos. El <strong>Espejo Vivo entre los 2 PCs</strong>
+      quedó montado de punta a punta (Fases 0→3): Tailscale + Syncthing sincronizando las 4 carpetas
+      bidireccional y probado ida/vuelta, con las 14 automatizaciones corriendo solas en el itinerante y los
+      permisos resueltos y <strong>verificados en vivo</strong> (ya no se cuelgan pidiendo aprobación). En
+      paralelo, arrancó el <strong>Observatorio de Conocimiento</strong>: el "becario" Skool ya ingiere contenido
+      real de las 2 comunidades (posts + videos transcritos) al segundo cerebro, con seguimiento por WhatsApp,
+      100% gratis.</p>
+      <p>
+        <span class="tag">espejo vivo 2 PCs</span>
+        <span class="tag">Tailscale + Syncthing</span>
+        <span class="tag">automatizaciones autónomas</span>
+        <span class="tag">permisos resueltos</span>
+        <span class="tag">observatorio Skool</span>
+        <span class="tag">becario ingiriendo</span>
+        <span class="tag">transcripción de video</span>
+      </p>
+      <p class="note">Nota: los 10 commits corresponden a la sesión del 10-jun, capturada por la ventana de 24 h del informe nocturno del 11-jun. El daily summary de hoy aún no existe; el contexto narrativo viene del EOD de ayer.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>iamasters-os · Observatorio de Conocimiento <span class="pill">frente nuevo</span></h3>
+      <ul>
+        <li>Construido el <strong>sistema de seguimiento Skool + WhatsApp</strong> (Evolution API), 100% gratis.</li>
+        <li><strong>Scraper Skool calibrado contra la API real</strong> + resumen único; el becario ya ingirió contenido real (posts + videos) de <code>horizontes-ia</code> y <code>ia-masters-automations</code> a <code>cerebro/skool/</code>.</li>
+        <li>Test end-to-end de transcripción de video (<code>yt-dlp</code> + Whisper local, modelo small) → OK.</li>
+        <li class="commit">2 commits · b497e16 · 3465b28</li>
+      </ul>
+
+      <h3>reportes-ia-medicina · Espejo Vivo + reportes automáticos</h3>
+      <ul>
+        <li>Scripts del Espejo Vivo: <code>setup-pc-casa.sh</code> (Fase 0, clona repos + restaura Sinapsis + Python/gh/FFmpeg) y <code>fase2-pc-casa.sh</code> (pairing Syncthing).</li>
+        <li>Decisión del 10-jun aplicada: casa también edita video → se añade FFmpeg al setup.</li>
+        <li>Publicados los reportes automáticos del día: WhatsApp digest, dashboard Sinapsis e informe de trabajo Claude.</li>
+        <li class="commit">6 commits · 64ace32 · 5f526fd · b258e4f · 3765a5c · 3ae994b · f56daa1</li>
+      </ul>
+
+      <h3>cerebro · segundo cerebro / wiki</h3>
+      <ul>
+        <li>EOD documentando el <strong>Espejo Vivo completo (Fases 0-3)</strong> + automatizaciones autónomas verificadas.</li>
+        <li>Auto-EOD del Observatorio (becario Skool ingiriendo) y reanudación del espejo (Tailscale F1, Syncthing F2).</li>
+        <li class="commit">2 commits · 4478bf9 · 5d793b4</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>El PC de casa también trabaja pesado</strong> (video + apps) → ampliar su RAM a 16 GB.</li>
+        <li><strong>Secrets viajan por Syncthing</strong>, no por git: el <code>.env.local</code> y credenciales se espejan entre los 2 PCs.</li>
+        <li><strong>Se sincroniza <code>~/.claude</code> entero</strong> + cerebro + transcripts (no solo carpetas de proyecto), para que el contexto viaje completo.</li>
+        <li><strong>"Cero permisos sin tocar nada" es imposible por diseño</strong>: conceder permisos es la única acción reservada al humano. Resuelto con UNA corrida del script que viaja por el espejo y cubre ambos PCs.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>Decidir owner de las automatizaciones</strong>: se quedan en el itinerante (simple, ya verificado) o se migran a casa para 24/7 real (guía en <code>FASE3-COMO-TERMINAR.md</code>).</li>
+        <li class="ambar">Pendientes físicos del PC de casa: energía → <strong>nunca suspender</strong> + cotizar módulo de RAM a 16 GB.</li>
+        <li class="ambar">Mantener <strong>Claude Code abierto</strong> en el PC que sea owner — condición #1 para que las automatizaciones disparen.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
