@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-13</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Jornada del viernes 12 de junio de 2026 · cierre nocturno · trabajo global</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">18</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">repos tocados</div></div>
+    <div class="kpi"><div class="n">4</div><div class="l">sesiones activas</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">releases del OS</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de dos mitades sobre la rama <code>feat/observatorio-conocimiento</code>. En la capa OS
+      se enviaron <strong>dos releases</strong>: <strong>v0.10.0 — skills a la carta</strong> (modelo Core +
+      Biblioteca con el nuevo comando <code>/skills</code>) y <strong>v0.10.1 — <code>/backup</code> multi-cloud</strong>
+      (Google Drive / OneDrive / HOME a elección). En el <strong>Observatorio de Conocimiento</strong> se
+      commiteó el scraper anti-rate-limit (fix 403), el transcriptor de videos mejorado, un nuevo
+      <strong>scraper del classroom de Skool</strong> y su runbook.</p>
+      <p>El hito de gestión fue una <strong>decisión de infraestructura</strong>: la transcripción de videos
+      pasa a correr en el <strong>PC de casa 24/7</strong> (el hospital bloquea las descargas de video), matizando
+      la regla "lo pesado va al itinerante". Primera noche: 11 videos OK + 8 fallidos (Loom borrados + timeouts).</p>
+      <p>
+        <span class="tag">v0.10.0 skills a la carta</span>
+        <span class="tag">/skills</span>
+        <span class="tag">/backup multi-cloud</span>
+        <span class="tag">observatorio classroom</span>
+        <span class="tag">scraper anti-403</span>
+        <span class="tag">transcripción en casa</span>
+        <span class="tag">runbook</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>iamasters-os (capa OS) · <span class="pill">2 releases</span></h3>
+      <ul>
+        <li><strong>v0.10.0 — skills a la carta</strong>: 17 skills core siempre cargadas + 20 instalables en
+        <code>skills-library/</code>; nuevo comando <code>/skills</code> y <code>scripts/skills.sh</code>.</li>
+        <li><strong>v0.10.1 — <code>/backup</code> multi-cloud</strong>: respaldo a Google Drive, OneDrive o HOME a elección del operador.</li>
+        <li><strong>v0.9.2 — resilience pack</strong>: <code>/backup</code>, <code>/restaura</code> y updates no-interactivos (modo headless).</li>
+        <li>Instaladas desde la biblioteca: <code>seis-sombreros</code> + <code>tool-visual-explainer</code>.</li>
+        <li class="commit">13 commits · 02141bf · b5f2c9c · dfa6951 · 3e9ab27 · a136555 · 7337ae9 · 885de19 · 45ac0f6</li>
+      </ul>
+
+      <h3>Observatorio de Conocimiento (dentro del OS)</h3>
+      <ul>
+        <li><strong>Scraper anti-rate-limit</strong>: arreglado el 403 de Skool (delay entre páginas + reintento con backoff + guardado incremental) y filtro <code>--desde</code> en el transcriptor.</li>
+        <li><strong>Classroom scraper nativo</strong>: <code>skool-classroom.mjs</code> (315 líneas) + transcripción con chequeo de internet multi-endpoint, timeout de descarga y flags <code>--solo</code>/<code>--cookies</code>.</li>
+        <li><strong>Runbook</strong> del classroom documentado (<code>docs/observatorio-classroom-runbook.md</code>); probes temporales retiradas.</li>
+        <li class="commit">dfa6951 · 3e9ab27 · a136555 · 02141bf</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierre del día consolidado: migración del espejo a casa + estrategia de transcripción de videos.</li>
+        <li>Auto-EOD con el frente diurno (OS v0.10.x + observatorio classroom + decisión de transcripción en casa).</li>
+        <li class="commit">2 commits · bb36983 · 1060900</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Publicaciones programadas del día: dashboard de Sinapsis, digest de WhatsApp e informe diario de trabajo (no listado).</li>
+        <li class="commit">3 commits · e959f01 · c66567a · bed9579</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Transcripción de videos = PC de casa 24/7</strong>: el hospital bloquea descargas de video, así que la transcripción es la excepción a "lo pesado al itinerante".</li>
+        <li><strong>Reparto del espejo</strong>: casa = empleado 24/7 liviano (anfitrión); itinerante = estación de trabajo pesado.</li>
+        <li><strong>Modelo de skills Core + Biblioteca</strong>: solo 17 cargadas siempre; el resto se instala a demanda con <code>/skills</code> para no inflar el contexto.</li>
+        <li><strong>RAM del PC de casa</strong>: confirmado 8 GB soldados, NO ampliable — corrige el plan de "casa trabaja pesado".</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Lanzar la transcripción en el PC de casa (<code>--cookies chrome</code>, Chrome cerrado) y dejarla corriendo días.</li>
+        <li class="ambar">Recuperar los ~340 posts de Comunidad 1 que cayeron por 403 en la página 153.</li>
+        <li class="ambar">Consolidar los ~8.475 posts de Skool en el git del cerebro una vez termine la transcripción.</li>
+        <li class="ambar">(Heredado) Pegar la clave de <strong>ElevenLabs</strong> para el primer video real de plataforma-videos-medicos.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
