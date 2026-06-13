@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seis Sombreros — ¿Seguir con el Observatorio de Conocimiento?</title>
+<style>
+  :root{
+    --azul:#1D4E89; --cyan:#4FB0C6; --naranja:#F2A65A;
+    --tinta:#1a2230; --gris:#5b6675; --linea:#e3e8ef; --bg:#f5f7fa; --card:#ffffff;
+    --amarillo:#E8B500; --negro:#222; --verde:#2E8B57; --rojo:#C0392B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--tinta);line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 18px 64px}
+  .hero{background:linear-gradient(135deg,var(--azul) 0%,#143a66 60%,#0f2c4d 100%);
+    color:#fff;padding:44px 26px 38px;border-radius:0 0 22px 22px;margin-bottom:30px}
+  .hero .eyebrow{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);font-weight:700}
+  .hero h1{font-size:27px;line-height:1.22;margin:10px 0 12px;font-weight:800}
+  .hero p{font-size:15px;color:#d7e3f2;max-width:640px}
+  .hero .meta{margin-top:16px;font-size:12.5px;color:#9fb6d4}
+  .verdict{background:rgba(79,176,198,.14);border:1px solid rgba(79,176,198,.45);
+    border-radius:12px;padding:14px 16px;margin-top:18px;font-size:14.5px;color:#eaf4f8}
+  .verdict b{color:#fff}
+  section{background:var(--card);border:1px solid var(--linea);border-radius:14px;
+    padding:22px 22px 18px;margin-bottom:16px;box-shadow:0 1px 2px rgba(20,40,70,.04)}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
+    border-radius:8px;background:var(--azul);color:#fff;font-weight:800;font-size:13px;margin-right:10px}
+  h2{font-size:18px;display:flex;align-items:center;margin-bottom:6px}
+  h2 .hat{font-size:20px;margin-right:9px}
+  .sub{color:var(--gris);font-size:13px;margin:2px 0 14px;padding-left:40px}
+  h3{font-size:14.5px;margin:16px 0 7px;color:var(--azul)}
+  p{margin:8px 0;font-size:14.5px}
+  ul,ol{margin:8px 0 8px 4px;padding-left:22px}
+  li{margin:7px 0;font-size:14.5px}
+  strong{color:var(--tinta)}
+  em{color:var(--gris)}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;
+    text-transform:uppercase;letter-spacing:.04em;vertical-align:middle}
+  .p-amar{background:#fdf3d2;color:#8a6d00}
+  .p-negr{background:#e6e8ea;color:#2b2f33}
+  .p-verd{background:#dcefe3;color:#1f6b43}
+  .accent-amar{border-left:4px solid var(--amarillo)}
+  .accent-negr{border-left:4px solid var(--negro)}
+  .accent-verd{border-left:4px solid var(--verde)}
+  .accent-rojo{border-left:4px solid var(--rojo)}
+  .accent-azul{border-left:4px solid var(--azul)}
+  .risk b,.ben b{color:var(--tinta)}
+  blockquote{background:#f0f5fb;border-left:4px solid var(--cyan);padding:12px 16px;
+    border-radius:0 8px 8px 0;margin:12px 0;font-size:14px;color:#33414f}
+  .red li{color:#5b6675;font-style:italic}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+  th,td{border:1px solid var(--linea);padding:8px 9px;text-align:left;vertical-align:top}
+  th{background:var(--azul);color:#fff;font-weight:700;font-size:12px}
+  tr:nth-child(even) td{background:#f8fafc}
+  .hi{background:#eafaf0!important}
+  .reco{background:linear-gradient(135deg,#eafaf0,#f4fbf7);border:1px solid #bfe6cf}
+  .reco h2{color:var(--verde)}
+  .reco .num{background:var(--verde)}
+  .planb{background:#fff8ef;border:1px solid #f5d9b0}
+  .planb .num{background:var(--naranja)}
+  .chip{display:inline-block;background:#eef3f9;border:1px solid var(--linea);border-radius:7px;
+    padding:1px 7px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--azul)}
+  footer{text-align:center;color:var(--gris);font-size:12.5px;margin-top:26px;padding-top:18px;border-top:1px solid var(--linea)}
+  .anchor{background:#fff8ef;border:1px solid #f5d9b0;border-radius:12px;padding:18px 20px;margin-bottom:16px}
+  .anchor h2{color:#b9772a}
+  .mv{margin:10px 0}
+  .mv b{color:var(--azul)}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="eyebrow">Análisis Seis Sombreros · De Bono</div>
+    <h1>¿Vale la pena seguir con el Observatorio de Conocimiento?</h1>
+    <p>Decisión de continuidad sobre un proyecto de dos "becarios" automáticos, con foco en la pieza que más fricción ha costado: la transcripción masiva de video.</p>
+    <div class="meta">13 jun 2026 · variante decisión continuar/reducir/matar</div>
+    <div class="verdict">
+      <b>Veredicto en una línea:</b> No es "seguir o no". Es <b>quédate con el becario de WhatsApp (vale), congela el de la comunidad a solo-texto, apaga el grind de 60h, transcribe a mano 15–20 lecciones núcleo y corre la síntesis de metodologías UNA vez.</b> Esa corrida decide si esa rama vive o muere — antes de quemar un fin de semana de cómputo.
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="anchor">
+      <h2>🪤 Fase 0 — Ruptura del ancla</h2>
+      <p><strong>Ancla detectada (doble):</strong> (1) <strong>sunk cost</strong> — 2 días peleando la transcripción, el watchdog quedó corriendo; (2) <strong>falso binario</strong> — "seguir o no" esconde las opciones intermedias.</p>
+      <div class="mv"><b>1. Reformulación:</b> el objetivo no es "transcribir 600 videos". Es <em>"convertir el conocimiento de mis comunidades en metodologías que de verdad uso para construir apps más rápido — sin gastar ni perder tiempo"</em>. La transcripción es un medio.</div>
+      <div class="mv"><b>2. Asunción fundacional:</b> "necesito TODO el corpus para que valga". Falsa si 15–20 lecciones rinden lo mismo que 675. En contenido educativo, Pareto es brutal.</div>
+      <div class="mv"><b>3. Steel-man del opuesto:</b> el contenido "apps con IA" caduca con cada release de modelo; 60h de cómputo dan un corpus obsoleto al terminar. Eres constructor, no consumidor: tu hora rinde 10× construyendo que minando.</div>
+      <div class="mv"><b>4. Pre-mortem:</b> (a) el corpus nunca se consulta; (b) baneo de la cuenta por scraping; (c) el grind nunca termina y drena atención.</div>
+    </div>
+
+    <section class="accent-azul">
+      <h2><span class="num">1</span>🔵 Azul — Apertura</h2>
+      <ul>
+        <li><strong>Pregunta:</strong> ¿Seguir tal cual, reducir alcance o apagar, dado que la pieza más cara (transcribir ~600 videos) choca con un muro técnico y su valor final no está demostrado?</li>
+        <li><strong>Restricciones:</strong> 100% gratis en dinero; una máquina lenta y otra con red que bloquea descargas de video; prioridad de negocio en otra parte.</li>
+        <li><strong>Criterio de éxito:</strong> separar lo que YA da valor de la apuesta no validada, y proteger tu tiempo.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">2</span>⚪ Blanco — Hechos</h2>
+      <h3>Verificados</h3>
+      <ul>
+        <li>2 becarios en producción desde el 10-jun: WhatsApp (digest) + comunidad (watcher).</li>
+        <li>675 lecciones + 306 posts ingeridos. Transcripción: ~12 de ~593.</li>
+        <li>Pipeline probado e2e: whisper <span class="chip">small</span> a 0.42× (2.4× más rápido que real).</li>
+        <li><strong>Escala real: ~600 videos × ~15 min × 0.42 ≈ ~60h de cómputo</strong> + descargas → grind multi-día.</li>
+        <li>Coste casi nulo en dinero · pero ~2 días de ingeniería peleando la transcripción.</li>
+        <li>Bloqueadores: anti-bot de la plataforma de video, tokens que expiran, hardware modesto.</li>
+        <li>El becario WhatsApp funciona <strong>independiente</strong> del de la comunidad.</li>
+      </ul>
+      <h3>Creídos, NO verificados</h3>
+      <ul>
+        <li>Que la síntesis de metodologías produzca algo accionable — <strong>nunca corrió sobre el corpus.</strong></li>
+        <li>Que el corpus se vaya a consultar — <strong>cero evidencia de uso.</strong></li>
+        <li>Que el baneo esté "blindado" — el blindaje cubre el lado WhatsApp, <strong>no</strong> la cuenta de pago que hace el scraping.</li>
+      </ul>
+      <h3>Vacíos críticos</h3>
+      <ul>
+        <li>¿Cuántas veces se consultó el corpus? (probable = 0). ¿Output real de la síntesis? (sin medir). ¿% de lecciones no obsoletas? (en posts: 18 de 101).</li>
+      </ul>
+    </section>
+
+    <section class="accent-amar">
+      <h2><span class="num">3</span>🟡 Amarillo — Beneficios <span class="pill p-amar">con respaldo</span></h2>
+      <ol class="ben">
+        <li><b>Activo que se mantiene solo.</b> Corpus buscable para siempre, gratis, mantenido por el watcher.</li>
+        <li><b>El becario WhatsApp ya es producto.</b> Digest diario funcionando, sin depender de la transcripción.</li>
+        <li><b>Diferenciador de marca.</b> "Destilo las mejores prácticas de las comunidades top de IA" = autoridad.</li>
+        <li><b>Pipeline genérico reutilizable.</b> Sirve para reuniones, formación, cualquier video — no está casado con una sola fuente.</li>
+        <li><b>Set-and-forget real.</b> El watchdog avisa por WhatsApp; coste marginal de dejarlo correr ≈ 0.</li>
+      </ol>
+    </section>
+
+    <section class="accent-negr">
+      <h2><span class="num">4</span>⚫ Negro — Riesgos <span class="pill p-negr">severo</span></h2>
+      <ol class="risk">
+        <li><b>El corpus caduca más rápido de lo que se transcribe.</b> <em>Alta / alto.</em> 60h por un histórico obsoleto al terminar.</li>
+        <li><b>Construiste el almacén antes de validar el producto.</b> <em>Alta / alto.</em> La síntesis nunca corrió; no sabes si el output vale.</li>
+        <li><b>Coste de oportunidad.</b> <em>Alta / alto.</em> Cada hora de anti-bot/tokens no construye tu prioridad de negocio ni tus apps reales.</li>
+        <li><b>Impuesto de atención oculto.</b> <em>Media-alta / medio.</em> Cookies que expiran + anti-bot + PC 24/7 + cada ⚠️ reclama tu cabeza.</li>
+        <li><b>Riesgo de la cuenta de pago.</b> <em>Baja-media / alto.</em> El scraping usa tu cuenta real; un baneo pierde las comunidades.</li>
+        <li><b>Trampa del completista.</b> <em>Alta / medio.</em> 60h por el último 80% que aporta el 20% del valor.</li>
+      </ol>
+    </section>
+
+    <section class="accent-verd">
+      <h2><span class="num">5</span>🟢 Verde — Alternativas <span class="pill p-verd">7 marcos</span></h2>
+      <p><strong>Alt 1 — Pareto curado</strong> <em>(80/20)</em>: transcribes a mano solo 15–20 lecciones-oro de 2026, una noche. El resto on-demand. <em>El corpus completo es vanidad; el útil es pequeño.</em></p>
+      <p><strong>Alt 2 — Matar el video, quedarte con el texto</strong> <em>(Eliminación)</em>: la síntesis corre sobre posts + descripciones que ya existen. <em>¿Y si el valor ya está en texto?</em></p>
+      <p><strong>Alt 3 — Just-in-time, no batch</strong> <em>(Inversión)</em>: minas solo lo relevante cuando vas a construir una app. <em>El conocimiento se mina cuando se necesita.</em></p>
+      <p><strong>Alt 4 — Solo el becario WhatsApp</strong> <em>(Subdivisión)</em>: congelas la comunidad a watcher de texto; WhatsApp pasa a producto principal. <em>No es un proyecto, son dos.</em></p>
+      <p><strong>Alt 5 — Romper "gratis": pagar la transcripción</strong> <em>(Recurso ajeno)</em>: una API de transcripción hace 600 videos en horas por pocos USD. <em>El constraint gratis cuesta más tiempo del que ahorra en dinero.</em></p>
+      <p><strong>Alt 6 — Matar todo (provocación radical)</strong> <em>(Eliminación total)</em>: ves 5 videos/semana como humano y construyes. <em>El conocimiento que se usa pasó por tu cabeza, no por tu disco.</em></p>
+      <p><strong>Alt 7 — Pivote del activo</strong> <em>(Inversión de propósito)</em>: el pipeline vale más en reuniones, formación, o vendido como feature a clientes. <em>El activo es el pipeline, no el corpus.</em></p>
+    </section>
+
+    <section class="accent-rojo">
+      <h2><span class="num">6</span>🔴 Rojo — Visceral</h2>
+      <ul class="red">
+        <li>Cansancio anticipado solo de leer "60h de cómputo".</li>
+        <li>Orgullo por el watchdog — quedó elegante.</li>
+        <li>Pelear 2 días con el anti-bot me sabe a terquedad, no a estrategia.</li>
+        <li>Me entusiasma más mi prioridad de negocio que esto.</li>
+        <li>Sospecho que nunca voy a abrir el corpus.</li>
+        <li>El becario de WhatsApp sí me gusta de verdad.</li>
+        <li>Miedo a tirar 2 días de trabajo a la basura.</li>
+        <li>Alivio secreto ante la idea de apagarlo.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">7</span>🔵 Azul — Síntesis</h2>
+      <h3>Mapa del terreno</h3>
+      <p>Dos becarios bajo un mismo techo. El de <strong>WhatsApp</strong> entrega valor diario probado y barato. El de la <strong>comunidad</strong> tiene la infraestructura completa, pero su valor <strong>nunca se ha validado</strong>, y su pieza más cara choca con un muro que ya costó 2 días. La respuesta no es binaria: es <strong>por partes</strong>.</p>
+      <h3>Tensión clave</h3>
+      <blockquote>El Rojo (alivio ante apagarlo + sospecha de no consultarlo nunca) no encaja con el sunk cost que sostiene "seguir". El cuerpo ya decidió; la cabeza está justificando.</blockquote>
+      <h3>Matriz de decisión</h3>
+      <table>
+        <tr><th>Alternativa</th><th>Valor demostrado</th><th>Coste atención</th><th>Velocidad</th><th>Resist. obsolescencia</th><th>Alineación prioridad</th></tr>
+        <tr><td>Alt 1 · Pareto curado</td><td>Medio</td><td>Bajo</td><td>Alto</td><td>Medio</td><td>Medio</td></tr>
+        <tr><td>Alt 2 · Solo texto</td><td>Medio</td><td>Bajo</td><td>Alto</td><td>Medio</td><td>Medio</td></tr>
+        <tr class="hi"><td><strong>Alt 4 · Solo WhatsApp + watcher</strong></td><td><strong>Alto</strong></td><td><strong>Bajo</strong></td><td><strong>Alto</strong></td><td><strong>Alto</strong></td><td>Medio</td></tr>
+        <tr><td>Alt 5 · Pagar transcripción</td><td>Bajo (aún)</td><td>Bajo</td><td>Alto</td><td>Bajo</td><td>Bajo</td></tr>
+        <tr><td>Alt 6 · Matar todo</td><td>—</td><td>Nulo</td><td>—</td><td>—</td><td>Alto</td></tr>
+      </table>
+    </section>
+
+    <section class="reco">
+      <h2><span class="num">★</span>Recomendación — Alt 4 + Alt 1</h2>
+      <p><strong>Partir el proyecto y validar antes de seguir construyendo:</strong></p>
+      <ol>
+        <li><strong>El becario WhatsApp se queda y es el ganador.</strong> No se toca.</li>
+        <li><strong>El becario de la comunidad baja a watcher de posts/lecciones nuevas</strong> (texto — ya funciona, barato).</li>
+        <li><strong>APAGAR el grind de transcripción masiva</strong> (el watchdog del finde).</li>
+        <li><strong>Transcribir a mano solo 15–20 lecciones núcleo de 2026</strong> (una noche, no un finde).</li>
+        <li><strong>Correr la síntesis de metodologías sobre lo que YA hay</strong> y validar el producto antes de seguir el almacén:
+          <ul>
+            <li>Si el output es oro → se justifica y se amplía (Plan B).</li>
+            <li>Si es genérico → confirmas matar el video y te quedas con Alt 4 limpio.</li>
+          </ul>
+        </li>
+      </ol>
+      <p><em>La clave: dejar de tratar "transcribir todo" como requisito. Es la trampa del completista — y es lo que te costó 2 días.</em></p>
+    </section>
+
+    <section class="planb">
+      <h2><span class="num">B</span>Plan B</h2>
+      <p>Si la síntesis sobre el corpus curado es genuinamente accionable <strong>Y</strong> te descubres consultándola → <strong>rompe "gratis" (Alt 5):</strong> paga una API y transcribe el resto en horas, no en 60h de PC.</p>
+      <p><strong>Activar si:</strong> la primera síntesis produce ≥3 metodologías que aplicas en una app real en el primer mes.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">⏱</span>Métricas de revisión (1–3 meses)</h2>
+      <ul>
+        <li><strong>Consultas al corpus.</strong> Si = 0 a los 30 días → matar esa rama.</li>
+        <li><strong>Metodologías aplicadas en una app real.</strong> Si = 0 → no sirve para su propósito.</li>
+        <li><strong>Horas de mantenimiento del grind / mes.</strong> Si &gt; 2h → no es "desatendido", matar el video.</li>
+        <li><strong>WhatsApp ⚠️ que exigieron intervención.</strong> Mide el impuesto de atención oculto.</li>
+      </ul>
+    </section>
+
+    <footer>
+      Análisis estratégico · Seis Sombreros (De Bono) · 13 jun 2026<br>
+      Generado con iAmasters OS
+    </footer>
+  </div>
+</body>
+</html>
