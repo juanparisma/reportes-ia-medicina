@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-14</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .note{background:rgba(79,176,198,.08);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--muted);margin-top:14px}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Domingo 14 de junio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">4</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">repos tocados</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">informes publicados</div></div>
+    <div class="kpi"><div class="n">0</div><div class="l">apps nuevas</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Día <strong>liviano de operador</strong>: sin código nuevo ni apps nuevas. La actividad de la jornada
+      la movieron las <strong>vías de automatización 24/7</strong>, que publicaron solas tres informes en
+      <strong>reportes-ia-medicina</strong> (informe diario de trabajo, análisis Seis Sombreros del Observatorio
+      ya saneado, y el dashboard de Sinapsis) y consolidaron en el <strong>segundo cerebro</strong> la ingesta
+      del día anterior.</p>
+      <p>El hilo de fondo sigue siendo el mismo del cierre del 13-jun: el cuello de botella del proyecto de IA
+      para médicos es <strong>interno, no técnico</strong> → la prioridad pendiente es <strong>fijar fecha del
+      primer video</strong> y dejar de posponer.</p>
+      <p>
+        <span class="tag">día liviano</span>
+        <span class="tag">automatizaciones 24/7</span>
+        <span class="tag">informes auto</span>
+        <span class="tag">ingesta cerebro</span>
+        <span class="tag">0 código nuevo</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>reportes-ia-medicina · <span class="pill">automático</span></h3>
+      <ul>
+        <li>Publicado el <strong>informe diario de trabajo</strong> de Claude Code (corrida nocturna programada).</li>
+        <li>Publicado el análisis <strong>Seis Sombreros del Observatorio de Conocimiento</strong>, ya en versión saneada (sin datos sensibles).</li>
+        <li>Publicado el <strong>dashboard de Sinapsis</strong> (métricas del sistema: instincts, skills, passive rules).</li>
+        <li class="commit">3 commits · d60fa68 · 3fb3d03 · aada197</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierre automático del día 13: <strong>ingesta de la sesión de coaching/terapia</strong> al cerebro y backlink en los hubs de dominio.</li>
+        <li>OS quedó con día liviano (0 commits de código en el repo del OS).</li>
+        <li class="commit">1 commit · 1737e8b</li>
+      </ul>
+
+      <div class="note">El recolector reportó actividad de sesión en el repo del OS pero <strong>0 commits de código</strong>:
+      el trabajo del día fueron las rutinas programadas, no edición manual. Sin fuentes inventadas — esto refleja
+      exactamente lo que hay en git y en el daily summary.</div>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li>Mantener el <strong>mirror histórico de Skool sin commitear</strong> (decisión heredada): se consolida en git al terminar el backfill/transcripción, no antes.</li>
+        <li>Confirmar la tesis del cierre del 13-jun: <strong>priorizar lanzar sobre refinar</strong> el proyecto de IA para médicos (el bloqueo es interno).</li>
+        <li>Sin decisiones técnicas nuevas: jornada de operación, no de construcción.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Fijar <strong>fecha concreta</strong> para publicar el primer video (que el perfeccionismo no lo posponga otra vez).</li>
+        <li class="ambar">Convertir la <strong>matriz DOFA de oncología</strong> en insumo de validación del MVP de IA para médicos.</li>
+        <li class="ambar">Resolver financiación del semestre de Camila (cuotas San Buenaventura o descuento por docencia).</li>
+        <li class="ambar">Técnicos vivos: transcripción de videos Skool en el PC de casa 24/7; consolidar el mirror Skool en git; clave <strong>ElevenLabs</strong> para el primer video.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
