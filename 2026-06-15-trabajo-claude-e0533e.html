@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-15</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Lunes 15 de junio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">9</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">repos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">instincts nuevos</div></div>
+    <div class="kpi"><div class="n">17</div><div class="l">instincts activos</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de <strong>fontanería entre PCs</strong>: quedó montado el túnel de
+      <strong>sincronización cross-PC</strong> de los datos del operador (git privado + puente Sinapsis) y, sobre él,
+      el <strong>auto-pull</strong> <code>git pull --ff-only</code> en cada arranque de sesión vía hook
+      <code>SessionStart</code> — best-effort y seguro (aborta solo si hay conflicto). En paralelo se
+      <strong>rescató la investigación Saxenda vs Retatrutida</strong> (vivía solo en una rama remota; ahora en local
+      + <code>main</code>) y se afinó el guardrail de secretos del CI. Día de infraestructura, sin apps nuevas.</p>
+      <p>
+        <span class="tag">sync cross-PC</span>
+        <span class="tag">auto-pull ff-only</span>
+        <span class="tag">rescate Saxenda</span>
+        <span class="tag">CI check-secrets</span>
+        <span class="tag">identidad git</span>
+        <span class="tag">+2 instincts</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>iamasters-os (capa OS) · <span class="pill">sync cross-PC</span></h3>
+      <ul>
+        <li>Montado el <strong>túnel de sincronización de datos del operador</strong> entre PCs: git privado + puente Sinapsis.</li>
+        <li><strong>Auto-pull</strong> <code>git pull --ff-only</code> cableado al hook <code>SessionStart</code> (best-effort, aborta si choca) — el otro PC se mantiene al día solo.</li>
+        <li>Rescatada la <strong>investigación Saxenda vs Retatrutida</strong> (informe médico + divulgativo en HTML, citados) a <code>main</code> por fast-forward; rama redundante borrada de GitHub.</li>
+        <li>CI <code>check-secrets</code>: whitelist de placeholders con guion bajo (<code>your_api_key</code>, <code>your_key_here</code>) para no bloquear commits legítimos.</li>
+        <li>Identidad git fijada en local al repo; faltaba y rompía el commit.</li>
+        <li class="commit">4 commits · 0ce29a7 · 67f01b7 · 20d8283 · ab2fd94</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>EOD día 15: documentado el rescate Saxenda + el auto-pull cross-PC + los 2 instincts nuevos.</li>
+        <li>Auto-EOD día 14: consolidación del <strong>mirror de Skool</strong> (backfill de 2 comunidades completo, ~5.900 posts + 83 videos).</li>
+        <li class="commit">2 commits · 26a99b7 · 2b413d8</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Publicados 3 reportes de la corrida programada: Sinapsis instintos, Sinapsis dashboard y trabajo en Claude.</li>
+        <li class="commit">3 commits · 426df42 · ec1d1e4 · ce24d30</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Auto-pull sí, auto-push no</strong>: el pull automático en cada arranque queda activo (ff-only, seguro); el push se deja <strong>manual a propósito</strong> para evitar subir <code>.env</code> / trabajo a medias.</li>
+        <li><strong>Rescate por fast-forward limpio</strong>: la research Saxenda se llevó a <code>main</code> sin merge sucio y se eliminó la rama una vez verificada la fusión.</li>
+        <li><strong>Guardrail de secretos más fino</strong>: los placeholders con guion bajo se permiten explícitamente, sin debilitar la detección real.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">En el <strong>PC itinerante</strong>: correr <code>git checkout main &amp;&amp; git pull</code> (ese primer pull es manual y obligatorio) para traer los HTML de Saxenda y activar el auto-pull allá.</li>
+        <li class="ambar">Decidir si quieres <strong>auto-push</strong> además del auto-pull (se monta con salvaguardas si va).</li>
+        <li class="ambar">Arrastrado: clave de <strong>ElevenLabs</strong> + fijar fecha del 1er video faceless.</li>
+        <li class="ambar">Becario WhatsApp del <strong>Observatorio</strong> sigue esperando setup manual (chip + Docker).</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
