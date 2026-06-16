@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-16</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .pill.warn{background:#c0392b}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Martes 16 de junio de 2026 · trabajo global de las últimas 24 h</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">5</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">sesión activa</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">entregable nuevo</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de <strong>casi 100 % automatización</strong>: las rutinas 24/7 hicieron el trabajo y el único
+      entregable nuevo fue el <strong>informe semanal "IA en medicina" (W25)</strong>, generado y publicado solo.
+      No hubo commits de código en el OS. La nota importante del día es de <strong>operación</strong>: se confirmó de
+      primera mano un bloqueador recurrente en dos rutinas del Observatorio (sus scripts viven en una rama distinta a
+      <code>main</code>), tras un intento práctico de arrancar el Skool ingest que terminó <strong>revertido</strong>
+      dejando <code>main</code> intacto.</p>
+      <p>
+        <span class="tag">día automático</span>
+        <span class="tag">informe IA-medicina W25</span>
+        <span class="tag">rutinas 24/7</span>
+        <span class="tag">bloqueador confirmado</span>
+        <span class="tag">main intacto</span>
+        <span class="tag">0 commits de código</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>reportes-ia-medicina (automático) · <span class="pill">entregable del día</span></h3>
+      <ul>
+        <li><strong>Informe semanal "IA en medicina" (W25)</strong> con fuentes primarias (PubMed + WebSearch): escribas
+        en medicina familiar, cribado de retinopatía diabética (VPN 98 %), modelos ML de pronóstico, imagen de bajo
+        coste, oncología (Mayo Clinic, páncreas −3 años) y LLM como apoyo diagnóstico (+27,5 % en un ECA).</li>
+        <li>Entregado a WhatsApp + GitHub Pages. También cerró el <strong>dashboard de Sinapsis</strong> y el informe
+        diario anterior.</li>
+        <li class="commit">3 commits · 663971c · dae0913 · 98cda9f</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierre <code>/eod</code> del día 15-jun (W25): informe IA-medicina semanal documentado + registro del
+        bloqueador de las rutinas <code>wa-digest</code> / <code>informe-apps</code> y del bridge de WhatsApp
+        <em>logged-out</em>.</li>
+        <li>Bitácora de la Sesión 2 del 16-jun: <strong>intento práctico de Skool ingest del Observatorio,
+        revertido</strong> (se documenta el hallazgo, no el cambio).</li>
+        <li class="commit">2 commits · f818c56 · 864ef2e</li>
+      </ul>
+
+      <h3>iamasters-os (capa OS)</h3>
+      <ul>
+        <li>287 observaciones de sesión, 0 errores, <strong>0 commits de código</strong>: la actividad fue de operación
+        y automatización, no de desarrollo.</li>
+        <li>Intento de arrancar el <strong>Skool ingest</strong> trayendo scripts desde
+        <code>feat/observatorio-conocimiento</code> con <code>git checkout</code>; se <strong>revirtió con
+        <code>git restore --staged</code></strong> → <code>main</code> intacto, sin datos nuevos.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones y hallazgos del día</h2>
+      <ul>
+        <li><strong>No fundir a la ligera</strong>: el experimento de Skool ingest se revirtió para no ensuciar
+        <code>main</code>; el cambio real (fundir o anclar la rama) se hace con cabeza, no en caliente.</li>
+        <li class="ambar"><strong>Bloqueador confirmado</strong>: las rutinas <code>wa-digest</code> e
+        <code>informe-apps</code> fallan cada día porque sus scripts (<code>wa-digest-prepare.mjs</code>,
+        <code>skool-ingest.mjs</code>, <code>informe-apps-hgm.mjs</code>) viven solo en
+        <code>feat/observatorio-conocimiento</code>, no en <code>main</code>.</li>
+        <li class="ambar"><strong>Bridge de WhatsApp del Observatorio <em>logged-out</em></strong> desde el 13-jun;
+        Skool sin contenido nuevo desde el 14 → digest doblemente bloqueado.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>Fundir a <code>main</code></strong> los scripts del Observatorio (o anclar esas
+        rutinas a una rama fija); sin eso, <code>wa-digest</code> e <code>informe-apps</code> seguirán fallando a diario.</li>
+        <li class="ambar"><strong>Re-login del bridge de WhatsApp</strong> del Observatorio (acción manual, logged-out
+        desde el 13-jun).</li>
+        <li class="ambar">Arrastrado: clave de <strong>ElevenLabs</strong> + fijar fecha del primer video faceless.</li>
+        <li class="ambar">En el PC itinerante: <code>git checkout main &amp;&amp; git pull</code> para activar el auto-pull.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
