@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>IA en medicina — Informe semanal · 16 jun 2026</title>
+<style>
+  :root{ --azul:#1D4E89; --cyan:#4FB0C6; --tinta:#16202b; --suave:#5b6b7a; --linea:#e6ecf1; --bg:#f4f7fa; --ok:#1a7f5a; --warn:#b54708; --kill:#b42318; }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--tinta);background:var(--bg);line-height:1.65}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .hero{background:linear-gradient(135deg,var(--azul),var(--cyan));color:#fff;padding:54px 0 46px}
+  .hero .wrap{padding:0 24px}
+  .kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.9;margin:0 0 10px}
+  .hero h1{margin:0 0 10px;font-size:33px;line-height:1.2;font-weight:800}
+  .hero p.sub{margin:0;font-size:17px;opacity:.95}
+  .kpis{display:flex;flex-wrap:wrap;gap:12px;margin:34px auto 0;max-width:860px;padding:0 20px}
+  .kpi{flex:1 1 150px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:14px 16px}
+  .kpi b{display:block;font-size:24px;font-weight:800;line-height:1}
+  .kpi span{font-size:12.5px;opacity:.92}
+  .banner{margin:26px auto 0;max-width:820px;background:#ecfdf3;border:1px solid #abefc6;border-left:5px solid var(--ok);border-radius:10px;padding:16px 18px;color:#085d3a;font-size:15px}
+  .banner b{color:var(--ok)}
+  section{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:24px 26px;margin:22px 0;box-shadow:0 1px 2px rgba(16,32,43,.04)}
+  h2{font-size:21px;margin:0 0 6px;color:var(--azul);display:flex;gap:12px;align-items:baseline}
+  h2 .n{flex:0 0 auto;width:30px;height:30px;background:linear-gradient(135deg,var(--azul),var(--cyan));color:#fff;border-radius:8px;font-size:15px;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+  h3{font-size:16px;margin:18px 0 2px;color:var(--tinta)}
+  ul{margin:12px 0 0;padding-left:4px;list-style:none}
+  li{position:relative;padding:8px 0 8px 26px;border-bottom:1px solid #f2f5f8}
+  li:last-child{border-bottom:0}
+  li:before{content:"";position:absolute;left:4px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+  p{margin:8px 0 0}
+  .take{margin-top:14px;background:#eef6f9;border-radius:10px;padding:12px 14px;font-size:14.5px;color:#0f3a4a}
+  .take b{color:var(--azul)}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;vertical-align:middle}
+  .pill.ok{background:#e7f6ef;color:var(--ok)} .pill.rep{background:#fff7ed;color:var(--warn)}
+  .small{color:var(--suave);font-size:13.5px}
+  .refs{font-size:13.5px;color:var(--suave)} .refs a{color:var(--azul);word-break:break-all;text-decoration:none} .refs a:hover{text-decoration:underline}
+  .refs li:before{background:var(--azul)}
+  footer{text-align:center;color:var(--suave);font-size:13px;padding:30px 20px 50px}
+  abbr{text-decoration:none;border-bottom:1px dotted var(--suave)}
+  @media(max-width:620px){.hero h1{font-size:26px}.kpi b{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">🧠 Dr. Juan Camilo Paris · Informe semanal</p>
+    <h1>¿Cómo se está usando la IA en medicina?</h1>
+    <p class="sub">Panorama clínico verificado · lunes 16 de junio de 2026</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><b>5</b><span>estudios primarios esta semana</span></div>
+    <div class="kpi"><b>7</b><span>ángulos de búsqueda</span></div>
+    <div class="kpi"><b>PubMed + oficial</b><span>fuentes priorizadas</span></div>
+    <div class="kpi"><b>1-16 jun</b><span>ventana real</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="banner">
+    <b>Recencia (honesto).</b> Esta semana <b>sí</b> hubo desarrollos primarios fechados dentro de la ventana <b>1 → 16 jun 2026</b> (estudios indexados en PubMed entre el 9 y el 16). El bloque de contexto recoge desarrollos mayores algo anteriores, <b>siempre con su fecha</b>. Lo no verificado en fuente primaria se marca <span class="pill rep">reportado</span>.
+  </div>
+
+  <section>
+    <h2><span class="n">1</span> Lo nuevo de esta semana <span class="pill ok">fuentes primarias</span></h2>
+
+    <h3>1.1 · Cribado de retinopatía diabética con IA en atención primaria</h3>
+    <p class="small">Estudio prospectivo de validación, 10 clínicas de primer nivel (Dinamarca), patrón de referencia oftalmológico.</p>
+    <ul>
+      <li>183 pacientes con diabetes tipo 2 · 336 imágenes de fondo de ojo.</li>
+      <li><b>Sensibilidad 73,7 % · especificidad 90,2 % · <abbr title="valor predictivo negativo">VPN</abbr> 98,3 % · <abbr title="área bajo la curva">AUC</abbr> 0,82</b>; excluyendo imágenes de mala calidad (18,6 %): sensibilidad <b>80,0 %</b>, AUC <b>0,84</b>.</li>
+      <li>Los autores piden <b>validación mayor</b> y mejor calidad de imagen antes de implementar. <span class="small">[ref 1]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> útil para <em>descartar</em> (VPN alto) en tamizaje de primer nivel; la calidad de la foto es el cuello de botella.</p>
+
+    <h3>1.2 · Aprendizaje automático en insuficiencia cardíaca crónica</h3>
+    <ul>
+      <li>271 pacientes; 7 modelos de <abbr title="machine learning">aprendizaje automático</abbr> sobre prueba de esfuerzo cardiopulmonar. <b>CatBoost</b> el mejor.</li>
+      <li>Con interpretabilidad <abbr title="Shapley Additive exPlanations">SHAP</abbr>: <b>recuperación de FC al 1.er minuto (HRR1)</b> y <b>pendiente VE/VCO₂</b> como predictores independientes de eventos mayores (MACCE). <span class="small">[ref 2]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> señal interesante, pero muestra pequeña y solo validación interna — todavía no para consulta.</p>
+
+    <h3>1.3 · Predicción del injerto renal a 5 años (modelo KAPTOR)</h3>
+    <ul>
+      <li>940 receptores de trasplante renal de donante fallecido, seguimiento &gt;5 años.</li>
+      <li><b>KAPTOR-full AUROC 0,904</b> (con datos del 1.er año) · <b>KAPTOR-pre 0,813</b>; superan al KDPI en validación interna. Piden validación multicéntrica. <span class="small">[ref 3]</span></li>
+    </ul>
+
+    <h3>1.4 · Registro 3D/2D en tiempo real para cirugía guiada por imagen (LXPose)</h3>
+    <ul>
+      <li>Inria (Francia) + MIT <abbr title="Computer Science and Artificial Intelligence Laboratory">CSAIL</abbr>: redes neuronales convolucionales (CNN) multi-etapa que alinean la <abbr title="tomografía computarizada">TC</abbr> 3D preoperatoria con la radiografía 2D intraoperatoria.</li>
+      <li><b>Inferencia en 20 milisegundos</b> (dos órdenes de magnitud más rápido), sin anotaciones manuales; código abierto. <span class="small">[ref 4]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> aún es laboratorio, pero los 20 ms habilitan guía intervencionista realmente en vivo.</p>
+
+    <h3>1.5 · Transparencia: las guías TRIPOD+AI apenas se citan</h3>
+    <ul>
+      <li>32 estudios de IA/ML en artroplastia de hombro frente a la guía <abbr title="Transparent Reporting of a multivariable prediction model for Individual Prognosis Or Diagnosis + IA">TRIPOD+AI</abbr>.</li>
+      <li>Solo <b>9,4 %</b> la citan · adherencia mediana <b>56,5 %</b> · <b>34,4 %</b> con alto riesgo de sesgo (PROBAST). <span class="small">[ref 5]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> el reto de la IA médica no es solo que funcione, sino que se reporte de forma verificable y reproducible. Ahí el sistema sigue flojo.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span> Contexto 2026 <span class="pill rep">con fecha · mayormente reportado</span></h2>
+    <ul>
+      <li><b>Adopción.</b> Encuesta AMA 2026 (Asociación Médica Estadounidense): <b>81 % de los médicos</b> ya usa IA (más del doble que en 2023), sobre todo <b>escribas ambientales</b>; ~40 % entusiasmado y preocupado a la vez (privacidad, relación médico-paciente). <span class="pill rep">reportado</span> <span class="small">[ref 6]</span></li>
+      <li><b>Escribas ambientales (2026).</b> JMIR / UCLA: <b>−8,5 %</b> de tiempo en la historia clínica electrónica, ~7 % de mejora en <em>burnout</em>, 84 % percibe mejor comunicación; ahorro <b>modesto y variable</b> entre productos. <span class="pill rep">reportado</span> <span class="small">[ref 7]</span></li>
+      <li><b>Ritmo FDA.</b> ~<b>24 autorizaciones IA/ML en marzo y 27 en abril de 2026</b>; ≈1.500 dispositivos de IA acumulados. <span class="pill rep">reportado</span> <span class="small">[ref 8]</span></li>
+      <li><b>FDA + EMA.</b> Enero 2026: <b>diez "Principios de Buenas Prácticas de IA"</b> conjuntos para desarrollo de medicamentos, enfoque de ciclo de vida basado en riesgo. <span class="small">[ref 9]</span></li>
+      <li><b>Seguridad.</b> El <b>2026 Health Tech Hazard Report</b> del ECRI sitúa el <b>mal uso de chatbots de IA</b> como riesgo sanitario nº 1 del año. <span class="pill rep">reportado</span> <span class="small">[ref 10]</span></li>
+      <li><b>Oncología (ensayo MASAI, feb-2026).</b> Primer <abbr title="ensayo clínico aleatorizado">ECA</abbr> de cribado mamográfico con IA, 105.915 mujeres (Suecia): <b>+29 % detección sin más falsos positivos</b>, <b>−44 % carga de lectura</b>, menos cánceres avanzados a 2 años. <span class="pill rep">reportado</span> <span class="small">[ref 11]</span></li>
+      <li><b>Sesgo algorítmico.</b> Análisis 2026: la IA "alucinó" síntomas en pacientes negros con más frecuencia, ligado a datos de entrenamiento poco representativos. <span class="pill rep">reportado</span> <span class="small">[ref 12]</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span> Qué nos dice la semana</h2>
+    <ul>
+      <li><b>La IA clínica madura por nichos, no por titulares:</b> modelos acotados (retinopatía, injerto renal, IC) y herramientas de quirófano, de validación interna o muestra pequeña.</li>
+      <li><b>El cuello de botella pasa de "¿funciona?" a "¿se reporta y valida bien?":</b> TRIPOD+AI con &lt;10 % de adherencia lo deja crudo.</li>
+      <li><b>Regulación y seguridad convergen:</b> principios comunes FDA/EMA y el ECRI marcando el mal uso de chatbots como riesgo nº 1.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">?</span> Vacíos y limitaciones</h2>
+    <ul>
+      <li>Hallazgos primarios con <b>validación interna o muestra pequeña</b> (retinopatía n=183; MACCE n=271): ninguno es aún práctica estándar.</li>
+      <li>El contexto 2026 se apoya en <b>fuentes secundarias</b> (notas de prensa, Medscape, agregadores), marcadas como <span class="pill rep">reportado</span>.</li>
+      <li>No se barrieron <em>preprints</em> (arXiv/medRxiv) para esta ventana; foco en PubMed + fuentes oficiales.</li>
+    </ul>
+  </section>
+
+  <section class="refs">
+    <h2><span class="n">§</span> Referencias <span class="small">(Vancouver para lo científico · fuente: PubMed con DOI)</span></h2>
+    <ul>
+      <li>1. Krogh M, et al. AI-assisted diabetic retinopathy screening in primary care: a prospective validation study. Scand J Prim Health Care. 2026;44(1):2683982. doi:10.1080/02813432.2026.2683982. PMID 42284159.</li>
+      <li>2. Feng S, et al. Predicting MACCE in chronic heart failure: a machine learning study. Ann Med. 2026;58(1):2667587. doi:10.1080/07853890.2026.2667587. PMID 42286995.</li>
+      <li>3. Gao X, et al. Predicting long-term allograft outcomes in kidney transplant recipients using machine learning (KAPTOR). Ren Fail. 2026;48(1):2683944. doi:10.1080/0886022X.2026.2683944. PMID 42272126.</li>
+      <li>4. Facente F, et al. Toward real-time alignment of 3D CT and 2D X-ray with multi-stage CNNs (LXPose). Comput Assist Surg. 2026;31(1):2684372. doi:10.1080/24699322.2026.2684372. PMID 42299683.</li>
+      <li>5. Checketts JX, et al. AI and ML for clinical shoulder arthroplasty research (TRIPOD+AI gap analysis). JSES Int. 2026;10(4):101715. doi:10.1016/j.jseint.2026.101715. PMID 42292138.</li>
+      <li>6. AMA Survey: More Doctors Are Embracing AI-Based Tools. Medscape, 2026. <a href="https://www.medscape.com/viewarticle/ama-survey-more-doctors-are-embracing-ai-based-tools-2026a1000k8x">medscape.com</a></li>
+      <li>7. Ambient AI Scribe time-motion study. JMIR Med Inform. 2026;1:e85580. <a href="https://medinform.jmir.org/2026/1/e85580">medinform.jmir.org</a> · <a href="https://www.uclahealth.org/news/release/ucla-study-finds-ai-scribes-may-reduce-documentation-time">UCLA Health</a></li>
+      <li>8. FDA's AI Medical Device List: Stats & Trends. IntuitionLabs, 2026. <a href="https://intuitionlabs.ai/articles/fda-ai-medical-device-tracker">intuitionlabs.ai</a></li>
+      <li>9. EMA, FDA issue joint AI guiding principles. RAPS, ene-2026. <a href="https://www.raps.org/news-and-articles/news-articles/2026/1/ema-fda-issue-joint-ai-guiding-principles-for-drug">raps.org</a> · <a href="https://www.ema.europa.eu/en/documents/other/guiding-principles-good-ai-practice-drug-development_en.pdf">EMA PDF</a></li>
+      <li>10. Misuse of AI chatbots tops 2026 Health Tech Hazard Report (ECRI). AHCJ, feb-2026. <a href="https://healthjournalism.org/blog/2026/02/misuse-of-ai-chatbots-in-health-care-tops-2026-health-tech-hazard-report/">healthjournalism.org</a></li>
+      <li>11. AI-supported mammography — full MASAI RCT results. The Lancet, feb-2026. <a href="https://www.eurekalert.org/news-releases/1114399">EurekAlert</a> · <a href="https://ascopost.com/news/february-2026/randomized-trial-shows-ai-supported-mammography-improves-sensitivity-and-lowers-interval-cancer-rate/">ASCO Post</a></li>
+      <li>12. Medical Hallucination in Foundation Models and Their Impact on Healthcare. medRxiv, 2025. <a href="https://www.medrxiv.org/content/10.1101/2025.02.28.25323115.full.pdf">medrxiv.org</a></li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  Generado por Dr. Juan Camilo Paris · Informe semanal "¿Cómo se está usando la IA en medicina?" · 16 de junio de 2026<br>
+  <span class="small">Divulgación profesional. No sustituye el juicio clínico ni constituye recomendación regulatoria. Fuentes primarias vía PubMed (MCP) + búsqueda web priorizando fuentes oficiales.</span>
+</footer>
+
+</body>
+</html>
