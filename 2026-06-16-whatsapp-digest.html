@@ -9,6 +9,7 @@
   :root{
     --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
     --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+    --alta:#c0392b;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
@@ -25,63 +26,67 @@
   h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
   h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
   ul{margin:6px 0 0;padding-left:20px}
-  li{margin:4px 0}
-  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
-  .ambar{color:#b5670f}
-  .prio{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;margin-right:8px}
+  li{margin:6px 0}
+  .top li{margin:10px 0}
+  .prio{display:inline-block;border-radius:999px;padding:2px 10px;font-size:11px;font-weight:700;margin-right:6px;vertical-align:middle}
   .alta{background:#fde2e1;color:#a02620}
   .media{background:#fdeed6;color:#b5670f}
   .baja{background:#e3eef0;color:#1d6b80}
+  .why{color:var(--muted);font-size:13px}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:rgba(16,42,67,.06);padding:1px 5px;border-radius:5px}
+  .note{font-size:13px;color:var(--muted);background:rgba(79,176,198,.08);border-left:3px solid var(--celeste);padding:10px 14px;border-radius:8px;margin-top:14px}
   footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
 </style>
 </head>
 <body>
   <div class="hero">
-    <h1>Prioridades de mañana · WhatsApp</h1>
-    <p>Martes 16 de junio de 2026 · digest nocturno (solo-lectura)</p>
+    <h1>Prioridades para mañana · WhatsApp</h1>
+    <p>Cierre del martes 16 de junio de 2026 · digest nocturno (solo-lectura)</p>
   </div>
 
   <div class="kpis">
     <div class="kpi"><div class="n">1</div><div class="l">chat con actividad</div></div>
-    <div class="kpi"><div class="n">1</div><div class="l">accionable</div></div>
-    <div class="kpi"><div class="n">0</div><div class="l">prioridades altas</div></div>
+    <div class="kpi"><div class="n">5</div><div class="l">accionables</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">prioridad alta</div></div>
+    <div class="kpi"><div class="n">8</div><div class="l">imágenes leídas</div></div>
   </div>
 
   <div class="wrap">
     <section class="card">
-      <h2><span class="num">1</span> Resumen</h2>
-      <p>Día muy tranquilo en WhatsApp: <strong>un solo mensaje relevante</strong> en un chat (el resto
-      fue ruido y se descartó). Sin audios ni imágenes que transcribir o leer. No hay nada urgente
-      para mañana — solo un pequeño pendiente de seguimiento.</p>
-      <p>
-        <span class="tag">1 chat</span>
-        <span class="tag">sin audios</span>
-        <span class="tag">sin imágenes</span>
-        <span class="tag">jornada tranquila</span>
-      </p>
-    </section>
-
-    <section class="card">
-      <h2><span class="num">2</span> Por chat</h2>
-
-      <h3>Juan Camilo Paris (nota personal)</h3>
-      <ul>
-        <li><span class="prio media">Media</span> Quedó anotado un <strong>número de teléfono</strong>
-        (09:07). Acción para mañana: guardar el contacto y/o devolver la llamada según para qué era.
-        Por qué Media: es un recordatorio tuyo, no una petición de un tercero con plazo.</li>
+      <h2><span class="num">★</span> Top 3 de mañana</h2>
+      <ul class="top">
+        <li><span class="prio alta">ALTA</span> <strong>Pre-aprobar permisos del watchdog</strong> — dale "Run now" una vez a <code>espejo-watchdog</code> (y a las tareas que usan node/WhatsApp) desde el panel <em>Scheduled</em>, para que las corridas nocturnas no se cuelguen esperando aprobación.</li>
+        <li><span class="prio alta">ALTA</span> <strong>Limpiar el PC itinerante</strong> — confirma que NO tiene <code>wa-bridge-autostart.vbs</code> en su Startup y pausa sus tareas, para que el puente corra en un solo PC y no se repita el conflicto 440 en bucle.</li>
+        <li><span class="prio media">MEDIA</span> <strong>Reiniciar el PC de casa y verificar arranque limpio</strong> — los dos autostarts (Syncthing + wa-bridge) se aplican en el próximo boot; confirma una sola conexión de WhatsApp y Syncthing arriba.</li>
       </ul>
     </section>
 
     <section class="card">
-      <h2><span class="num">3</span> Top 3 de lo más urgente</h2>
+      <h2><span class="num">1</span> Por chat</h2>
+
+      <h3>Sesión Claude Code vía puente WhatsApp (tú mismo) · 14 mensajes</h3>
+      <p class="why">Sesión de trabajo dedicada a dejar funcional el <strong>espejo de 2 PCs + puente WhatsApp + tareas programadas</strong> en el PC de casa (el host 24/7). Casi todo quedó cerrado hoy; lo accionable son los cabos sueltos para que el sistema no se rompa solo de noche.</p>
       <ul>
-        <li class="ambar"><strong>1.</strong> Guardar / gestionar el número de teléfono anotado a las 09:07 (contacto pendiente).</li>
-        <li>— Sin segundo punto: no hubo más actividad accionable hoy.</li>
-        <li>— Sin tercer punto: jornada tranquila en WhatsApp.</li>
+        <li><span class="prio alta">ALTA</span> <strong>"Run now" para pre-aprobar permisos node/WhatsApp del watchdog.</strong> <span class="why">El watchdog usa WhatsApp cuando revive algo; sin pre-aprobación, una corrida nocturna se queda colgada pidiendo permiso.</span></li>
+        <li><span class="prio alta">ALTA</span> <strong>Verificar el PC itinerante:</strong> quitar/confirmar ausencia de <code>wa-bridge-autostart.vbs</code> en su Startup y pausar sus tareas. <span class="why">Su <code>wa-bridge.status</code> está logged-out desde el 13-jun; si autoarranca el puente, vuelve el conflicto 440 permanente (WhatsApp desloguea el dispositivo).</span></li>
+        <li><span class="prio media">MEDIA</span> <strong>Reiniciar el PC de casa y confirmar arranque limpio.</strong> <span class="why">Hoy quedaron en Startup el <code>.vbs</code> nuevo de Syncthing (1390 bytes, fix del cuelgue v2.1.1) y el de wa-bridge; aplican en el próximo boot. El Startup ya muestra los 3 accesos (Claude, syncthing, wa-bridge).</span></li>
+        <li><span class="prio media">MEDIA</span> <strong>Cerrar el reporte del becario de Skool</strong> que pediste en el <code>/goal</code> de la mañana (vitalidad de túneles + estado del becario). <span class="why">Las piezas de túnel/espejo quedaron resueltas; confirma que la parte "cómo está el becario de Skool" se entregó.</span></li>
+        <li><span class="prio baja">BAJA</span> <strong>Apuntar la regla "wa-bridge en un solo PC"</strong> en <code>working-memory.md</code>. <span class="why">Claude lo ofreció; deja la regla escrita para no repetir el doble arranque.</span></li>
+      </ul>
+      <div class="note">Recordatorio del runbook (paso 137): el host 24/7 es <strong>pc-casa</strong>. Cuando confirmes que casa está verde y estable, pausar estas tareas en el PC itinerante para que no corran en los dos.</div>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Lo que ya quedó hecho hoy</h2>
+      <ul>
+        <li>Syncthing autostart actualizado al <code>.vbs</code> nuevo (redirige stdout a log, fix del cuelgue sin stdout válido).</li>
+        <li>wa-bridge: una sola conexión estable (<code>status: connected</code>), watchdog reportándolo vivo; el duplicado lanzado a mano murió tras unos minutos de conflicto 440.</li>
+        <li>Permisos de automatizaciones aplicados y dependencias de <code>scripts/observatorio</code> instaladas.</li>
+        <li>20 tareas programadas registradas y <code>enabled: true</code> (se añadieron las 2 que faltaban: <code>espejo-watchdog</code> */15 y <code>recordatorio-seis-sombreros-urgencias</code> one-time el 2-jul).</li>
       </ul>
     </section>
 
-    <footer>Generado por el Becario WhatsApp · Observatorio de Conocimiento · Dr. Juan Camilo Paris · solo-lectura</footer>
+    <footer>Generado por el Becario WhatsApp · Observatorio de Conocimiento · Dr. Juan Camilo Paris · solo-lectura, no responde mensajes</footer>
   </div>
 </body>
 </html>
