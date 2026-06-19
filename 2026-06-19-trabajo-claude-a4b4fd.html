@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-19</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Viernes 19 de junio de 2026 · trabajo global de la jornada (últimas 24 h)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">10</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">proyectos con commits</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">frentes de sesión</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">app a producción</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada dominada por el <strong>scribe clínico HGM</strong> (app <em>historias-clinicas</em>): una iteración
+      mayor de oncología y urgencias se construyó, se refinó con feedback en vivo y se <strong>envió a producción</strong>.
+      Oncología sumó resumen para WhatsApp e historia completa editable/finalizable; urgencias estrenó una
+      <strong>nota de ingreso escalonada de una columna</strong> donde la IA solo redacta sobre lo que el médico aprueba
+      (anti-alucinación). En paralelo, el segundo cerebro consolidó la jornada por EOD y las rutinas programadas
+      publicaron sus informes automáticos del día.</p>
+      <p>
+        <span class="tag">scribe HGM a producción</span>
+        <span class="tag">oncología: resumen WhatsApp</span>
+        <span class="tag">urgencias: ingreso escalonado</span>
+        <span class="tag">historia editable/finalizable</span>
+        <span class="tag">botón Board por módulo</span>
+        <span class="tag">EOD al cerebro</span>
+        <span class="tag">rutinas automáticas</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>historias-clinicas (HGM) · <span class="pill">desplegado a producción</span></h3>
+      <ul>
+        <li><strong>Oncología</strong>: "Generar para presentar" produce un <strong>resumen telegráfico</strong> (cada hallazgo de imágenes / patología / laboratorios en su propio renglón); historia completa <strong>editable</strong> con "Guardar y finalizar" y guard de integridad.</li>
+        <li><strong>Urgencias</strong>: nota de ingreso rediseñada a <strong>flujo escalonado de una columna</strong> — enfermedad actual por dictado Whisper + pulido IA, un solo botón "Sugerir CIE-10 y órdenes" (aprobar/rechazar), análisis y plan según lo aprobado; la nota copiada termina en PLAN y omite CIE-10/órdenes (van en otro apartado del hospital).</li>
+        <li><strong>Header</strong>: botón <strong>Board</strong> por módulo con su color (oncología naranja, urgencias teal).</li>
+        <li class="commit">3 commits · d0ba477 · 6b3aa00 · 78a596c</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>EOD consolidando el envío del scribe HGM a producción (resumen WhatsApp, ingreso escalonado, botón Board) y notas de sesión.</li>
+        <li>Ingesta incremental de skool-watch (10 posts nuevos) e iteración del scribe documentada.</li>
+        <li>Documentado el re-emparejamiento del espejo Syncthing del PC itinerante (nuevo Device ID) con verificación bidireccional.</li>
+        <li class="commit">4 commits · 4651585 · 0fcfe40 · 07600ea · 67bcbd3</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Corridas programadas que publicaron los informes del día: dashboard de Sinapsis, digest de WhatsApp y el propio informe de trabajo en Claude Code.</li>
+        <li class="commit">3 commits · 8fed630 · 46d9087 · bcdcc74</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Pipeline IA escalonado (anti-alucinación)</strong>: en el scribe, la IA solo redacta sobre lo que el médico aprobó previamente; los master prompts quedan editables en runtime.</li>
+        <li><strong>CIE-10 y órdenes fuera de la nota copiada</strong>: viven en otro apartado del software del hospital, no en el texto que se pega en la historia.</li>
+        <li><strong>Auditoría de base de datos limpia</strong>: advisors de Supabase con 0 errores; el aviso "INP Issue" se diagnosticó benigno (queda como mejora aparte: <code>window.confirm</code> → modal).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Validar en producción el ingreso de urgencias y el resumen/edición de oncología con 2-3 casos reales del turno.</li>
+        <li class="ambar">Calibrar los master prompts de urgencias (<code>analisis</code>, <code>plan</code>, redacción de enfermedad actual) — solo editar los <code>.md</code>, no código.</li>
+        <li class="ambar">Reemplazar <code>window.confirm</code> de "Dar de alta" del board de oncología por un modal no bloqueante (INP).</li>
+        <li class="ambar">Infra arrastrada: blindar <code>scripts/espejo-status.mjs</code>, re-login Tailscale, clave ElevenLabs + fijar fecha del primer video.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
