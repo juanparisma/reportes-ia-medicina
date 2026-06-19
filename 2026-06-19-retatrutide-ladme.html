@@ -28,6 +28,7 @@
     transition:opacity .45s ease,transform .45s ease;overflow-y:auto;background:var(--bg)}
   .slide.active{opacity:1;pointer-events:auto;transform:translateY(0)}
   .slide-center{justify-content:center}
+  .stage{flex:1;display:flex;flex-direction:column;justify-content:center}
 
   /* ---------- TOP BAR ---------- */
   .top-bar{display:flex;justify-content:space-between;align-items:center;
@@ -55,8 +56,9 @@
   .slide-cover::after{content:'';position:absolute;inset:0;pointer-events:none;
     background:radial-gradient(ellipse 720px 460px at 88% 14%,rgba(79,176,198,.22) 0%,transparent 60%)}
   .slide-cover>*{position:relative;z-index:1}
-  .slide-cover .kicker{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;
+  .slide-cover .kicker{font-size:.86rem;letter-spacing:.16em;text-transform:uppercase;
     color:rgba(255,255,255,.82);margin-bottom:24px;font-weight:600}
+  .slide-cover .kicker b{font-size:1.4rem;font-weight:800;color:#fff;text-transform:none;letter-spacing:.01em}
   .slide-cover h1{font-size:4.7rem;line-height:1;letter-spacing:-.03em;font-weight:800;color:#fff;margin-bottom:6px}
   .slide-cover h1 .sub{display:block;font-size:1.95rem;font-weight:700;color:var(--accent);margin-top:14px;letter-spacing:-.01em}
   .slide-cover .subtitle{font-size:1.3rem;line-height:1.5;color:rgba(255,255,255,.9);max-width:760px;margin-top:24px;font-weight:400}
@@ -123,9 +125,9 @@
   table.data td.v b{font-weight:800;color:var(--primary)}
 
   /* ---------- BULLET LIST ---------- */
-  ul.checks{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:15px}
-  ul.checks li{display:flex;gap:13px;align-items:flex-start;font-size:1.14rem;line-height:1.45;color:var(--muted)}
-  ul.checks li::before{content:'';width:9px;height:9px;margin-top:.5em;border-radius:3px;background:var(--accent);flex-shrink:0}
+  ul.checks{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:18px}
+  ul.checks li{position:relative;padding-left:28px;font-size:1.16rem;line-height:1.55;color:var(--muted)}
+  ul.checks li::before{content:'';position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:3px;background:var(--accent)}
   ul.checks li strong{color:var(--ink);font-weight:700}
 
   /* ---------- CLOSE / REFS ---------- */
@@ -134,8 +136,8 @@
   .refs .r{font-size:.9rem;line-height:1.45;color:var(--muted);padding-left:28px;position:relative}
   .refs .r span{position:absolute;left:0;color:var(--primary);font-weight:800;font-size:.82rem}
   .refs .r em{color:var(--ink);font-style:italic}
-  .signature{margin-top:30px;font-size:.92rem;letter-spacing:.02em;color:var(--muted)}
-  .signature b{color:var(--primary);font-weight:800}
+  .signature{margin-top:30px;font-size:1rem;letter-spacing:.02em;color:var(--muted)}
+  .signature b{color:var(--primary);font-weight:800;font-size:1.65rem;display:block;margin-top:7px;letter-spacing:-.01em}
 
   /* ---------- NAV ---------- */
   .nav-controls{position:fixed;bottom:22px;right:28px;z-index:100;display:flex;align-items:center;gap:11px;
@@ -174,7 +176,7 @@
 
   <!-- 1 · COVER -->
   <section class="slide active slide-cover" id="s1">
-    <div class="kicker">🧠 Dr. Juan Camilo Paris · Explicado en sencillo</div>
+    <div class="kicker">💉 <b>Dr. Juan Camilo Paris</b> · Explicado en sencillo</div>
     <h1>Retatrutida<span class="sub">El fármaco de las 3 llaves</span></h1>
     <p class="subtitle">Cómo <strong>entra</strong>, cómo <strong>viaja</strong>, cómo <strong>se desarma</strong> y cómo <strong>sale</strong> de tu cuerpo — y qué hace cuando está adentro. Sin palabras raras.</p>
     <div class="cover-meta">
@@ -187,7 +189,7 @@
   <!-- 2 · ¿QUÉ ES? -->
   <section class="slide" id="s2">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">¿Qué es?</span> 02</div>
     </div>
     <div class="eyebrow">Primero, ¿qué es esto?</div>
@@ -202,7 +204,7 @@
   <!-- 3 · PK vs PD -->
   <section class="slide" id="s3">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Dos preguntas</span> 03</div>
     </div>
     <div class="eyebrow">Dos preguntas, dos historias</div>
@@ -227,7 +229,7 @@
   <!-- 4 · LADME MAP -->
   <section class="slide" id="s4">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">El mapa del viaje</span> 04</div>
     </div>
     <div class="eyebrow">El mapa del viaje · Farmacocinética</div>
@@ -244,23 +246,24 @@
   <!-- 5 · L + A -->
   <section class="slide" id="s5">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Liberación + Absorción</span> 05</div>
     </div>
-    <div class="eyebrow">Parada 1 y 2 · La entrada</div>
-    <h1 class="title">Entra <span class="accent">despacio y parejo</span>, como jabón que se disuelve</h1>
-    <p class="lede">Te la inyectas bajo la piel. Ahí forma un <strong>"charquito"</strong> (un depósito) que se va soltando de a poco hacia la sangre. No entra de golpe: tarda entre <strong>medio día y 3 días</strong> en llegar a su pico (eso se llama Tmax, 12–72 horas).</p>
-    <div class="callout">
-      <div class="tag">🧼 La analogía</div>
-      <p>Como una <strong>pastilla de jabón</strong> en la ducha: no se gasta de un tirón, se va disolviendo lento y parejo. Por eso el efecto es suave y sostenido, no un "subidón".</p>
+    <div class="stage">
+      <div class="eyebrow">Parada 1 y 2 · La entrada</div>
+      <h1 class="title">Entra <span class="accent">despacio y parejo</span>, como jabón que se disuelve</h1>
+      <p class="lede">Te la inyectas bajo la piel. Ahí forma un <strong>"charquito"</strong> (un depósito) que se va soltando de a poco hacia la sangre. No entra de golpe: tarda entre <strong>medio día y 3 días</strong> en llegar a su pico (eso se llama Tmax, 12–72 horas).</p>
+      <div class="callout">
+        <div class="tag">🧼 La analogía</div>
+        <p>Como una <strong>pastilla de jabón</strong> en la ducha: no se gasta de un tirón, se va disolviendo lento y parejo. Por eso el efecto es suave y sostenido, no un "subidón".</p>
+      </div>
     </div>
-    <div class="note"><b>Nota honesta:</b> el % exacto de cuánto se absorbe (biodisponibilidad) no está publicado todavía, porque el fármaco aún no tiene ficha oficial aprobada.</div>
   </section>
 
   <!-- 6 · D -->
   <section class="slide" id="s6">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Distribución</span> 06</div>
     </div>
     <div class="eyebrow">Parada 3 · El autobús de la sangre</div>
@@ -275,23 +278,24 @@
   <!-- 7 · M -->
   <section class="slide" id="s7">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Metabolismo</span> 07</div>
     </div>
-    <div class="eyebrow">Parada 4 · El desarme</div>
-    <h1 class="title">No pasa por el <span class="accent">"taller" del hígado</span></h1>
-    <p class="lede">La mayoría de las pastillas se procesan en un taller del hígado (las enzimas <strong>CYP450</strong>), donde se arman los "trancones" de interacciones entre medicamentos. La retatrutida <strong>no usa ese taller</strong>: el cuerpo simplemente la <strong>corta en pedacitos</strong> (aminoácidos), como si fuera comida.</p>
-    <div class="callout">
-      <div class="tag">✂️ La analogía + la ventaja</div>
-      <p>El cuerpo la trata como a un <strong>filete</strong>: lo mastica y lo deshace. Al no pasar por el taller del hígado, tiene <strong>pocas interacciones</strong> con otros medicamentos.</p>
+    <div class="stage">
+      <div class="eyebrow">Parada 4 · El desarme</div>
+      <h1 class="title">No pasa por el <span class="accent">"taller" del hígado</span></h1>
+      <p class="lede">La mayoría de las pastillas se procesan en un taller del hígado (las enzimas <strong>CYP450</strong>), donde se arman los "trancones" de interacciones entre medicamentos. La retatrutida <strong>no usa ese taller</strong>: el cuerpo simplemente la <strong>corta en pedacitos</strong> (aminoácidos), como si fuera comida.</p>
+      <div class="callout">
+        <div class="tag">✂️ La analogía + la ventaja</div>
+        <p>El cuerpo la trata como a un <strong>filete</strong>: lo mastica y lo deshace. Al no pasar por el taller del hígado, tiene <strong>pocas interacciones</strong> con otros medicamentos.</p>
+      </div>
     </div>
-    <div class="note"><b>Nota honesta:</b> esto se sabe sobre todo por su "familia" de fármacos (péptidos como la semaglutida); el estudio detallado solo de la retatrutida aún no está publicado.</div>
   </section>
 
   <!-- 8 · E -->
   <section class="slide" id="s8">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Excreción</span> 08</div>
     </div>
     <div class="eyebrow">Parada 5 · La salida</div>
@@ -306,7 +310,7 @@
   <!-- 9 · PK RECAP -->
   <section class="slide" id="s9">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Resumen PK</span> 09</div>
     </div>
     <div class="eyebrow">El viaje, en una tabla</div>
@@ -320,13 +324,12 @@
         <tr><td class="k">Por dónde sale</td><td class="v">En piezas pequeñas, por <b>pis y heces</b></td></tr>
       </table>
     </div>
-    <div class="note"><b>Lo que aún no se sabe:</b> el volumen de distribución y el % exacto de absorción no están publicados; el fármaco sigue en investigación.</div>
   </section>
 
   <!-- 10 · PD intro -->
   <section class="slide" id="s10">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Farmacodinamia</span> 10</div>
     </div>
     <div class="eyebrow">Ahora sí · Farmacodinamia</div>
@@ -338,7 +341,7 @@
   <!-- 11 · 3 llaves -->
   <section class="slide" id="s11">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Qué hace cada llave</span> 11</div>
     </div>
     <div class="eyebrow">Las 3 llaves, una por una</div>
@@ -368,7 +371,7 @@
   <!-- 12 · por qué 3 juntas -->
   <section class="slide" id="s12">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Por qué 3 juntas</span> 12</div>
     </div>
     <div class="eyebrow">Por qué 3 y no 1</div>
@@ -384,7 +387,7 @@
   <!-- 13 · RESULTADOS -->
   <section class="slide" id="s13">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Resultados en estudios</span> 13</div>
     </div>
     <div class="eyebrow">Lo que se vio en los estudios (fase 2)</div>
@@ -407,23 +410,24 @@
   <!-- 14 · SEGURIDAD -->
   <section class="slide" id="s14">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Efectos no deseados</span> 14</div>
     </div>
-    <div class="eyebrow">No todo es gratis · Efectos no deseados</div>
-    <h1 class="title">¿Qué <span class="accent">molestias</span> da?</h1>
-    <ul class="checks">
-      <li><strong>Lo más común: el estómago.</strong> Náuseas, diarrea, vómito o estreñimiento. Suelen ser leves o moderados y <strong>se reducen empezando con dosis baja</strong> y subiendo de a poco.</li>
-      <li><strong>Sube un poco la frecuencia cardiaca.</strong> Llega a su tope alrededor de la semana 24 y después tiende a bajar.</li>
-      <li>En los estudios <strong>no hubo</strong> hipoglucemias graves ni muertes relacionadas.</li>
-    </ul>
-    <div class="note"><b>Importante:</b> esto es divulgación, <b>no</b> consejo médico. La retatrutida está en investigación; cualquier decisión de tratamiento se toma con tu médico.</div>
+    <div class="stage">
+      <div class="eyebrow">No todo es gratis · Efectos no deseados</div>
+      <h1 class="title">¿Qué <span class="accent">molestias</span> da?</h1>
+      <ul class="checks">
+        <li><strong>Lo más común son las molestias de estómago:</strong> náuseas, diarrea, vómito o estreñimiento. Suelen ser leves o moderados, y se reducen empezando con una <strong>dosis baja</strong> que sube de a poco.</li>
+        <li><strong>Sube un poco la frecuencia cardiaca:</strong> llega a su tope alrededor de la semana 24 y después tiende a bajar.</li>
+        <li><strong>Lo tranquilizador:</strong> en los estudios no hubo hipoglucemias graves ni muertes relacionadas.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- 15 · PARA LLEVAR -->
   <section class="slide" id="s15">
     <div class="top-bar">
-      <div class="brand">🧠 Dr. Juan Camilo Paris</div>
+      <div class="brand">💉 Dr. Juan Camilo Paris</div>
       <div class="meta"><span class="hide">Para llevar</span> 15</div>
     </div>
     <div class="eyebrow">Si te quedas con 4 ideas</div>
