@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-20</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  .note{font-size:13px;color:var(--muted);margin:0 0 6px}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Sábado 20 de junio de 2026 · trabajo global de la jornada (cierre nocturno)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">6</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">frentes de trabajo</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">sesiones activas</div></div>
+    <div class="kpi"><div class="n">24/7</div><div class="l">n8n self-hosted</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p class="note">La ventana de 24 h del recolector no registra commits fechados hoy 20-jun: la última actividad
+      con commits es del <strong>19-jun (tarde-noche)</strong>, así que este cierre recoge la jornada de trabajo más
+      reciente. No se inventa nada que no esté en commits, sesiones o el daily summary.</p>
+      <p>Jornada de dos mitades. <strong>Infraestructura (madrugada)</strong>: quedó <strong>n8n self-hosted
+      funcional en casa</strong> (Docker: n8n + Postgres + el MCP <code>n8n-mcp</code> como contenedor HTTP 24/7),
+      con un <strong>ahorro grande de tokens</strong> al mover el <em>espejo-watchdog</em> a Windows Task Scheduler.
+      <strong>Salud (tarde-noche)</strong>: una <strong>deep-research clínica de la retatrutida</strong>
+      (farmacocinética LADME + farmacodinamia, modo médico PubMed) con reporte citado y presentación HTML
+      divulgativa, ya publicada y entregada por WhatsApp.</p>
+      <p>
+        <span class="tag">n8n 24/7</span>
+        <span class="tag">MCP HTTP</span>
+        <span class="tag">ahorro de tokens</span>
+        <span class="tag">Tailscale remoto</span>
+        <span class="tag">deep-research</span>
+        <span class="tag">retatrutida PK/PD</span>
+        <span class="tag">presentación entregada</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>Infraestructura · n8n + ahorro de tokens <span class="pill">hito infra</span></h3>
+      <ul>
+        <li><strong>n8n self-hosted operativo</strong> (Docker: n8n v2.26.7 + Postgres 16) arriba con <code>docker compose up -d</code>; limpiada env deprecada.</li>
+        <li><strong>MCP <code>n8n-mcp</code> conectado</strong> y decidido pasarlo de stdio a <strong>contenedor HTTP 24/7</strong> (puerto 3000, Bearer token) para que aparezca como conector en Claude Desktop.</li>
+        <li>Credencial <strong>Gmail SMTP</strong> depurada a verde: puerto 465 bloqueado en la red → solución <strong>587 + STARTTLS</strong>; flujo de prueba creado, probado y desactivado.</li>
+        <li><strong>Ahorro de tokens (lo grande)</strong>: <em>espejo-watchdog</em> migrado a <strong>Windows Task Scheduler</strong> → 0 tokens; tarea Claude desactivada (reversible). Panel "🛰️ Espejo Watchdog — Monitor" en n8n vía latido (webhook).</li>
+        <li><strong>Acceso remoto</strong> resuelto: n8n accesible desde el celular/itinerante por <strong>Tailscale</strong>; Docker AutoStart activado; UI en español.</li>
+        <li class="commit">cerebro · 1 commit · a2fa02b · (scripts en iamasters-os/scripts, sin commitear)</li>
+      </ul>
+
+      <h3>Salud · deep-research retatrutida (LADME)</h3>
+      <ul>
+        <li><strong>Deep-research clínica</strong> (modo médico, PubMed) sobre la <strong>PK (marco LADME) y PD de la retatrutida</strong>, agonista triple GIP/GLP-1/glucagón.</li>
+        <li>Núcleo: t½ ~6 días (unión a albúmina) → SC semanal; eliminación por catabolismo proteolítico sin CYP450. <strong>Gate anti-alucinación</strong>: Vd/biodisponibilidad/aclaramiento marcados no verificables.</li>
+        <li>Entregables: <code>report.md</code> citado (7 refs Vancouver) + <strong>presentación HTML</strong> divulgativa de marca, verificada en móvil con 0 errores.</li>
+        <li><strong>Publicada y entregada por WhatsApp</strong> (cerrado el pendiente del envío).</li>
+        <li class="commit">cerebro · 2 commits · 6223f6f · 9f34521</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Publicación de los informes automáticos del día previo (trabajo-claude, whatsapp-digest, sinapsis-dashboard) — artefactos de las rutinas programadas, no trabajo manual.</li>
+        <li class="commit">3 commits · 1dabb6d · 41959d8 · 813046d</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>n8n-mcp como contenedor HTTP 24/7</strong> (no stdio), para que sea un conector con switch en Claude Desktop.</li>
+        <li><strong>espejo-watchdog → Windows Task Scheduler</strong>: saca de Claude los disparos cada 15 min (0 tokens), manteniendo visibilidad por latido en n8n.</li>
+        <li><strong>Gmail SMTP por 587 + STARTTLS</strong> al estar el 465 bloqueado en la red.</li>
+        <li><strong>Acceso remoto por Tailscale</strong> (red cifrada) en vez de exponer puertos; <code>N8N_SECURE_COOKIE=false</code> seguro tras Tailscale.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>Fase 2 ahorro de tokens</strong>: colapsar disparos triples idempotentes (informe-diario, whatsapp-digest, gmail-digest, analyze-digest) de 3→2. No tocar skool-watch/granola.</li>
+        <li class="ambar"><strong>Fase 3</strong>: mover <code>sinapsis-config-sync</code> y <code>wa-personal-ingest</code> a Task Scheduler.</li>
+        <li class="ambar"><strong>Dead-man's switch</strong> en n8n: alerta si el watchdog deja de latir.</li>
+        <li class="ambar">Heredados vivos: clave de <strong>ElevenLabs</strong> + fecha del 1er video; calibrar master prompts de urgencias con casos reales.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
