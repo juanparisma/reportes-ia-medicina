@@ -180,6 +180,24 @@
   @media(max-height:520px){.slide{padding-bottom:64px}.hint{display:none}}
   /* Oculta el texto largo de la barra superior en móvil */
   @media(max-width:560px){.top-bar .meta span.hide{display:none}.hint{display:none}}
+
+  /* ====== MÓVIL (≤760px): documento de SCROLL CONTINUO, sin paginado ======
+     En teléfonos el paginado por gestos es poco fiable (el navegador in-app de
+     WhatsApp captura los swipes), así que apilamos todas las secciones en una
+     sola página vertical. En tablet/escritorio (≥761px) sigue el paso de páginas. */
+  @media(max-width:760px){
+    html,body{overflow:visible;height:auto}
+    .deck{position:static;width:100%;height:auto}
+    .progress,.nav-controls,.hint{display:none!important}
+    .slide{position:static;inset:auto;height:auto;min-height:0;
+      opacity:1!important;pointer-events:auto!important;transform:none!important;
+      transition:none;overflow:visible;touch-action:auto;
+      padding:clamp(34px,8.5vw,46px) clamp(18px,5.6vw,26px);
+      border-bottom:1px solid var(--line)}
+    .slide:last-child{border-bottom:none}
+    .slide .stage{display:block}
+    .slide-cover{min-height:62vh;justify-content:center}
+  }
 </style>
 </head>
 <body>
@@ -410,7 +428,11 @@
   function next(){ show(idx + 1); }
   function prev(){ show(idx - 1); }
 
+  // En móvil (≤760px) la presentación es un scroll continuo: no hay paginado.
+  const pagedMQ = window.matchMedia('(min-width:761px)');
+
   document.addEventListener('keydown', (e) => {
+    if (!pagedMQ.matches) return;
     if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown'){ e.preventDefault(); next(); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp'){ e.preventDefault(); prev(); }
     else if (e.key === 'Home'){ e.preventDefault(); show(0); }
@@ -422,6 +444,7 @@
   document.addEventListener('touchstart', (e) => { const t = e.changedTouches[0]; touchX = t.clientX; touchY = t.clientY; }, { passive: true });
   document.addEventListener('touchend', (e) => {
     if (touchX === null) return;
+    if (!pagedMQ.matches) { touchX = null; touchY = null; return; }
     const t = e.changedTouches[0];
     const dx = t.clientX - touchX;
     const dy = t.clientY - touchY;
