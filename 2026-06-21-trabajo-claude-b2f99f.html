@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-21</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .note{font-size:12px;color:var(--muted);margin-top:10px;font-style:italic}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Domingo 21 de junio de 2026 · trabajo global de las últimas 24 h</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">8</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">4</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">frentes activos</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">workspace en sesión</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de <strong>infraestructura y cierre de frentes abiertos</strong>, sin apps nuevas. Dos líneas
+      dominaron: <strong>(1) el cuadro de turnos de julio</strong> en urgencias-hgm — se separó limpiamente la
+      capa de <em>peticiones</em>, <em>preasignaciones</em> y <em>reglas duras</em>, con un cargador idempotente
+      de las preasignaciones de julio 2026; y <strong>(2) la migración de la capa de WhatsApp del Observatorio a
+      Evolution API</strong>, documentada en el segundo cerebro (el emparejamiento sigue bloqueado por el
+      throttle de vinculación de WhatsApp). En paralelo, las rutinas automáticas publicaron sus informes
+      (dashboard de Sinapsis y digest de WhatsApp) sin intervención.</p>
+      <p>
+        <span class="tag">cuadro julio</span>
+        <span class="tag">3 capas de reglas</span>
+        <span class="tag">loader idempotente</span>
+        <span class="tag">WhatsApp → Evolution</span>
+        <span class="tag">throttle de vinculación</span>
+        <span class="tag">informes automáticos</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>cuadros-turnos-urgencias (urgencias-hgm) · <span class="pill">cuadro julio</span></h3>
+      <ul>
+        <li>Separadas en datos las <strong>tres capas</strong>: peticiones del mes, preasignaciones (<code>force_shift</code>) y reglas duras permanentes — cada una con su propio tratamiento.</li>
+        <li><strong>Cargador idempotente</strong> de las preasignaciones de julio 2026: scoped por lote, recarga solo su propio batch y nunca pisa peticiones ni reglas duras.</li>
+        <li class="commit">2 commits · 717d45d · 47776aa</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>EOD del 20-jun documentado: <strong>cuadro de julio</strong> (las tres capas) + la migración <strong>WhatsApp → Evolution API</strong>.</li>
+        <li>Capa de WhatsApp migrada a <strong>Evolution API</strong> por estabilidad (proyectos-extra); el emparejamiento quedó bloqueado por el throttle de vinculación de WhatsApp.</li>
+        <li>EOD headless incremental con el ingest de Skool del 20-jun.</li>
+        <li class="commit">3 commits · aee033e · 26ef6e4 · 149d290</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Publicación automática de los informes del 20-jun: <strong>dashboard de Sinapsis</strong>, <strong>digest de WhatsApp</strong> e informe de trabajo en Claude Code (corridas programadas).</li>
+        <li class="commit">3 commits · 09bedd8 · 6018845 · e2e899d</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Modelo de tres capas</strong> para el cuadro de turnos: reglas duras (permanentes) · preasignaciones (del mes) · peticiones (del mes), separadas tanto en datos como en tratamiento.</li>
+        <li><strong>Carga por lote tagueado</strong>: el loader borra y recarga solo su propio batch, garantizando idempotencia sin riesgo de arrasar otras capas.</li>
+        <li><strong>WhatsApp sobre Evolution API</strong> como estándar de estabilidad para el Observatorio (revierte el "Baileys directo" previo).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>Generar el cuadro de julio</strong> en urgencias-hgm y auditar cobertura (6/turno, libres de Pineda, GINE 50/50, Tangarife sin MA21).</li>
+        <li class="ambar"><strong>Emparejar el chip</strong> de WhatsApp en Evolution cuando se levante el throttle → prueba de envío real + reenviar el informe de retatrutida.</li>
+        <li class="ambar"><strong>Reactivar el espejo-watchdog</strong> (quedó pausado para el enfriamiento) + rellenar CallMeBot como failover.</li>
+      </ul>
+      <p class="note">Nota: el daily summary de Sinapsis de hoy aún no existe; este informe se basa en los commits de las últimas 24 h y en el EOD del 20-jun.</p>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
