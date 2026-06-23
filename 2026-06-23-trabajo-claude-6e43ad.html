@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-23</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Martes 23 de junio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">7</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">sesiones activas</div></div>
+    <div class="kpi"><div class="n">4</div><div class="l">informes auto</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de <strong>consolidación, no de construcción nueva</strong>. El peso estuvo en el proyecto
+      personal <strong>"Chat Amor"</strong> (familia): se enriqueció el análisis con un <strong>dashboard
+      interactivo</strong> y una <strong>tarjeta diaria cifrada</strong> que llega por WhatsApp, más un esquema de
+      <strong>dos HTML cifrados</strong> (histórico de URL fija + uno del día con enlace nuevo cada día,
+      recuperable), todo compartido por link sin contraseña. En infra se <strong>afinó el watchdog de
+      Evolution</strong> (las alertas de "caído" eran falsas alarmas por lentitud del API), y en el frente clínico
+      se mapeó un médico nuevo en el cargador de preasignaciones de julio de <strong>cuadros de turnos</strong>. De
+      fondo, las rutinas programadas publicaron sus 4 informes automáticos.</p>
+      <p>
+        <span class="tag">Chat Amor</span>
+        <span class="tag">dashboard interactivo</span>
+        <span class="tag">tarjeta diaria cifrada</span>
+        <span class="tag">watchdog Evolution</span>
+        <span class="tag">cuadros de turnos jul</span>
+        <span class="tag">informes auto</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>cerebro · <span class="pill">Chat Amor + infra</span></h3>
+      <ul>
+        <li><strong>Chat Amor (familia):</strong> dashboard interactivo del análisis de la conversación de pareja (contadores, comparativas, timeline, temas clicables; se quitó la sección "qué más se puede hacer").</li>
+        <li><strong>Tarjeta diaria con plantilla propia</strong> (en 1ª persona, sin marca de trabajo) que se envía directo por WhatsApp.</li>
+        <li><strong>Dos HTML cifrados</strong> (AES-GCM, clave en el <code>#</code> del enlace): histórico de URL fija + uno del día con link nuevo y archivo fechado, recuperable.</li>
+        <li><strong>Watchdog de Evolution (infra):</strong> corregida la falsa alarma — ahora reintenta 3× y solo alerta/revive si el contenedor no corre de verdad.</li>
+        <li><strong>Auto-EOD:</strong> ingerido al segundo cerebro el informe semanal de IA en medicina (W26).</li>
+        <li class="commit">2 commits · 3ffacb0 · 457ed37</li>
+      </ul>
+
+      <h3>cuadros-turnos-urgencias · <span class="pill">clínico</span></h3>
+      <ul>
+        <li>Mapeado un médico nuevo (Gustavo Tangarife) en el cargador de preasignaciones del cuadro de <strong>julio</strong>.</li>
+        <li class="commit">1 commit · ac6aa00</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Las rutinas programadas publicaron en GitHub Pages <strong>4 informes</strong>: IA-en-medicina semanal, dashboard de Sinapsis, digest de WhatsApp e informe de trabajo en Claude Code.</li>
+        <li class="commit">4 commits · 2cd535f · 0853582 · 4a1f48c · f1b5fef</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Watchdog tolerante a latencia:</strong> 3 reintentos antes de declarar "caído"; evita falsas alarmas por el API lento en el PC de 8&nbsp;GB.</li>
+        <li><strong>Compartir por link, no por adjunto:</strong> WhatsApp no corre JS, así que los HTML cifrados viajan como enlace; el cifrado va en el fragmento (<code>#</code>) y no necesita contraseña.</li>
+        <li><strong>Guardrail de privacidad:</strong> publicar el chat cifrado lo corre el operador a mano (el clasificador frena la subida automática a repo público).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Correr el <strong>publish de Chat Amor</strong> y verificar los 2 enlaces (histórico + del día); commitear los 3 scripts (<code>chat-amor-daily.mjs</code>, <code>chat-amor-publish.mjs</code>, <code>chat-amor-daily.cmd</code>).</li>
+        <li class="ambar">Calibrar los <strong>master prompts de historias-clínicas</strong> con casos reales (pendiente histórico).</li>
+        <li class="ambar">Decidir destino de <code>context/</code> + <code>brand-context/</code> sin commitear y limpiar los <strong>3 sync-conflicts</strong> de <code>.skills-pending</code>.</li>
+        <li class="ambar">Arreglar el <strong>bug de fecha UTC</strong> del gather de EOD (usar fecha local) y pegar las claves de <strong>ElevenLabs</strong> (bloqueador histórico).</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
