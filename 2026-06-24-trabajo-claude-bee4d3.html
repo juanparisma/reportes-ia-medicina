@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-24</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Miércoles 24 de junio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">13</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">sesiones activas</div></div>
+    <div class="kpi"><div class="n">4</div><div class="l">meses cuadrados</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada dedicada al <strong>cuadro de turnos de urgencias del HGM</strong> y, sobre todo, a su capa
+      de nómina: se dejó la <strong>fórmula de horas de vinculados correcta y unificada</strong> en el motor y
+      en los tres exportadores (sindicales suman a Realizadas, capacitaciones aditivas, ausencias por tipo,
+      votaciones manuales), se cableó el <strong>festivo nuevo del 13-jul</strong> y se <strong>reconciliaron los
+      saldos de marzo a junio</strong> con tie-out total: todos los descargables (RRHH xlsx, ALBA, PDF) cuadran.
+      Junio quedó publicado. En paralelo, cierres automáticos del segundo cerebro y publicación de los reportes
+      programados (dashboard Sinapsis, digest de WhatsApp).</p>
+      <p>
+        <span class="tag">nómina vinculados</span>
+        <span class="tag">fórmula unificada</span>
+        <span class="tag">tie-out exports</span>
+        <span class="tag">saldos mar–jun</span>
+        <span class="tag">festivo 13-jul</span>
+        <span class="tag">ajustes del mes</span>
+        <span class="tag">junio publicado</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>cuadros-turnos-urgencias (HGM) · <span class="pill">foco del día</span></h3>
+      <ul>
+        <li><strong>Sistema de ajustes manuales del mes</strong> (votaciones, capacitaciones, overrides de ausencias/brigada): migraciones 0018/0019, página "Ajustes del mes" + API con gate de jefe, CLI y <strong>loader desde Excel</strong>. Aplicado para junio (15 médicos).</li>
+        <li><strong>Fórmula de horas corregida y unificada</strong> en motor + los 3 exportadores: sindicales (PS×12) suman a Realizadas, capacitaciones aditivas, # Ausencias por tipo (VAC/INC solo días hábiles), votaciones manuales.</li>
+        <li><strong>Festivo nuevo 13-jul</strong> (Ley 2578/2026, Chiquinquirá) cableado en el calendario.</li>
+        <li><strong>Cierre de saldos histórico</strong>: junio reconciliado; mar/abr/may convertidos a la convención nueva con tie-out. Correcciones reales del Excel del jefe verificadas.</li>
+        <li><strong>Verificación total de descargables</strong>: payroll RRHH (15/15 cada mes), ALBA, PDF de vinculados y PDF de prestación cuadran; saldos internamente consistentes en los 4 meses.</li>
+        <li><strong>Cuadro de junio publicado</strong> y cadena de saldos Mar→Jun verbatim con el Excel definitivo.</li>
+        <li class="commit">6 commits · 78de16f · ae8cde4 · 3855aa0 · 955dbb9 · 0a00937 · 61c0b81</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierres automáticos (auto-eod) del payroll: tie-out de exports en todos los descargables, fórmula definitiva de horas de vinculados y reconciliación de meses bloqueados.</li>
+        <li>EOD del 23-jun documentado: 4ª capa "reglas del mes" del cuadro de julio + consolidación de cierres del 21–22 jun.</li>
+        <li class="commit">3 commits · 83bbcfc · 20be8e1 · f4b1d47</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Corridas programadas publicadas: dashboard de Sinapsis (2026-06-23), digest de WhatsApp e informe de trabajo en Claude del día anterior; dashboards privados cifrados actualizados.</li>
+        <li class="commit">4 commits · a14e8c5 · 2070916 · 068b1d2 · f8884f2</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Una sola convención de horas</strong> para vinculados: el desglose se deriva del total reconciliado de los saldos, no de sumas locales parciales (que ignoraban capacitaciones).</li>
+        <li><strong>Saldo de un mes bloqueado = arrastre ajustado a mano por el jefe</strong> (saldo previo del mes siguiente), no la deuda cruda del mes; al corregir un saldo hay que recalcular sus componentes o el export descuadra.</li>
+        <li><strong>Supabase es producción</strong> (no hay BD local): se confirma antes de cada escritura y el clasificador bloquea escrituras fuera del alcance autorizado.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>Generar el cuadro de julio</strong> desde la app con la fórmula nueva: antes cargar en "Ajustes del mes" las votaciones y capacitaciones, los 4 COMP de junio no entregados y el recargo del dom 12-jul → 13 festivo.</li>
+        <li class="ambar"><strong>Publicar julio</strong> y verificar que sus saldos arrancan del cierre de junio (cadena correcta).</li>
+        <li class="ambar">Revisar en vivo la pantalla "Ajustes del mes" y los 4 COMP pendientes.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
