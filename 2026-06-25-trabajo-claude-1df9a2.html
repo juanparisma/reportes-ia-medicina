@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-25</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Jueves 25 de junio de 2026 · trabajo global de las últimas 24 h</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">26</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">sesiones activas</div></div>
+    <div class="kpi"><div class="n">7</div><div class="l">reglas de motor</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada concentrada en el <strong>cuadro de turnos de urgencias del HGM</strong> (19 commits): se
+      construyó el <strong>plan de reducción de saldos de vinculados</strong> hacia una banda de ±24 h y se
+      llevó al motor de generación con <strong>7 reglas nuevas</strong> (D21–D24, B10–B12). El diagnóstico de
+      fondo: el saldo neto del servicio es sobretiempo estructural, así que la reducción es <strong>solo en
+      tiempo libre, paulatina a 6 meses (jul→dic)</strong>, usando la planta/prestación como sumidero. En
+      paralelo, el segundo cerebro registró el cierre del día y se publicaron los informes automáticos de IA
+      en medicina.</p>
+      <p>
+        <span class="tag">plan de saldos ±24h</span>
+        <span class="tag">7 reglas de motor</span>
+        <span class="tag">tablero "Saldos proyectados"</span>
+        <span class="tag">equidad día/noche</span>
+        <span class="tag">fix PDF borradores</span>
+        <span class="tag">EOD vinculado al cerebro</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>cuadros-turnos-urgencias · <span class="pill">plan de saldos + motor</span></h3>
+      <ul>
+        <li><strong>Plan de reducción de saldos de vinculados</strong> a banda ±24 h, senda de 6 meses (jul→dic), solo tiempo libre (sin pago) y prestación como sumidero.</li>
+        <li><strong>Tablero del plan en la app</strong>: objetivos mensuales de saldo con seguimiento, edición inline desde el tablero y estado por distancia a cero (semáforo en banda / al día / atrasado con "faltan Xh").</li>
+        <li><strong>Reglas nuevas del motor</strong>: D21 tope 204 h/mes prestación · D22 cuota del vinculado (drawdown) · D23 ≥1 vinculado por turno · D24 drawdown de Diana vía MA19→LI02 hacia su objetivo · B10 reparto parejo de prestación · B11 equidad día/noche por contrato · B12 anti-racha de descanso (LI02 repartido en el mes).</li>
+        <li><strong>Fixes</strong>: MA19 (admin) nunca en finde/festivo · <code>never_day</code> excluido del backfill de cobertura D10 · PDF de meses borrador calcula saldos en vivo (ya no salen vacíos) · ordenamiento del tablero por horas-atrás primero.</li>
+        <li class="commit">19 commits · cc7ea54 · 497b2b1 · 938e71d · 96b8565 · 418b860 · 2a60b78 · 63ec014 · 8570ba9 · c635f43 · 87d7f0d · 70a7c66 · 938c97d · 9f6a242 · 013d088 · 8d1d477 · 2e70eb8 · 0989724 · 8ac0c28 · d4dc9f5</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierre del día (EOD) con el plan de reducción de saldos vinculado y las 7 reglas del motor (D21–D24, B10–B12) documentadas.</li>
+        <li>Nómina del HGM cuadrada (tie-out) en todos los descargables.</li>
+        <li class="commit">3 commits · 4ba978a · 3c87ffb · 4ec69d4</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Publicación de los reportes programados: digest de WhatsApp, dashboard de Sinapsis y el informe de trabajo de Claude del día anterior.</li>
+        <li class="commit">4 commits · 690ec7f · 73076b7 · dafeceb · cd9a30f</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Reducción de saldos solo en tiempo libre</strong>, sin pago en efectivo: el saldo neto del servicio (+453 h) es sobretiempo estructural.</li>
+        <li><strong>Senda de 6 meses jul→dic</strong> para converger los vinculados a la banda ±24 h (p. ej. Diana 149→24).</li>
+        <li><strong>Prestación/planta como sumidero</strong> del drawdown, con tope de 204 h/mes y reparto parejo para no sobrecargar.</li>
+        <li>La equidad día/noche se cuenta <strong>desde el grid del mes</strong>, no de contadores con historial (corrige el sesgo 73/27 → 54/46).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>Verificar el PDF de julio</strong> (columnas Netas/Realizadas/Deuda con números) y <strong>publicarlo / pasarlo al jefe</strong>. La cadena de saldos ya arranca de junio.</li>
+        <li class="ambar"><strong>Convergencia de agosto (mes 2 del plan)</strong>: con Aristarco de vuelta se descongestiona el gap −420 h; ajustar Diana/Ayala con LI02 + turnos de prestación.</li>
+        <li class="ambar">Capturar en el estado del operador la <strong>decisión estratégica</strong> de reducción de saldos (sin pago, 6 meses, prestación sumidero).</li>
+        <li class="ambar">Revisar por qué el observer no captura las sesiones del subrepo <code>urgencias-hgm</code>.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
