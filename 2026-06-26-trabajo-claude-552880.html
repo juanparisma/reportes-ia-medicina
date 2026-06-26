@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-26</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  .note{font-size:13px;color:var(--muted);background:rgba(242,166,90,.10);border:1px solid rgba(242,166,90,.35);border-radius:10px;padding:12px 14px;margin-top:14px}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Viernes 26 de junio de 2026 · trabajo global de la jornada (ventana 24 h)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">5</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">workspaces activos</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">skill nueva (M0+M1)</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada centrada en <strong>marketing-reel-studio</strong>, la nueva "fábrica de Reels de marca": se cerró
+      la <strong>primera prueba real end-to-end</strong> (módulos M0 setup + M1 clean cut) sobre un bruto propio —
+      transcripción con Groq Whisper, detección de silencios y loudness, <strong>diarización por hablante con
+      AssemblyAI</strong> y varios constructores de EDL (por palabras, por diálogo y por guion). Quedaron además
+      dos documentos fuente-de-verdad en <code>.hermes/plans/</code>: plan de implementación de 15 tareas + contexto
+      de marca (identidad, ICP, voz, paleta, anti-vocabulario). El resto de la jornada lo movieron las
+      automatizaciones programadas (informe diario, WhatsApp digest, dashboard Sinapsis).</p>
+      <p>
+        <span class="tag">reel studio</span>
+        <span class="tag">clean cut</span>
+        <span class="tag">diarización AssemblyAI</span>
+        <span class="tag">EDL por guion</span>
+        <span class="tag">planes .hermes</span>
+        <span class="tag">automatizaciones</span>
+      </p>
+      <div class="note"><strong>Nota de transparencia:</strong> el daily summary de hoy aún no existe; esta síntesis
+      se basa en el cierre EOD del 25-jun y en los commits de la ventana de 24 h. El trabajo de Reel Studio se hizo en
+      el <strong>PC itinerante</strong> y al cierre seguía <strong>sin commitear</strong>; a pc-casa solo sincronizaron
+      los planes <code>.hermes/</code>.</div>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>marketing-reel-studio · <span class="pill">skill nueva · M0+M1</span></h3>
+      <ul>
+        <li>Primera prueba real end-to-end sobre un bruto propio: transcripción Groq Whisper + <code>silences.json</code> + <code>loudness.json</code>.</li>
+        <li><strong>Diarización por hablante con AssemblyAI</strong> (nube) para separar la voz de Juan de la del dictador; privacidad OK (vídeos de marketing), key fuera del repo.</li>
+        <li>Constructores de EDL: <code>build-edl-words</code>, <code>build-edl-diarized</code>, <code>build-edl-script</code>; scripts M0–M1 (<code>_env</code>, <code>transcribe</code>, <code>silences</code>, <code>loudness</code>, <code>diarize</code>, <code>cut</code>).</li>
+        <li>Dos fuentes-de-verdad en <code>.hermes/plans/</code>: plan de 15 tareas + contexto de marca.</li>
+        <li class="commit">trabajo sin commitear (hecho en PC itinerante)</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierre <strong>auto-EOD</strong> del 25-jun documentando Reel Studio M0+M1, la diarización AssemblyAI y el concepto de clean cut.</li>
+        <li class="commit">1 commit · 4d1c35b</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Corridas programadas: informe diario de trabajo, WhatsApp digest, dashboard Sinapsis y dashboards privados cifrados (histórico + día).</li>
+        <li class="commit">4 commits · 593897f · 0e141a7 · 6ba4277 · caa5fd1</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Diarización vía AssemblyAI</strong> (nube) en lugar de local, validado por privacidad para vídeos de marketing.</li>
+        <li><strong>Separar Reels cortos</strong> (Reel Studio) del faceless largo (plataforma-videos-medicos) como dos líneas de producto.</li>
+        <li>Arrancar con un <strong>MVP V1 acotado</strong>: clean cut → estilo Juan → subtítulos → QC sobre un Reel corto no clínico.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Cerrar el <strong>drift de docs</strong>: <code>SKILL.md</code> ↔ <code>reel-studio.config.json</code> ↔ <code>brief.md</code>/<code>PLAN.md</code>.</li>
+        <li class="ambar">Montar el <strong>MVP V1 end-to-end</strong>: <code>run-edit-reel.mjs</code> + gate <code>editorial.json</code> + render vertical + QC anti-humo.</li>
+        <li class="ambar">Verificar que <strong>Syncthing</strong> trajo el código de la skill + <code>reel-tools/</code> del itinerante a pc-casa.</li>
+        <li class="ambar">Heredado urgencias-hgm: verificar PDF de julio + publicar julio; arrancar convergencia de agosto.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
