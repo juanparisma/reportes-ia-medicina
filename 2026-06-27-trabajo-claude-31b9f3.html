@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-27</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .note{background:rgba(79,176,198,.08);border-left:3px solid var(--celeste);padding:12px 16px;border-radius:8px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Sábado 27 de junio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">4</div><div class="l">commits (automáticos)</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">proyecto tocado</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">sesión activa</div></div>
+    <div class="kpi"><div class="n">0</div><div class="l">desarrollo real</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p><strong>Día sin trabajo sustantivo de desarrollo.</strong> Toda la actividad de la jornada fue
+      <strong>maquinaria automatizada de tareas programadas</strong>: los 4 commits del día son
+      <em>artefactos de reporte</em> que generan las propias rutinas (informe diario, digest de WhatsApp,
+      dashboards de Sinapsis), no código ni ediciones de producto. No hubo sesión de desarrollo real,
+      ningún repo de proyecto recibió cambios y no se tocó el segundo cerebro.</p>
+      <p>
+        <span class="tag">solo automatización</span>
+        <span class="tag">informes programados</span>
+        <span class="tag">digests WhatsApp/Gmail</span>
+        <span class="tag">dashboards Sinapsis</span>
+        <span class="tag">0 desarrollo</span>
+      </p>
+      <p class="note">Es el segundo día consecutivo de pura automatización (igual que el 2026-06-26).
+      El último trabajo de desarrollo real fue la noche del 2026-06-25 (Reel Studio M0+M1, AssemblyAI
+      diarization, clean-cut), ya capturado en el cierre de ese día.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>reportes-ia-medicina · <span class="pill">automático</span></h3>
+      <ul>
+        <li>Publicación del <strong>informe diario de trabajo en Claude Code</strong> (corrida nocturna de las 00:07).</li>
+        <li>Publicación del <strong>digest de WhatsApp</strong> del día (02:04).</li>
+        <li>Actualización de <strong>dashboards privados cifrados</strong> (histórico + día, 07:00).</li>
+        <li>Publicación del <strong>dashboard de Sinapsis</strong> (08:53).</li>
+        <li class="commit">4 commits · 7d745c6 · 3c6652a · bd91a4c · 660db86</li>
+      </ul>
+
+      <h3>iamasters-os (capa OS)</h3>
+      <ul>
+        <li>1 espacio de sesión con actividad reciente, exclusivamente <strong>tooling de tareas programadas</strong>
+        (marcadores de idempotencia, watchers, digests). <strong>0 commits</strong>, sin ediciones de código.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li>Sin decisiones de producto ni de estrategia: jornada operativa de mantenimiento automático.</li>
+        <li>Privacidad: los informes y digests siguen publicándose <strong>no listados</strong> (URL directa), sin datos de pacientes.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Retomar <strong>Reel Studio</strong> (faceless / plataforma-videos-medicos): bloqueador histórico = claves de <strong>ElevenLabs</strong> → primer video real.</li>
+        <li class="ambar">Si vuelve a haber un día solo-automatización, este cierre lo deja marcado para no re-procesar.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
