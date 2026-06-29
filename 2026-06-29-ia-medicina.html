@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>IA en medicina — Informe semanal · 29 jun 2026</title>
+<style>
+  :root{ --azul:#1D4E89; --cyan:#4FB0C6; --tinta:#16202b; --suave:#5b6b7a; --linea:#e6ecf1; --bg:#f4f7fa; --ok:#1a7f5a; --warn:#b54708; --kill:#b42318; }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--tinta);background:var(--bg);line-height:1.65}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .hero{background:linear-gradient(135deg,var(--azul),var(--cyan));color:#fff;padding:54px 0 46px}
+  .hero .wrap{padding:0 24px}
+  .kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.9;margin:0 0 10px}
+  .hero h1{margin:0 0 10px;font-size:33px;line-height:1.2;font-weight:800}
+  .hero p.sub{margin:0;font-size:17px;opacity:.95}
+  .kpis{display:flex;flex-wrap:wrap;gap:12px;margin:34px auto 0;max-width:860px;padding:0 20px}
+  .kpi{flex:1 1 150px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:14px 16px}
+  .kpi b{display:block;font-size:24px;font-weight:800;line-height:1}
+  .kpi span{font-size:12.5px;opacity:.92}
+  .banner{margin:26px auto 0;max-width:820px;background:#ecfdf3;border:1px solid #abefc6;border-left:5px solid var(--ok);border-radius:10px;padding:16px 18px;color:#085d3a;font-size:15px}
+  .banner b{color:var(--ok)}
+  section{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:24px 26px;margin:22px 0;box-shadow:0 1px 2px rgba(16,32,43,.04)}
+  h2{font-size:21px;margin:0 0 6px;color:var(--azul);display:flex;gap:12px;align-items:baseline}
+  h2 .n{flex:0 0 auto;width:30px;height:30px;background:linear-gradient(135deg,var(--azul),var(--cyan));color:#fff;border-radius:8px;font-size:15px;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+  h3{font-size:16px;margin:18px 0 2px;color:var(--tinta)}
+  ul{margin:12px 0 0;padding-left:4px;list-style:none}
+  li{position:relative;padding:8px 0 8px 26px;border-bottom:1px solid #f2f5f8}
+  li:last-child{border-bottom:0}
+  li:before{content:"";position:absolute;left:4px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+  p{margin:8px 0 0}
+  .take{margin-top:14px;background:#eef6f9;border-radius:10px;padding:12px 14px;font-size:14.5px;color:#0f3a4a}
+  .take b{color:var(--azul)}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;vertical-align:middle}
+  .pill.ok{background:#e7f6ef;color:var(--ok)} .pill.rep{background:#fff7ed;color:var(--warn)}
+  .small{color:var(--suave);font-size:13.5px}
+  table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--linea);vertical-align:top}
+  th{color:var(--azul);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+  .refs{font-size:13.5px;color:var(--suave)} .refs a{color:var(--azul);word-break:break-all;text-decoration:none} .refs a:hover{text-decoration:underline}
+  .refs li:before{background:var(--azul)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{background:#eef3f8;border:1px solid var(--linea);border-radius:999px;padding:5px 12px;font-size:13px}
+  .chip b{color:var(--azul)}
+  footer{text-align:center;color:var(--suave);font-size:13px;padding:30px 20px 50px}
+  abbr{text-decoration:none;border-bottom:1px dotted var(--suave)}
+  @media(max-width:620px){.hero h1{font-size:26px}.kpi b{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">🧠 Dr. Juan Camilo Paris · Informe semanal</p>
+    <h1>¿Cómo se está usando la IA en medicina?</h1>
+    <p class="sub">Panorama clínico verificado · lunes 29 de junio de 2026</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><b>6</b><span>estudios primarios en la ventana</span></div>
+    <div class="kpi"><b>4</b><span>ángulos de búsqueda</span></div>
+    <div class="kpi"><b>PubMed + oficial</b><span>fuentes priorizadas</span></div>
+    <div class="kpi"><b>17-29 jun</b><span>ventana real</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="banner">
+    <b>Recencia (honesto).</b> El bloque principal son <b>estudios primarios indexados en PubMed entre el 17 y el 26 de junio de 2026</b>. El contexto regulatorio recoge desarrollos algo anteriores, <b>siempre con su fecha</b>. Lo que solo se sostiene en prensa secundaria se marca <span class="pill rep">reportado</span>. Según PubMed, todo lo científico lleva su DOI.
+  </div>
+
+  <section>
+    <h2><span class="n">A</span> Abreviaturas</h2>
+    <div class="chips">
+      <span class="chip"><b>IA</b> Inteligencia artificial</span>
+      <span class="chip"><b>LLM</b> Modelo de lenguaje grande</span>
+      <span class="chip"><b>ML</b> Aprendizaje automático</span>
+      <span class="chip"><b>CNN</b> Red neuronal convolucional</span>
+      <span class="chip"><b>AUC</b> Área bajo la curva (1=perfecto · 0,5=azar)</span>
+      <span class="chip"><b>ECA</b> Ensayo clínico aleatorizado</span>
+      <span class="chip"><b>FDA</b> Agencia de Medicamentos de EE. UU.</span>
+      <span class="chip"><b>EMA</b> Agencia Europea de Medicamentos</span>
+      <span class="chip"><b>HCE</b> Historia clínica electrónica</span>
+      <span class="chip"><b>NLP</b> Procesamiento de lenguaje natural</span>
+      <span class="chip"><b>RAG</b> Generación aumentada por recuperación</span>
+      <span class="chip"><b>PWV</b> Velocidad de onda de pulso</span>
+      <span class="chip"><b>LRA</b> Lesión renal aguda</span>
+      <span class="chip"><b>MASH</b> Esteatohepatitis metabólica (antes NASH)</span>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span> Lo nuevo de esta semana <span class="pill ok">fuentes primarias</span></h2>
+    <p class="small">Según PubMed. Mayormente validación retrospectiva o de modelo: muestran capacidad técnica, no desenlaces en pacientes salvo que se indique.</p>
+
+    <h3>1.1 · Panorama: IA generativa y LLM en oncología clínica</h3>
+    <ul>
+      <li>Revisión amplia (MedComm, <b>23-jun-2026</b>) sobre cómo la IA generativa y los <abbr title="modelos de lenguaje grandes">LLM</abbr> integran HCE, imagen, patología, genómica y texto a lo largo del <em>continuum</em> oncológico.</li>
+      <li>Apunta a <b>arquitecturas basadas en agentes</b> y flujos humano-IA como la próxima frontera; retos abiertos: interpretabilidad, fiabilidad, privacidad y gobernanza. <span class="small">[ref 1]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> es una revisión, no evidencia nueva en pacientes; útil como mapa del terreno.</p>
+
+    <h3>1.2 · Diagnóstico de cáncer de mama por imagen (mamografía + resonancia)</h3>
+    <ul>
+      <li><b>269 mamografías y 267 resonancias</b> con contraste; cuatro CNN preentrenadas + máquinas de vectores de soporte (Top Magn Reson Imaging, <b>24-jun-2026</b>).</li>
+      <li>ResNet-18 fue la mejor en mamografía (exactitud <b>90,9 %</b>); un modelo híbrido elevó el <abbr title="área bajo la curva">AUC</abbr> a <b>0,99</b> (mamografía) y <b>0,98</b> (resonancia). <span class="small">[ref 2]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> un solo centro y muestra pequeña; prometedor en clasificación, pendiente de validación externa y prospectiva.</p>
+
+    <h3>1.3 · Biomarcadores retinianos por IA para riesgo cardiovascular</h3>
+    <ul>
+      <li>Foto de fondo de ojo → IA cuantifica vasos retinianos y los asocia con la <abbr title="velocidad de onda de pulso">PWV</abbr>, patrón de oro de la rigidez arterial (Annals of Medicine, <b>26-jun-2026</b>).</li>
+      <li>En <b>3.088 visitas</b>, buena concordancia PWV predicha vs. real (correlación intraclase <b>0,762</b>); moderada para el índice tobillo-brazo (0,410). <span class="small">[ref 3]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> vía no invasiva y remota para estimar rigidez arterial desde una foto de retina; aún es asociación retrospectiva.</p>
+
+    <h3>1.4 · Radiómica con IA para recurrencia de cáncer de cuello uterino</h3>
+    <ul>
+      <li>Multicéntrico, <b>804 pacientes</b> (Radiology: Imaging Cancer): nomograma con datos clínicos + inflamatorios + radiómica de resonancia.</li>
+      <li>Predice supervivencia libre de enfermedad con AUC <b>0,93 (1 año)</b>, 0,84 (3 años) y 0,86 (5 años) en prueba externa. <span class="small">[ref 4]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> modelo pronóstico no invasivo con validación externa y correlato biológico; todavía retrospectivo.</p>
+
+    <h3>1.5 · ML explicable para lesión renal aguda en peritonitis primaria</h3>
+    <ul>
+      <li>Derivación (n=329, China) + validación externa (n=367, base MIMIC-IV) (Renal Failure, <b>25-jun-2026</b>).</li>
+      <li>Predice <abbr title="lesión renal aguda">LRA</abbr> con AUC <b>0,976</b> (derivación) y <b>0,901</b> (validación externa); explicabilidad por SHAP + calculadora web pública. <span class="small">[ref 5]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> modelo de bajo coste e interpretable; falta validación prospectiva al pie de la cama.</p>
+
+    <h3>1.6 · NLP para farmacovigilancia: interacciones hepatotóxicas</h3>
+    <ul>
+      <li><abbr title="procesamiento de lenguaje natural">NLP</abbr> sobre HCE de <b>109.263 ancianos hospitalizados</b> (Annals of Medicine, <b>17-jun-2026</b>).</li>
+      <li>De 3.227 combinaciones, 111 señales (58 consistentes); riesgo de aspirina, clopidogrel y atorvastatina con piperacilina/tazobactam, corroborado en animales. <span class="small">[ref 6]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> potente para minería de seguridad de fármacos en datos reales; las señales exigen confirmación causal.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span> Debate de seguridad de la semana</h2>
+    <h3>2.1 · Cómo frenar las "alucinaciones" de los LLM en salud</h3>
+    <ul>
+      <li>Revisión sistemática PRISMA (BMC Health Services Research, <b>6-jun-2026</b>): 44 estudios, <b>siete familias de estrategias</b>.</li>
+      <li><b>RAG reduce las alucinaciones un 30–50 %</b>; la supervisión humana hasta un <b>95 %</b> (pero menos escalable); el <em>red teaming</em> destapa fallos que otros métodos no ven. Lo combinado gana. <span class="small">[ref 7]</span></li>
+    </ul>
+    <p class="take"><b>Lectura clínica:</b> ningún LLM debería operar en clínica sin recuperación de fuentes verificables <em>y</em> revisión humana; juntas son las que más bajan el riesgo.</p>
+
+    <h3>2.2 · El chatbot mal usado, primer riesgo tecnológico del año</h3>
+    <ul>
+      <li>El informe de peligros tecnológicos de ECRI (2026) puso el <b>mal uso de chatbots de IA</b> como riesgo número uno: las herramientas generales <b>no están reguladas ni validadas</b> como dispositivo médico y aun así se usan para decisiones de salud. <span class="pill rep">reportado · feb-2026</span> <span class="small">[ref 8]</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span> Contexto regulatorio y de adopción 2026 <span class="pill rep">con fecha · mayormente reportado</span></h2>
+    <ul>
+      <li><b>Termómetro independiente (ene-2026).</b> El informe <em>State of Clinical AI</em> de la red Stanford-Harvard (ARISE) revisó <b>+500 estudios</b>: solo el <b>5 % usó datos de pacientes reales</b>; al añadir "ninguna de las anteriores", la exactitud cayó <b>más de un tercio</b>. Mejor evidencia: IA como <b>apoyo</b>, no sustituto. <span class="pill rep">reportado</span> <span class="small">[ref 9]</span></li>
+      <li><b>Inventario FDA.</b> +<b>1.200–1.450 dispositivos con IA</b> autorizados; <b>radiología ≈76–77 %</b>; en marzo de 2026, <b>24 autorizaciones</b> (una cada ~31 h). <span class="pill rep">reportado</span> <span class="small">[ref 10, 11]</span></li>
+      <li><b>Primera IA cualificada para ensayos (MASH).</b> La FDA cualificó <b>AIM-MASH/AIM-NASH</b> (lectura de biopsia hepática, patólogo responsable final) en su programa de <em>Drug Development Tools</em> (dic-2025), tras la EMA; una <em>Perspective</em> del <b>22-jun-2026</b> lo analizó. <span class="pill rep">fechado · aval previo a la ventana</span> <span class="small">[ref 12, 13]</span></li>
+      <li><b>Adopción hospitalaria.</b> Se reporta que el <b>71 % de hospitales no federales de cuidados agudos</b> de EE. UU. usa IA predictiva en su HCE. <span class="pill rep">reportado</span> <span class="small">[ref 14]</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span> Conflictos y nivel de confianza</h2>
+    <table>
+      <tr><th>Afirmación</th><th>Matiz</th><th>Confianza</th></tr>
+      <tr><td>La IA clasifica imagen mamaria con AUC ~0,98–0,99</td><td>Un centro, muestra pequeña, sin validación externa/prospectiva</td><td><b>Media</b> (técnica)</td></tr>
+      <tr><td>Modelos de IA predicen recurrencia/LRA con AUC alto</td><td>Validación externa presente, pero retrospectiva</td><td><b>Media-alta</b></td></tr>
+      <tr><td>RAG + supervisión humana bajan las alucinaciones</td><td>Evidencia sistemática consistente; falta estandarizar métricas</td><td><b>Alta</b></td></tr>
+      <tr><td>La mayoría de la "IA clínica" se prueba con exámenes, no pacientes</td><td>Informe de revisión amplio (ARISE)</td><td><b>Alta</b> (sobre la brecha)</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="n">?</span> Vacíos y limitaciones</h2>
+    <ul>
+      <li>El titular de la semana pasada (LLM generales vs. IA clínica, Nature Medicine) <b>ya se cubrió</b> el 22-jun; esta semana se prioriza evidencia nueva no repetida.</li>
+      <li>Cifras de contexto (ARISE, ritmo FDA, 71 % hospitales) vienen de <b>prensa secundaria</b>: marcadas <span class="pill rep">reportado</span>; leer la fuente primaria antes de citarlas como dato firme.</li>
+      <li>No se halló una <b>aprobación FDA/EMA individual nueva</b> y verificable en los últimos 14 días distinta de la cualificación MASH ya conocida.</li>
+      <li>Los estudios primarios son <b>retrospectivos y de un solo centro o cohorte</b>: capacidad técnica, no efectividad clínica demostrada. No se barrieron <em>preprints</em>.</li>
+    </ul>
+  </section>
+
+  <section class="refs">
+    <h2><span class="n">§</span> Referencias <span class="small">(Vancouver para lo científico · fuente: PubMed con DOI)</span></h2>
+    <ul>
+      <li>1. Yu Y, Zhao Z, Wang Z, et al. Generative Artificial Intelligence and Large Language Models in Clinical Oncology. MedComm (2020). 2026;7(7):e70833. doi:10.1002/mco2.70833. <a href="https://doi.org/10.1002/mco2.70833">doi.org</a> · PMID 42358410</li>
+      <li>2. Alakhras M, Tayseer I, Alquran H, et al. Automated Diagnosis of Breast Cancer Using Deep Learning Techniques Applied to Digital Mammography and Magnetic Resonance Images. Top Magn Reson Imaging. 2026;35(1). doi:10.1097/RMR.0000000000000323. <a href="https://doi.org/10.1097/RMR.0000000000000323">doi.org</a> · PMID 42360310</li>
+      <li>3. Wang Y, Che Y, Qu J, et al. Retinal vascular parameters as AI-driven biomarkers for pulse wave velocity assessment: a telemedicine strategy for cardiovascular risk assessment. Ann Med. 2026;58(1):2682652. doi:10.1080/07853890.2026.2682652. <a href="https://doi.org/10.1080/07853890.2026.2682652">doi.org</a> · PMID 42360005</li>
+      <li>4. Chen S, Zhang Y, Chen D, et al. AI-assisted Radiomic Model for Cervical Cancer Recurrence Prediction: A Multicenter Retrospective Study with Experimental Validation. Radiol Imaging Cancer. 2026;8(4):e250618. doi:10.1148/rycan.250618. <a href="https://doi.org/10.1148/rycan.250618">doi.org</a> · PMID 42360142</li>
+      <li>5. Hu J, Shu B, Zhang D, et al. Development and validation of an explainable machine learning model for predicting acute kidney injury in critically ill patients with primary peritonitis: a multicenter cohort study. Ren Fail. 2026;48(1):2687291. doi:10.1080/0886022X.2026.2687291. <a href="https://doi.org/10.1080/0886022X.2026.2687291">doi.org</a> · PMID 42349900</li>
+      <li>6. Ma J, Chen H, Guo C, et al. High-throughput signal detection of hepatotoxic drug-drug interactions in hospitalized elderly patients: an NLP-driven pharmacovigilance study. Ann Med. 2026;58(1):2682581. doi:10.1080/07853890.2026.2682581. <a href="https://doi.org/10.1080/07853890.2026.2682581">doi.org</a> · PMID 42311091</li>
+      <li>7. Basu S, Huynh B. Mitigating hallucinations in healthcare AI: a systematic review of evidence-based strategies. BMC Health Serv Res. 2026. doi:10.1186/s12913-026-14851-1. <a href="https://doi.org/10.1186/s12913-026-14851-1">doi.org</a> · PMID 42251377</li>
+      <li>8. Misuse of AI chatbots in health care tops 2026 Health Tech Hazard Report. Association of Health Care Journalists, feb-2026. <a href="https://healthjournalism.org/blog/2026/02/misuse-of-ai-chatbots-in-health-care-tops-2026-health-tech-hazard-report/">healthjournalism.org</a></li>
+      <li>9. Clinical AI Has Boomed — State of Clinical AI Report (ARISE). Stanford Medicine, ene-2026. <a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html">medicine.stanford.edu</a></li>
+      <li>10. AI-Enabled Medical Devices (lista oficial). FDA, 2026. <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices">fda.gov</a></li>
+      <li>11. Numbers from the FDA show radiology is maintaining its lead. The Imaging Wire, mar-2026. <a href="https://theimagingwire.com/2026/03/11/numbers-from-the-fda-show-radiology-is-maintaining-its-lead/">theimagingwire.com</a></li>
+      <li>12. FDA Qualifies First AI Drug Development Tool, Will Be Used in 'MASH' Clinical Trials. FDA, dic-2025. <a href="https://www.fda.gov/drugs/drug-safety-and-availability/fda-qualifies-first-ai-drug-development-tool-will-be-used-mash-clinical-trials">fda.gov</a></li>
+      <li>13. EMA qualifies first AI tool to diagnose inflammatory liver disease (MASH) in biopsy samples. European Medicines Agency, 2025. <a href="https://www.ema.europa.eu/en/news/ema-qualifies-first-artificial-intelligence-tool-diagnose-inflammatory-liver-disease-mash-biopsy-samples">ema.europa.eu</a></li>
+      <li>14. AI in healthcare news 2026 (adopción hospitalaria). Crescendo AI, 2026. <a href="https://www.crescendo.ai/news/ai-in-healthcare-news">crescendo.ai</a></li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  Generado por Dr. Juan Camilo Paris · Informe semanal "¿Cómo se está usando la IA en medicina?" · 29 de junio de 2026<br>
+  <span class="small">Divulgación profesional. No sustituye el juicio clínico ni constituye recomendación regulatoria. Fuentes primarias vía PubMed (MCP) + búsqueda web priorizando fuentes oficiales.</span>
+</footer>
+
+</body>
+</html>
