@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-06-30</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .note{background:rgba(242,166,90,.10);border:1px solid rgba(242,166,90,.35);border-radius:12px;padding:14px 16px;margin-top:4px;font-size:14px}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Martes 30 de junio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">5</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">repo tocado</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">sesión activa</div></div>
+    <div class="kpi"><div class="n">0</div><div class="l">desarrollo nuevo</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada <strong>sin desarrollo de producto</strong>. Toda la actividad fue <strong>maquinaria
+      automatizada de tareas programadas</strong>: los 5 commits del día viven en el repo de publicación
+      <code>reportes-ia-medicina</code> y son las salidas de las propias rutinas nocturnas/matutinas
+      (informe de trabajo en Claude Code, digest de WhatsApp, informe semanal de IA en medicina y dashboard
+      de Sinapsis). No hubo commits ni ediciones en repos de proyecto, ni sesión de desarrollo real.</p>
+      <p>
+        <span class="tag">tooling automatizado</span>
+        <span class="tag">informe diario</span>
+        <span class="tag">whatsapp digest</span>
+        <span class="tag">ia-medicina semanal</span>
+        <span class="tag">dashboard sinapsis</span>
+      </p>
+      <div class="note"><strong>Honestidad del dato:</strong> el daily summary de hoy aún no existía al generar
+      este informe; la lectura se apoya en los commits del día y en el cierre de ayer (2026-06-29). Hoy
+      encadena el <strong>sexto día consecutivo</strong> sin desarrollo nuevo (el último trabajo real fue la
+      noche del 25-jun: Reel Studio M0+M1).</div>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>reportes-ia-medicina · <span class="pill">automático</span></h3>
+      <ul>
+        <li>Publicación de los reportes programados del día (rutinas headless, sin intervención manual).</li>
+        <li>Informe de trabajo en Claude Code (00:06), digest de WhatsApp (02:03), informe "IA en medicina" (08:11),
+        dashboard de Sinapsis (08:53) + refresco de dashboards privados cifrados (07:00).</li>
+        <li class="commit">5 commits · c26b8ea · 87b636d · 7e4de78 · 669b5fc · 2b3748d</li>
+      </ul>
+
+      <h3>iamasters-os (capa OS)</h3>
+      <ul>
+        <li>Solo tooling automatizado en marcha. <strong>0 commits</strong> en el repo de proyecto,
+        0 archivos de proyecto editados. 1 workspace de sesión con actividad reciente.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li>Sin decisiones de producto registradas: jornada operativa de mantenimiento automatizado.</li>
+        <li>Se mantiene la disciplina anti-alucinación: no se fabrica trabajo ni commits para un día vacío.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>Cadena de 6 días sin desarrollo</strong>: si es pausa intencional, ignorar; si no, retomar.</li>
+        <li class="ambar">Retomar <strong>Reel Studio</strong> (siguiente módulo tras M0+M1) o pegar claves de
+        <strong>ElevenLabs</strong> para el primer video real de <code>plataforma-videos-medicos</code>.</li>
+        <li class="ambar">~83+ patrones pendientes de <code>/analyze-session</code>: confirmar instincts en un cierre live.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
