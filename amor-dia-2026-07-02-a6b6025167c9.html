@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestro día 💞</title>
+<style>
+  :root{--rose:#e63956;--him:#f0883e;--bg1:#fff6f8;--bg2:#ffe7ee;--card:#fff;--ink:#3a2730;--muted:#9b7d88;--shadow:0 10px 30px rgba(230,57,86,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,var(--bg1),var(--bg2));min-height:100vh;line-height:1.5;padding:24px 16px}
+  .wrap{max-width:480px;margin:0 auto}
+  .kiss{text-align:center;font-size:46px;animation:beat 1.6s ease-in-out infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}25%{transform:scale(1.18)}40%{transform:scale(1)}}
+  h1{text-align:center;font-size:26px;letter-spacing:-.5px;margin-top:4px}
+  .fecha{text-align:center;color:var(--muted);margin-bottom:20px;text-transform:capitalize}
+  .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+  .card{background:var(--card);border-radius:18px;padding:18px;box-shadow:var(--shadow);text-align:center}
+  .big{font-size:34px;font-weight:800;line-height:1;color:var(--rose)}
+  .big.him{color:var(--him)}
+  .lbl{color:var(--muted);font-size:12px;margin-top:5px}
+  .full{text-align:left;padding:20px}
+  .full .h{font-weight:700;margin-bottom:6px}
+  .quote{font-style:italic;color:var(--ink);background:#fff8fa;border-left:3px solid var(--rose);padding:10px 14px;border-radius:8px;margin-top:6px}
+  .frase{text-align:center;font-size:18px;margin:22px 0;color:var(--rose);font-weight:600}
+  .pill{display:inline-block;background:var(--rose);color:#fff;font-weight:700;font-size:13px;padding:3px 12px;border-radius:999px}
+  a.btn{display:block;text-align:center;text-decoration:none;background:var(--ink);color:#fff;font-weight:700;padding:15px;border-radius:14px;margin-top:8px}
+  .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kiss">💞</div>
+  <h1>Nuestro amor, hoy</h1>
+  <div class="fecha" id="fecha">—</div>
+
+  <div class="grid">
+    <div class="card"><div class="big" id="msgs">0</div><div class="lbl">mensajes ayer</div></div>
+    <div class="card"><div class="big" id="amor">0</div><div class="lbl">"amor"</div></div>
+    <div class="card"><div class="big" id="teamo">0</div><div class="lbl">"te amo"</div></div>
+  </div>
+  <div class="card" style="text-align:center;margin-bottom:14px" id="quien">—</div>
+
+  <div class="card full" id="recuerdo-card" style="margin-bottom:14px">
+    <div class="h">💭 Un recuerdo nuestro</div>
+    <div class="quote" id="recuerdo">—</div>
+    <div class="lbl" id="recuerdo-fecha"></div>
+  </div>
+
+  <div class="card full" style="margin-bottom:14px">
+    <div class="h">✨ Palabra del día</div>
+    <div style="margin-top:6px"><span class="pill" id="palabra">—</span> <span class="lbl" id="palabra-n"></span></div>
+  </div>
+
+  <div class="card" style="text-align:center;margin-bottom:8px">
+    ❤️ En total ya llevamos <b id="total-amor">0</b> veces "amor" y <b id="total-teamo">0</b> "te amo".
+  </div>
+
+  <div class="frase" id="frase">—</div>
+
+  <a class="btn" id="hist" href="#">📊 Ver todo nuestro historial →</a>
+  <div class="foot" id="foot">💞</div>
+</div>
+
+<script>
+let DATA = /*__DATA__*/null;
+const CIPHER = {"iv":"SJmPu7yOCGlFOSWy","ct":"O+7BkaxDIpOCZW/EUYVEc5ZgCHW6OvD54OXIg/kHIQ9Kau8PMoMfZwrOY96YvnmsZh6Q2j4CvviBpQiuZjBJDOFiHOdmsekMvaIYO267aStpzbSsbwFhrz5Dg3M5Ro3E0jTnhfjoqAMhPJALEfUeJnzyuik6SCQBuNRTPwKk3iISLY/TD+43Jm+lLmxeN1lYmQNAu6XUmwX6Kvve2nvVrC/OzgDXT58Ji+vo/sLF+flEw4gclmWhTeMlisXkFf8Nk9m51FIuIMQruWjpHpuUdsRS9V2Ya8eKMCZlCaBoSuI9q9LjstRJX1WEBOt5CK9KDhQT4SvJCcr93euoW+xX9JhLPfwiylP/8eD8qiQPdGb84ZmH19Vn2UHfqSLwK1YGJKwfzZ+ePJn8asO0yarPuxqvxtbipyUQQ3tHaLt2b+N/0vii4xqrmfWpAp7Gvpy2zH8jqAOuVKFTnZWramrBcKssN1JtLBNgGeqYadGl/8vBNmv4BZtO5b8K9u3paqhgxbRzupBu8/B3argJ4OhPFWl08OoA7fQgq+w7Wl9gRb4n5yUhxYCqDzPdV0WPlV7OGa7KZcin1ncbmmKtjgshCjBS/dGFJVYMwgssUaywDSiSuoqLz+VvWpq5KLQ/gleXZMHrKuhBfBbtXLQCpY4SQUamxHEoL7AgtmnYUdeZ+lMJcQ=="};
+async function decryptFromHash(cipher){
+  const hk=(location.hash.match(/k=([^&]+)/)||[])[1];
+  if(!hk||!cipher) throw new Error('no key');
+  const raw=Uint8Array.from(atob(hk.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
+  const key=await crypto.subtle.importKey('raw',raw,{name:'AES-GCM'},false,['decrypt']);
+  const iv=Uint8Array.from(atob(cipher.iv),c=>c.charCodeAt(0));
+  const ct=Uint8Array.from(atob(cipher.ct),c=>c.charCodeAt(0));
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+async function boot(){
+  if(!DATA){
+    try{ DATA = await decryptFromHash(CIPHER); }
+    catch(e){ document.body.innerHTML='<div style="font-family:sans-serif;text-align:center;padding:60px;color:#e63956;font-size:18px">💔 Abre el <b>enlace completo</b> (con la clave después del #) en el navegador.</div>'; return; }
+  }
+  render();
+}
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function up(id,v){const el=document.getElementById(id);let s=null;const step=t=>{if(!s)s=t;const p=Math.min((t-s)/1100,1);el.textContent=Math.round(v*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
+function render(){
+  document.getElementById('fecha').textContent=DATA.fecha;
+  up('msgs',DATA.yest); up('amor',DATA.yAmor); up('teamo',DATA.yTeAmo);
+  document.getElementById('quien').textContent=DATA.quien;
+  if(DATA.rec){ document.getElementById('recuerdo').textContent='"'+DATA.rec.text+'"';
+    document.getElementById('recuerdo-fecha').textContent='— '+(DATA.rec.side==='tu'?'tú':'Amor')+', '+DATA.rec.d; }
+  else document.getElementById('recuerdo-card').style.display='none';
+  if(DATA.pal){ document.getElementById('palabra').textContent=DATA.pal.w;
+    document.getElementById('palabra-n').textContent='· '+DATA.pal.n+' veces'; }
+  document.getElementById('total-amor').textContent=DATA.totalAmor;
+  document.getElementById('total-teamo').textContent=DATA.totalTeAmo;
+  document.getElementById('frase').textContent=DATA.frase;
+  const h=document.getElementById('hist');
+  if(DATA.histUrl) h.href=DATA.histUrl; else h.style.display='none';
+  document.getElementById('foot').textContent='💞 datos desde el '+DATA.range[0];
+}
+boot();
+</script>
+</body>
+</html>
