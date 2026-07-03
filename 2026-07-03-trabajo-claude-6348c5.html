@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-07-03</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .note{font-size:12px;color:var(--muted);margin-top:10px;font-style:italic}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Jornada del 2 de julio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">11</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">4</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">app nueva</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">pivote clave</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Día de código dominado por <strong>cuadros-turnos-urgencias</strong>: se ejecutó el
+      <strong>pivote Excel-first</strong> — la app deja de gestionar el plan de reducción de horas (eso lo lleva el
+      jefe en Excel) y se centra en montar cuadros rápido, tomando el <strong>Excel definitivo del jefe como fuente
+      autoritativa</strong> (parser todo-o-nada, panel de descargas, ALBA gated on publish, código CAL y fórmulas
+      COUNTIF vivas). En paralelo arrancó <strong>teleprompter-jcp</strong>, una PWA de teleprompter con seguimiento
+      de voz para grabar reels 9:16 desde el iPhone — con el <strong>spike de iOS resuelto</strong> (voz + grabación
+      conviven en iOS 18.7). Cierre documentado en el segundo cerebro y publicación automática de los informes
+      programados de la madrugada.</p>
+      <p>
+        <span class="tag">pivote Excel-first</span>
+        <span class="tag">parser todo-o-nada</span>
+        <span class="tag">código CAL</span>
+        <span class="tag">fórmulas COUNTIF</span>
+        <span class="tag">app nueva</span>
+        <span class="tag">spike iOS resuelto</span>
+        <span class="tag">PWA teleprompter</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>cuadros-turnos-urgencias · <span class="pill">pivote Excel-first</span></h3>
+      <ul>
+        <li>La app abandona el plan de pago/reducción de horas (lo lleva el jefe en Excel) y se centra en <strong>montar cuadros rápido</strong>; el Excel definitivo del jefe pasa a ser la <strong>fuente autoritativa</strong>.</li>
+        <li><strong>Subir cuadro definitivo (.xlsx)</strong>: nuevo parser + import restringido a <code>jefe_servicio</code>, mes publicado → 409, médico/código desconocido → <strong>422 sin escribir nada</strong> (todo-o-nada).</li>
+        <li><strong>Panel de descargas</strong> que agrupa todos los exports; ALBA (Excel+PDF) <strong>gated on publish</strong>.</li>
+        <li>Nuevo código <strong>CAL</strong> (calamidad doméstica): ausencia pagada (INC-like para vinculados, no pagada para PS).</li>
+        <li><strong>Tabla de asignaciones por sala del Excel = autoritativa</strong>: se parsea y renderiza VERBATIM en todas partes; conteos <code>COUNTIF</code> vivos en los exports.</li>
+        <li class="commit">5 commits · 517eb70 · 845e9f4 · 9363904 · f8b6198 · 06470f8</li>
+      </ul>
+
+      <h3>teleprompter-jcp · <span class="pill">app nueva</span></h3>
+      <ul>
+        <li><strong>PWA de teleprompter con seguimiento de voz</strong> (estilo VoiceTrack) para grabar reels verticales 9:16 desde el iPhone; alimenta el pipeline <code>reel-edita-jcp</code>.</li>
+        <li>HTML/CSS/JS vanilla, sin build, sin backend, sin API keys; deploy estático en Vercel. Modos VOZ / AUTO / MANUAL, todo local (localStorage + IndexedDB).</li>
+        <li><strong>Spike de iOS RESUELTO</strong>: voz + grabación conviven en iOS 18.7 (riesgo nº1 cerrado).</li>
+        <li class="commit">1 commit · 8e0141f</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierre auto-EOD del día documentado: pivote Excel-first en cuadros HGM + alta del proyecto teleprompter-jcp.</li>
+        <li class="commit">1 commit · 6bd089b</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Corridas programadas de la madrugada: WhatsApp digest, informe de trabajo en Claude, dashboard de Sinapsis y actualización de dashboards privados cifrados.</li>
+        <li class="commit">4 commits · b8a503e · 80e0ad5 · d6aaf87 · 94fefef</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>El Excel del jefe manda</strong>: la app no gestiona el plan de reducción de saldos; sube el cuadro definitivo y lo renderiza verbatim.</li>
+        <li><strong>Import todo-o-nada</strong>: si aparece un médico o código desconocido, 422 sin escribir nada (integridad antes que conveniencia).</li>
+        <li><strong>ALBA gated on publish</strong>: los exports oficiales solo se generan con el mes publicado (409 si no).</li>
+        <li><strong>Se retiró</strong> el tablero de reducción de saldos y sus endpoints, sin tocar la tabla ni el motor subyacente.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Crear el turno <strong>CAL</strong> en el catálogo/<code>shifts</code> antes de subir el cuadro de julio (si no, el import da 422).</li>
+        <li class="ambar">Subir el <strong>cuadro definitivo de julio</strong> por la app y publicarlo.</li>
+        <li class="ambar">Prueba <strong>end-to-end en el iPhone real</strong> del teleprompter → <code>status: built</code> → cablear con <code>reel-edita-jcp</code>.</li>
+        <li class="ambar">Backlog Sinapsis: correr <code>/analyze-session</code> (92+ proposals + gotchas acumulados).</li>
+      </ul>
+    </section>
+
+    <p class="note">Nota: el recolector etiqueta la jornada en UTC (mostró 2026-07-03); el trabajo de código real es del 2 de julio local (Colombia UTC−5). Los commits de <em>reportes-ia-medicina</em> son corridas automáticas de la madrugada.</p>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
