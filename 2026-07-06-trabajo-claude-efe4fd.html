@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-07-06</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .note{font-size:13px;color:var(--muted);margin-top:10px;border-left:3px solid var(--line);padding-left:12px}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Lunes 6 de julio de 2026 · trabajo global de las últimas 24 h</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">9</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">sesión activa</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">reel montado</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>La ventana cierra la jornada de la <strong>cascada de contenido</strong>: por primera vez el circuito
+      corrió de punta a punta — guion → teleprompter → grabación → corte (Compuerta 1, 62.7s) →
+      <strong>tratamiento y montaje (Compuerta 2)</strong>. El resultado, <strong>VIDEO-FINAL.mp4</strong> (67.8s,
+      mezcla A+B, motor local <code>build-band.py</code>), quedó en QC/revisor. Solo falta publicarlo.
+      En paralelo, un refinamiento del <strong>teleprompter</strong> (seguimiento por frase) y las corridas
+      automáticas de reporte (dashboard e instintos de Sinapsis, digest de WhatsApp) publicadas sin intervención.</p>
+      <p>
+        <span class="tag">1er reel completo</span>
+        <span class="tag">montaje Compuerta 2</span>
+        <span class="tag">VIDEO-FINAL en QC</span>
+        <span class="tag">teleprompter por frase</span>
+        <span class="tag">gotcha Whisper dedup</span>
+        <span class="tag">reportes automáticos</span>
+      </p>
+      <p class="note">Nota de honestidad: el daily summary de hoy (6-jul) aún no existe; esta síntesis
+      se apoya en el summary de ayer (5-jul) y en los commits de las últimas 24 h. Varios commits de
+      <code>reportes-ia-medicina</code> son salidas de tareas programadas, no trabajo manual nuevo.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>iamasters-os · reel "ia-no-te-reemplaza" · <span class="pill">1er reel real</span></h3>
+      <ul>
+        <li>Cerrado el circuito completo por primera vez: <code>/reel-guion</code> → grabación → <code>/reel-jcp</code>
+        (corte aprobado en 62.7s, rechazado el de 67s).</li>
+        <li><strong>Tratamiento — Compuerta 2 aprobada</strong>: elegida la <strong>mezcla A+B</strong> (tech-animado en
+        gancho y datos, sobrio en el tramo humano).</li>
+        <li>Motor de montaje local <code>motion/build-band.py</code> + <code>beat-map.json</code>: banda 4:3 + PiP
+        apaisado desde el bruto horizontal → <strong>VIDEO-FINAL.mp4 (67.8s)</strong>, ahora en QC/revisor.</li>
+        <li>Gotcha de captura destapado: el "full res" del webcam era peor resolución (848×464); se usó la webcam
+        horizontal 1024×576.</li>
+        <li>Aprendizaje guardado a memoria: <strong>Whisper dedupea las tomas repetidas</strong> en el transcript
+        global → se cazan transcribiendo tramos aislados.</li>
+        <li class="commit">outputs en projects/* (gitignored en el OS repo)</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierre <code>/eod</code> incremental del 5-jul: registrado el tratamiento del reel (Compuerta 2), el
+        montaje de VIDEO-FINAL y el gotcha de Whisper.</li>
+        <li class="commit">2 commits · f4af374 · e24c40d</li>
+      </ul>
+
+      <h3>teleprompter-jcp</h3>
+      <ul>
+        <li>Refinamiento del modo VOZ: seguimiento <strong>por frase</strong> (sentence-gated, no salta al repetir
+        palabra), <strong>glide scroll</strong> suave y <strong>línea de lectura centrada</strong>.</li>
+        <li class="commit">1 commit · fccdc97</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Corridas programadas publicadas sin intervención: <strong>dashboard e instintos de Sinapsis</strong>,
+        <strong>digest de WhatsApp</strong> y el informe de trabajo en Claude del 5-jul; refresco de dashboards
+        cifrados (histórico + día).</li>
+        <li class="commit">6 commits · 4bd3c7e · 6ce8420 · 6a0f50b · 569399c · 652444d · 8f37d22</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Tratamiento del reel</strong>: mezcla A+B (animado en gancho/datos, sobrio en lo humano) sobre
+        formato full-frame plano.</li>
+        <li><strong>Fuente de captura</strong>: webcam horizontal 1024×576 en vez del "full res" del operador, que
+        resultó de peor resolución.</li>
+        <li><strong>Transcripción anti-dedup</strong>: para cazar retakes, transcribir tramos aislados con señales
+        (palabra >1.5s, huecos >1s), no confiar en el transcript global.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Cerrar el QC de <strong>VIDEO-FINAL.mp4</strong> y <strong>publicar el 1er reel real</strong>
+        de la marca ("ia-no-te-reemplaza").</li>
+        <li class="ambar">Próximos brutos: grabar <strong>vertical con iPhone</strong> (PWA da 1080×1920) y pasar por
+        cable/WhatsApp-Documento para evitar el downscale del webcam horizontal.</li>
+        <li class="ambar">Checklist end-to-end del <strong>teleprompter</strong> en iPhone real → <code>built</code>
+        → circuito automático con <code>reel-edita-jcp</code>.</li>
+        <li class="ambar">Heredados: <code>/analyze-session</code> (117 proposals sin procesar) y crear turno
+        <code>CAL</code> para publicar el cuadro de urgencias de julio.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
