@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>IA en medicina — Informe semanal · 6 jul 2026</title>
+<style>
+  :root{ --azul:#1D4E89; --cyan:#4FB0C6; --tinta:#16202b; --suave:#5b6b7a; --linea:#e6ecf1; --bg:#f4f7fa; --ok:#1a7f5a; --warn:#b54708; --kill:#b42318; }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--tinta);background:var(--bg);line-height:1.65}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  .hero{background:linear-gradient(135deg,var(--azul),var(--cyan));color:#fff;padding:54px 0 46px}
+  .hero .wrap{padding:0 24px}
+  .kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.9;margin:0 0 10px}
+  .hero h1{margin:0 0 10px;font-size:33px;line-height:1.2;font-weight:800}
+  .hero p.sub{margin:0;font-size:17px;opacity:.95}
+  .kpis{display:flex;flex-wrap:wrap;gap:12px;margin:34px auto 0;max-width:860px;padding:0 20px}
+  .kpi{flex:1 1 150px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:14px 16px}
+  .kpi b{display:block;font-size:24px;font-weight:800;line-height:1}
+  .kpi span{font-size:12.5px;opacity:.92}
+  .banner{margin:26px auto 0;max-width:820px;background:#ecfdf3;border:1px solid #abefc6;border-left:5px solid var(--ok);border-radius:10px;padding:16px 18px;color:#085d3a;font-size:15px}
+  .banner b{color:var(--ok)}
+  section{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:24px 26px;margin:22px 0;box-shadow:0 1px 2px rgba(16,32,43,.04)}
+  h2{font-size:21px;margin:0 0 6px;color:var(--azul);display:flex;gap:12px;align-items:baseline}
+  h2 .n{flex:0 0 auto;width:30px;height:30px;background:linear-gradient(135deg,var(--azul),var(--cyan));color:#fff;border-radius:8px;font-size:15px;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+  h3{font-size:16px;margin:18px 0 2px;color:var(--tinta)}
+  ul{margin:12px 0 0;padding-left:4px;list-style:none}
+  li{position:relative;padding:8px 0 8px 26px;border-bottom:1px solid #f2f5f8}
+  li:last-child{border-bottom:0}
+  li:before{content:"";position:absolute;left:4px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+  p{margin:8px 0 0}
+  .take{margin-top:14px;background:#eef6f9;border-radius:10px;padding:12px 14px;font-size:14.5px;color:#0f3a4a}
+  .take b{color:var(--azul)}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;vertical-align:middle}
+  .pill.ok{background:#e7f6ef;color:var(--ok)} .pill.rep{background:#fff7ed;color:var(--warn)} .pill.star{background:#eef3ff;color:#3538cd}
+  .small{color:var(--suave);font-size:13.5px}
+  table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--linea);vertical-align:top}
+  th{color:var(--azul);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+  .refs{font-size:13.5px;color:var(--suave)} .refs a{color:var(--azul);word-break:break-all;text-decoration:none} .refs a:hover{text-decoration:underline}
+  .refs li:before{background:var(--azul)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{background:#eef3f8;border:1px solid var(--linea);border-radius:999px;padding:5px 12px;font-size:13px}
+  .chip b{color:var(--azul)}
+  footer{text-align:center;color:var(--suave);font-size:13px;padding:30px 20px 50px}
+  abbr{text-decoration:none;border-bottom:1px dotted var(--suave)}
+  @media(max-width:620px){.hero h1{font-size:26px}.kpi b{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">🧠 Dr. Juan Camilo Paris · Informe semanal</p>
+    <h1>¿Cómo se está usando la IA en medicina?</h1>
+    <p class="sub">Panorama clínico verificado · lunes 6 de julio de 2026</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><b>4</b><span>estudios primarios en la ventana</span></div>
+    <div class="kpi"><b>6</b><span>revisiones de panorama</span></div>
+    <div class="kpi"><b>+13%</b><span>cumplimiento sepsis con LLM (ECA)</span></div>
+    <div class="kpi"><b>10</b><span>referencias con DOI</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="banner">
+    <b>Titular de la semana.</b> La mejor evidencia no es un modelo más grande: es un <b>ensayo aleatorizado</b> que pone a un modelo de lenguaje grande (<abbr title="large language model">LLM</abbr>) a auditar la calidad de la atención a la sepsis en tiempo casi real → <b>+13% absoluto</b> en cumplimiento del estándar, sin empeorar la mortalidad [1]. IA en el <i>proceso</i>, no reemplazando el juicio.
+  </div>
+
+  <section>
+    <h2><span class="n">1</span> Estudios primarios verificados <span class="pill ok">PubMed · con DOI</span></h2>
+    <p class="small">Ventana: entrada/publicación en PubMed entre el 19-jun y el 6-jul de 2026. Basado en artículos recuperados de PubMed.</p>
+
+    <h3>1.1 · LLM que audita la calidad de la sepsis — ensayo aleatorizado <span class="pill star">★ destacado</span></h3>
+    <p>Ensayo aleatorizado por conglomerados en dos servicios de urgencias de la Universidad de California San Diego (<abbr title="University of California San Diego">UCSD</abbr>): 66 médicos, 301 pacientes. Un LLM evaluó el cumplimiento del paquete de medidas SEP-1 (Centros de Servicios de Medicare y Medicaid, <abbr title="Centers for Medicare & Medicaid Services">CMS</abbr>) al alta y devolvió retroalimentación al médico.</p>
+    <ul>
+      <li>Cumplimiento: <b>70,1% → 82,9%</b> (+13,0% absoluto; razón de momios 2,10; IC 95% 1,15–3,81; P=0,02).</li>
+      <li>Concordancia LLM vs. revisión experta: <b>92%</b>.</li>
+      <li>El componente que más mejoró fue documental (bolo de líquidos 30 mL/kg no completado: 13,2% → 1,7%).</li>
+      <li>Sin diferencias en mortalidad a 30 días ni ingresos a cuidados intensivos.</li>
+    </ul>
+    <div class="take"><b>Lectura clínica:</b> la IA no "diagnosticó" mejor; redujo el <b>fallo de proceso/documentación</b>. Caso de uso realista y auditable. Limitación: un solo sistema hospitalario, desenlace de proceso, no de mortalidad. [1]</div>
+
+    <h3>1.2 · GPT-4 redactando resúmenes de alta (NHS)</h3>
+    <p>Imperial College Healthcare <abbr title="National Health Service">NHS</abbr> Trust (Londres). Prompts con plantilla sobre GPT-4 para generar las secciones "resumen clínico" y "plan y acciones". En prueba (9 casos), <b>89%</b> con valoración global positiva; buena legibilidad, sin sesgo sociodemográfico ni daño detectado.</p>
+    <div class="take"><b>Lectura clínica:</b> prometedor para descargar trabajo administrativo, pero <b>muestra minúscula (n=9)</b>. Los autores piden estudio potenciado. No es evidencia de despliegue. [2]</div>
+
+    <h3>1.3 · IA que "lee músculo" en la TC de calcio coronario</h3>
+    <p>Cohorte Multi-Ethnic Study of Atherosclerosis (<abbr title="Multi-Ethnic Study of Atherosclerosis">MESA</abbr>), 5.739 participantes, 19 años de seguimiento. La miosteatosis cuantificada por IA en la tomografía computarizada (<abbr title="tomografía computarizada">TC</abbr>) de calcio coronario se asoció con más fibrilación auricular (razón de riesgos 1,68) e insuficiencia cardíaca (1,61) y <b>mejoró la predicción</b> sobre el score de Agatston.</p>
+    <div class="take"><b>Lectura clínica:</b> "oportunismo de imagen" — extraer pronóstico ya presente en una TC hecha por otra razón. Retrospectivo; falta validación prospectiva. [3]</div>
+
+    <h3>1.4 · IA para diagnosticar enfermedad respiratoria exacerbada por aspirina</h3>
+    <p>Modelo sobre expresión de ARN mensajero (<abbr title="ácido ribonucleico mensajero">ARNm</abbr>) de epitelio nasal para identificar la enfermedad respiratoria exacerbada por aspirina (<abbr title="aspirin-exacerbated respiratory disease">AERD</abbr>): exactitud <b>93%</b> (entrenamiento) y <b>83%</b> (validación externa). Genes top coherentes con la fisiopatología.</p>
+    <div class="take"><b>Lectura clínica:</b> cohortes pequeñas (71/57), pero validación externa + plausibilidad biológica lo hacen interesante para endotipado. [4]</div>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span> Hacia dónde apunta la evidencia <span class="pill ok">revisiones</span></h2>
+    <p>Revisiones de la ventana — útiles como panorama, <b>no</b> como prueba de eficacia:</p>
+    <ul>
+      <li><b>IA generativa y LLM en oncología clínica:</b> integra historia clínica, imagen, patología y genómica; reto = interpretabilidad y gobernanza. [5]</li>
+      <li><b>IA en cánceres de origen primario desconocido (<abbr title="cancer of unknown primary">CUP</abbr>):</b> predicción del tejido de origen y de respuesta. [6]</li>
+      <li><b>IA + telemedicina y soporte a la decisión en UCI/anestesia:</b> beneficios en monitorización, pero evidencia <b>mayormente observacional</b>, sin validación prospectiva. [7]</li>
+      <li><b>IA en cáncer de vejiga</b> (cistoscopia, citología, resección). [8]</li>
+      <li><b>IA en neuro-oftalmología:</b> detección precoz de signos de alto riesgo, sin sustituir al especialista. [9]</li>
+      <li><b>IA en medicina del viajero:</b> equilibra oportunidad y riesgo (privacidad, vacío regulatorio). [10]</li>
+    </ul>
+    <div class="take"><b>Patrón común:</b> casi todas terminan con la misma advertencia — falta <b>validación prospectiva multicéntrica y estandarización regulatoria</b>. Ese es el cuello de botella real de 2026.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span> Adopción real: el escriba ambiental se normaliza <span class="pill rep">reportado · web</span></h2>
+    <p>El uso clínico más extendido hoy no es diagnóstico, es <b>documentación</b>. Los escribas ambientales (escuchan la consulta y redactan la nota) pasaron de piloto a estándar emergente.</p>
+    <ul>
+      <li>~<b>2/3 de los hospitales de EE. UU. con Epic</b> ya tenían documentación ambiental hacia mediados de 2025; el sistema de veteranos (<abbr title="Veterans Affairs">VA</abbr>) despliega a nivel nacional en 2026.</li>
+      <li>Estudio multicéntrico (5 centros, JAMA): ahorros <b>modestos</b> — −13,4 min en historia clínica electrónica, −16,0 min de documentación, +0,49 visitas/semana.</li>
+      <li>Revisión en <i>npj Digital Medicine</i> sobre las <b>barreras</b> para escalar.</li>
+    </ul>
+    <div class="take"><b>Lectura clínica:</b> el retorno real es "modesto e inconsistente". El valor está en reducir carga administrativa y horas extra, no en un salto de calidad clínica. <span class="small">(Cifras de medios/estudios; no verificadas aquí en fuente primaria.)</span></div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span> Seguridad y regulación <span class="pill rep">contexto · web</span></h2>
+    <ul>
+      <li><b>Aceptación:</b> se reporta que ~<b>60% de la población</b> se siente incómoda con que su médico dependa de la IA.</li>
+      <li><b>Regulación:</b> el Reglamento de IA de la Unión Europea (<abbr title="EU AI Act">EU AI Act</abbr>, 2024) clasifica como "alto riesgo" el software de diagnóstico y de soporte a la decisión.</li>
+      <li><b>Volumen:</b> se reporta que la Administración de Alimentos y Medicamentos de EE. UU. (<abbr title="Food and Drug Administration">FDA</abbr>) supera los <b>950 dispositivos con IA</b> autorizados a enero de 2026 <span class="small">(no verificado en fuente FDA primaria esta semana).</span></li>
+      <li><b>Riesgo emergente de LLM:</b> literatura advierte sobre "alineación engañosa" y "conciencia de evaluación" — por eso importa la validación prospectiva.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span> Qué me llevo esta semana</h2>
+    <div class="chips">
+      <div class="chip"><b>1.</b> La evidencia buena es aburrida y medible — un LLM auditando sepsis en un ECA [1].</div>
+      <div class="chip"><b>2.</b> Documentación &gt; diagnóstico como caso de uso real hoy.</div>
+      <div class="chip"><b>3.</b> El cuello de botella es la validación prospectiva, no la potencia del modelo.</div>
+    </div>
+    <div class="take" style="margin-top:16px"><b>Nota de transparencia:</b> lo científico (secciones 1–2) va verificado en PubMed con DOI. Adopción y regulación (secciones 3–4) provienen de búsqueda web y se marcan como reportado. La búsqueda regulatoria estuvo intermitente; <b>no</b> se afirmó ninguna aprobación FDA/EMA concreta de esta semana por no poder confirmarla. No se inventó nada.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">R</span> Referencias</h2>
+    <p class="small">Vancouver — científico verificado en PubMed.</p>
+    <ul class="refs">
+      <li>1. Boussina A, et al. Medical Record Abstraction for Quality Improvement in Sepsis Care Using AI: A Cluster Randomized Trial. JAMA Netw Open. 2026;9(6):e2611885. <a href="https://doi.org/10.1001/jamanetworkopen.2026.11885">doi:10.1001/jamanetworkopen.2026.11885</a></li>
+      <li>2. Carenzo C, et al. Real-World Implementation of LLMs for Writing Clinical Discharge Summaries. JMIR AI. 2026;5:e88816. <a href="https://doi.org/10.2196/88816">doi:10.2196/88816</a></li>
+      <li>3. Azimi A, et al. AI-quantified Myosteatosis at CAC CT for Prediction of AF and HF: MESA. Radiol Cardiothorac Imaging. 2026;8(4):e250214. <a href="https://doi.org/10.1148/ryct.250214">doi:10.1148/ryct.250214</a></li>
+      <li>4. Modena BD, et al. AI-based prediction of AERD using nasal epithelial mRNA profiles. J Allergy Clin Immunol Glob. 2026;5(5):100743. <a href="https://doi.org/10.1016/j.jacig.2026.100743">doi:10.1016/j.jacig.2026.100743</a></li>
+      <li>5. Yu Y, et al. Generative AI and LLMs in Clinical Oncology. MedComm. 2026;7(7):e70833. <a href="https://doi.org/10.1002/mco2.70833">doi:10.1002/mco2.70833</a></li>
+      <li>6. Chen Z, et al. Integrating AI into cancers of unknown primary diagnosis and treatment. iScience. 2026;29(7):116351. <a href="https://doi.org/10.1016/j.isci.2026.116351">doi:10.1016/j.isci.2026.116351</a></li>
+      <li>7. Yang Q, et al. AI-assisted telemedicine and CDS for anesthesia and critical care in ICUs: a scoping review. BMC Anesthesiol. 2026. <a href="https://doi.org/10.1186/s12871-026-03997-4">doi:10.1186/s12871-026-03997-4</a></li>
+      <li>8. Jiang T, et al. Future Directions: AI and Digital Tools in Bladder Cancer Care. Urol Clin North Am. 2026;53(3):497-508. <a href="https://doi.org/10.1016/j.ucl.2026.03.013">doi:10.1016/j.ucl.2026.03.013</a></li>
+      <li>9. Jiang LB, Li ZX. AI in neuro-ophthalmology. Zhonghua Yan Ke Za Zhi. 2026;62(7):481-487. <a href="https://doi.org/10.3760/cma.j.cn112142-20260313-00099">doi:10.3760/cma.j.cn112142-20260313-00099</a></li>
+      <li>10. van Genderen PJJ. Balancing innovation and risk: AI in travel medicine. Trop Dis Travel Med Vaccines. 2026;12(1). <a href="https://doi.org/10.1186/s40794-026-00309-z">doi:10.1186/s40794-026-00309-z</a></li>
+    </ul>
+    <p class="small" style="margin-top:14px">Contexto (web, no primario): AHA Market Scan (14-abr-2026); STAT News (1-abr-2026); npj Digit Med <a href="https://doi.org/10.1038/s41746-026-02554-0">doi:10.1038/s41746-026-02554-0</a>.</p>
+  </section>
+
+</div>
+
+<footer>
+  Generado por Dr. Juan Camilo Paris · Informe semanal automatizado · IA en medicina · 6 jul 2026
+</footer>
+</body>
+</html>
