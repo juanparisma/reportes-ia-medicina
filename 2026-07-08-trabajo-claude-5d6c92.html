@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-07-08</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .note{background:rgba(79,176,198,.10);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--muted);margin-top:14px}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Miércoles 8 de julio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">5</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">repos con commits</div></div>
+    <div class="kpi"><div class="n">0</div><div class="l">sesiones interactivas</div></div>
+    <div class="kpi"><div class="n">6.º</div><div class="l">día automatizado</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada <strong>100 % automatizada</strong> — sexto día del ciclo (patrón conocido: 07-jul, 06-jul,
+      01-jul, 30-jun, 22-jun). No hubo ninguna sesión interactiva del operador: solo corrió la
+      <strong>flota de tareas programadas del OS</strong> (informe diario, digests de WhatsApp/Gmail,
+      dashboard de Sinapsis, watcher de Skool, Granola). Los 5 commits del día son <strong>artefactos de reporte
+      auto-generados</strong> del cierre del 07-jul, más el auto-EOD del segundo cerebro. Sin código de producto ni
+      decisiones nuevas del operador.</p>
+      <p>
+        <span class="tag">día automatizado</span>
+        <span class="tag">flota OS</span>
+        <span class="tag">reportes auto</span>
+        <span class="tag">dashboard Sinapsis</span>
+        <span class="tag">WhatsApp digest</span>
+        <span class="tag">sin trabajo interactivo</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>reportes-ia-medicina · <span class="pill">automático</span></h3>
+      <ul>
+        <li>Publicación de los reportes del cierre del <strong>07-jul</strong>: WhatsApp digest y dashboard de Sinapsis.</li>
+        <li>Actualización de los <strong>dashboards cifrados</strong> (histórico + día) e informe de trabajo en Claude.</li>
+        <li class="commit">4 commits · c5ef190 · b581a75 · 327bdb0 · 632877f</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li><strong>Auto-EOD 2026-07-07</strong>: día totalmente automatizado registrado; 0 commits de conocimiento,
+        sin páginas wiki nuevas (se evita ruido cuando no hay conocimiento del operador que volcar).</li>
+        <li class="commit">1 commit · 4a6ecb9</li>
+      </ul>
+
+      <div class="note">Actividad de sesiones: 67 archivos de sesión con movimiento reciente en el workspace
+      <code>iamasters-os</code>, todos corresponden a corridas de la flota automatizada (no a sesiones del operador).
+      El daily summary de Sinapsis de hoy aún no existe al momento de este informe; la síntesis se apoya en los
+      commits y en el resumen de ayer.</div>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li>Ninguna decisión nueva del operador: jornada sin sesión interactiva.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Publicar el <strong>1.er reel real "ia-no-te-reemplaza"</strong> (el montaje <code>VIDEO-FINAL.mp4</code> sigue en QC / revisor desde el 05-jul).</li>
+        <li class="ambar">Checklist end-to-end del <strong>teleprompter-jcp</strong> en iPhone real → pasar a <em>built</em> → circuito automático con <code>reel-edita-jcp</code>.</li>
+        <li class="ambar">Correr <strong><code>/analyze-session</code></strong>: el backlog de proposals sigue creciendo (59 el 07-jul) cada día automatizado.</li>
+        <li class="ambar">Crear el turno <strong>CAL</strong> en urgencias-hgm para publicar el cuadro de julio.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
