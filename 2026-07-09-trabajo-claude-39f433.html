@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-07-09</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Jueves 9 de julio de 2026 · cierre nocturno · trabajo global de las últimas 24 h</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">9</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">4</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">oportunidad nueva</div></div>
+    <div class="kpi"><div class="n">9</div><div class="l">docs del brief cliente</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de <strong>código de contenido</strong> tras dos días 100 % automatizados, rematada con la
+      apertura de la <strong>primera oportunidad internacional concreta de la agencia</strong>: una cadena de
+      <strong>clínicas dentales en México</strong>. En una sesión nocturna LIVE se analizó la transcripción de la
+      reunión, se aprobó un plan maestro y se materializó un brief de <strong>9 documentos</strong> (demo, app,
+      brand-kit, cronograma y guion del Zoom), con la <strong>Fase A (mockups en Claude Design) completada el mismo
+      día</strong>, un día antes de lo previsto. En paralelo, el <strong>teleprompter</strong> ya graba siempre en
+      retrato 9:16 (3 commits) y se refinó el manejo de B-roll del editor de reels.</p>
+      <p>
+        <span class="tag">oportunidad clínicas MX</span>
+        <span class="tag">brief 9 docs</span>
+        <span class="tag">mockups Claude Design</span>
+        <span class="tag">teleprompter 9:16</span>
+        <span class="tag">B-roll editor reels</span>
+        <span class="tag">2 instincts draft</span>
+        <span class="tag">informes automáticos</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>clinicas-dentales-mx · <span class="pill">oportunidad nueva</span></h3>
+      <ul>
+        <li>Análisis exhaustivo de la transcripción (Mauricio + reunión con Carlos y Estefanía) → <strong>14 funcionalidades F1-F14</strong> con citas y mejoras.</li>
+        <li>Plan maestro aprobado en plan mode → materializado en <code>projects/briefs/clinicas-dentales-mx/</code> con <strong>9 documentos</strong>: brief (panel de control), plan inicial, cronograma chequeable, análisis de transcripción, plan-demo, plan-app (Supabase + 6 APIs de IA + roadmap 4 fases + modelo comercial), brand-kit con prompts para Claude Design (variantes azul / verde), 48 preguntas para el Zoom y guion de reunión minuto a minuto.</li>
+        <li>✅ <strong>Fase A completada el mismo día</strong> (1 día antes): mockups generados en Claude Design, variantes A y B completas.</li>
+        <li class="commit">sesión LIVE · docs en <code>projects/</code> (gitignored, no van al repo del OS)</li>
+      </ul>
+
+      <h3>teleprompter-jcp · <span class="pill">grabación 9:16</span></h3>
+      <ul>
+        <li>Grabación <strong>siempre en retrato 9:16</strong>: las cámaras apaisadas se recortan al centro vía canvas.</li>
+        <li>Aviso en pantalla al grabar el center-crop 9:16 + bump del service worker a v5.</li>
+        <li>Fix del service worker: <strong>bypass de la caché HTTP en el precache</strong> (bug de actualización obsoleta) + sonda real de dimensiones de frame + badge de versión + diag test D.</li>
+        <li class="commit">3 commits · 1961f35 · 488123d · d6f728e</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li><strong>EOD 2026-07-08 LIVE</strong>: documentada la oportunidad de clínicas dentales MX (plan de demo + app) + backfill de cierres sin commitear del 25-jun al 07-jul.</li>
+        <li>Auto-EOD 07-08: teleprompter 9:16 nativo + refinamiento de B-roll del editor de reels.</li>
+        <li class="commit">2 commits · 9849e07 · 6922e85</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Corridas programadas que se publicaron solas: <strong>informe de trabajo Claude</strong>, <strong>WhatsApp digest</strong>, <strong>dashboard de Sinapsis</strong> y actualización de dashboards privados cifrados (histórico + día).</li>
+        <li class="commit">4 commits · 00e3b40 · 907393a · 6e5aeac · c70c9a8</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Agencia con primer cliente internacional real</strong>: se prioriza la cascada de clínicas dentales MX sobre otros frentes.</li>
+        <li><strong>Marca del cliente en dos variantes</strong> (A azul "Confianza clínica" / B verde "Moderna dental") → decidir la ganadora antes de construir el demo.</li>
+        <li>Teleprompter: <strong>grabar siempre 9:16 por defecto</strong>, recortando en cliente las cámaras apaisadas (no depender del dispositivo).</li>
+        <li>Editor de reels: endurecida la regla de <strong>solo assets reales / verificables</strong> para el B-roll.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar"><strong>Prioridad: cascada clínicas MX</strong> — elegir variante de marca (A/B) y construir el <strong>demo navegable</strong> (jue 10 – vie 11). Deadline duro <strong>viernes 11-jul</strong>; Zoom <strong>martes 14-jul</strong>. Guía: <code>projects/briefs/clinicas-dentales-mx/cronograma.md</code>.</li>
+        <li class="ambar">Publicar el <strong>1er reel real</strong> "ia-no-te-reemplaza" (VIDEO-FINAL.mp4 en QC desde el 5-jul) — segundo plano.</li>
+        <li class="ambar">Checklist end-to-end del <strong>teleprompter</strong> en iPhone real → pasar a <code>status: built</code>.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
