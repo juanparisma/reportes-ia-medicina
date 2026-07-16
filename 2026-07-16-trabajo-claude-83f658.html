@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-07-16</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  .note{background:rgba(242,166,90,.1);border:1px solid rgba(242,166,90,.35);border-radius:10px;padding:12px 14px;font-size:13px;color:#8a5417;margin-top:12px}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Jueves 16 de julio de 2026 · trabajo global de la jornada (cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">5</div><div class="l">commits (local 24 h)</div></div>
+    <div class="kpi"><div class="n">3</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">46</div><div class="l">sesiones activas</div></div>
+    <div class="kpi"><div class="n">5</div><div class="l">skills nuevas/registradas</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de <strong>autoría de skills para la capa OS</strong>: se creó una skill nueva de crítica
+      adversarial (<strong>abogado-del-diablo</strong>) y se trackearon/registraron cuatro skills propias del
+      operador (<strong>arranque</strong>, <strong>chequeo-seguridad</strong>, <strong>fable-plan</strong>,
+      <strong>fixer</strong>) en el catálogo y el CLAUDE.md. En paralelo entró al repo el
+      <strong>context/ + brand-context/</strong> (decisión estructural) y un bloque de
+      <strong>endurecimiento de CI</strong> (secret-scan de JWTs Supabase, validación en Windows). El día lo
+      cerraron las <strong>corridas automáticas</strong> que publican los informes (digest de WhatsApp, dashboard
+      de Sinapsis, informe diario) y los cierres EOD al segundo cerebro.</p>
+      <p>
+        <span class="tag">skills-authoring</span>
+        <span class="tag">abogado-del-diablo</span>
+        <span class="tag">context/ al repo</span>
+        <span class="tag">CI hardening</span>
+        <span class="tag">secret-scan Supabase</span>
+        <span class="tag">informes automáticos</span>
+        <span class="tag">EOD → cerebro</span>
+      </p>
+      <div class="note">Nota de sincronía: el trabajo sustantivo de skills se empujó a
+        <code>origin/main</code> de iamasters-os desde el otro equipo (9 commits, espejados por Syncthing); este PC
+        quedó <strong>behind 9</strong>. La recolección local de 24 h ve 5 commits (reportes + cerebro); los 9 de
+        iamasters-os están documentados en el daily summary de Sinapsis. No es un fallo, es el desfase del espejo.</div>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>iamasters-os (capa OS) · <span class="pill">skills-authoring</span></h3>
+      <ul>
+        <li>Skill NUEVA <strong>abogado-del-diablo</strong>: crítica adversarial de planes anclada a la realidad del repo (174 líneas).</li>
+        <li>Trackeadas y registradas <strong>arranque</strong>, <strong>chequeo-seguridad</strong>, <strong>fable-plan</strong> y <strong>fixer</strong> en catálogo + CLAUDE.md (cierra el pendiente "aún no aparecen").</li>
+        <li>Entra al repo <strong>context/ + brand-context/</strong> (22 archivos, ~1.398 líneas) — decisión estructural.</li>
+        <li><strong>CI hardening</strong>: secret-scan detecta JWTs Supabase <code>eyJ…</code>, <code>chequeo-seguridad</code> ya no se autodispara, <code>validate-ci.sh</code> corre en Windows.</li>
+        <li>Card <strong>chat-amor</strong>: modo semanal + detector de datos viejos + publicación a demanda.</li>
+        <li class="commit">9 commits en origin/main (espejo) · b1b3414 · 3faeceb · 83e08e3 · 61a72f7 · 0c23eca · 046ed25 · 726423b · 553214b · 208a807</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Publicados los informes programados del día: <strong>digest de WhatsApp</strong>, <strong>dashboard de Sinapsis</strong> e <strong>informe diario de trabajo</strong>.</li>
+        <li class="commit">3 commits · b7ead9e · 1191c8f · aef2c36</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierres <strong>EOD automáticos</strong>: tracking del bloque de skills (abogado-del-diablo + datos del operador; skills-authoring del OS).</li>
+        <li class="commit">2 commits · b89011a · 1504df9</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li>Meter <strong>context/ y brand-context/</strong> al OS repo (deja de ser solo local): decisión de estructura.</li>
+        <li>Registrar las skills propias del operador en el catálogo oficial en vez de dejarlas sueltas.</li>
+        <li>Endurecer el <strong>secret-scan de CI</strong> para atrapar JWTs de Supabase y correr la validación también en Windows.</li>
+        <li>Estampar el cierre bajo la fecha 2026-07-16 por coherencia con el hook de arranque (el gather usa UTC y bucketea la tarde-noche local del 15-jul).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Hacer el <strong>pull con cuidado</strong> en este PC (behind 9 de origin/main) — es el desfase del espejo, no un conflicto.</li>
+        <li class="ambar">Limpiar los <strong>8 <code>.skills-pending.sync-conflict-*.json</code></strong> acumulados (jun–jul) con union-merge o borrado con cuidado.</li>
+        <li class="ambar">Retomar el hilo caliente heredado: <strong>clínicas dentales MX</strong> — demo Denta OS ya desplegado; falta cerrar el Zoom con Mauricio + configurar CALLMEBOT en Vercel.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
