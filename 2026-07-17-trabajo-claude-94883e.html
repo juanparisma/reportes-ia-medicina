@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-07-17</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Viernes 17 de julio de 2026 · trabajo global de las últimas 24 h</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">20</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">5</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">áreas de trabajo</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">app a producción</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de <strong>código en tres frentes</strong>. La <strong>invitación de boda</strong> pasó de
+      plan a <strong>producción</strong> (sitio estático mobile-first hablando directo con RPCs de Supabase).
+      <strong>arc-whisper</strong> recibió una tanda de arreglos de fiabilidad: el LLM ya no responde los
+      dictados, se eliminó la duplicación de instancias y se recuperó el autoarranque. Y en
+      <strong>urgencias-hgm</strong> se cargaron las peticiones de agosto y se diagnosticó al detalle un
+      rechazo 422 del importador. En paralelo, cierres de memoria (segundo cerebro) y los informes
+      automáticos de siempre.</p>
+      <p>
+        <span class="tag">boda a producción</span>
+        <span class="tag">dictado inerte</span>
+        <span class="tag">mutex instancia única</span>
+        <span class="tag">peticiones agosto</span>
+        <span class="tag">diagnóstico 422</span>
+        <span class="tag">EOD + memoria</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>invitacion-boda · <span class="pill">a producción</span></h3>
+      <ul>
+        <li>Sitio de invitación desplegado: sobre animado → 15 secciones (RSVP, agendar, video recuerdo), mobile-first, con fallback para navegadores sin IntersectionObserver.</li>
+        <li>Backend <strong>100% estático</strong>: el navegador llama directo a <strong>RPCs security-definer de Supabase</strong> (sin acceso directo a tablas, sin funciones serverless de Vercel).</li>
+        <li>Checklist de control persistente (<code>TAREAS.md</code>) con la URL de producción.</li>
+        <li class="commit">5 commits · 715ce5b · b1a191a · 35ecdb2 · 7b35706 · ccae98f</li>
+      </ul>
+
+      <h3>arc-whisper · fixes de fiabilidad</h3>
+      <ul>
+        <li>Arreglo de raíz: el LLM <strong>respondía</strong> los dictados en vez de limpiarlos → el transcript se trata como <strong>dato inerte</strong> (few-shot + temp 0); portado también a la PWA.</li>
+        <li><strong>Mutex de instancia única</strong>: el acceso directo y el .bat ya no pueden lanzar grabadores duplicados.</li>
+        <li>Autoarranque recuperado (path corregido tras la reorganización de carpetas), <code>mic.ico</code> para el lanzador y submenú de bandeja con los 4 modos de atajo.</li>
+        <li class="commit">5 commits · 31121a0 · ed23660 · 41a343c · 9fe3557 · abc545a</li>
+      </ul>
+
+      <h3>cuadros-turnos-urgencias (urgencias-hgm)</h3>
+      <ul>
+        <li><strong>Loader de peticiones de agosto 2026</strong> aplicado (196 filas, 25 médicos) con los mapeos nuevos del mes.</li>
+        <li>Diagnóstico local del <strong>rechazo 422</strong> del importador: script que señala la celda concreta que invalida el archivo entero (import atómico por diseño).</li>
+        <li class="commit">2 commits · 1057243 · 5a9ac2b</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / memoria)</h3>
+      <ul>
+        <li>Cierres EOD del día documentados: arreglo del session-learner + PR upstream, la invitación de boda y los arreglos de arc-whisper; conceptos nuevos y hubs actualizados.</li>
+        <li class="commit">3 commits · 412bb92 · 48065cf · e840402</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Publicaciones programadas de siempre: informes diarios de trabajo en Claude Code + dashboard de Sinapsis.</li>
+        <li class="commit">5 commits · c688827 · f5b424c · 73806ca · f6755ae · 20cf7fd</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>Invitación estática con RPCs de Supabase</strong> en vez de funciones serverless: menos superficie, cupos y clave del panel viven en SQL.</li>
+        <li><strong>El dictado nunca es un mensaje para el LLM</strong>: se envuelve como dato inerte para que el modelo lo limpie, no lo responda (regla portada a escritorio y PWA).</li>
+        <li><strong>Import atómico con diagnóstico por celda</strong>: el importador sigue rechazando el archivo entero ante un error, pero ahora dice exactamente qué celda lo causó.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Invitación de boda <strong>fase 2</strong> (depende del operador): manual de marca, hora y lugares reales, historia, fotos, canción y lista de invitados.</li>
+        <li class="ambar">¿<strong>Publicar el cuadro de agosto</strong> tras revisar los 2 warnings intencionales del loader?</li>
+        <li class="ambar">Hilos calientes heredados: <strong>clínicas dentales MX</strong> (cerrar Zoom con Mauricio + CALLMEBOT en Vercel) y seguimiento del <strong>PR #29</strong> en Sinapsis upstream.</li>
+        <li class="ambar">Revisar la <strong>entrega de WhatsApp</strong> de los cierres (incidente de Evolution API detectado ayer).</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
