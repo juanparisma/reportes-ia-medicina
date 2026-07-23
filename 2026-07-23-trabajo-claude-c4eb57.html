@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Informe diario · Claude Code · 2026-07-23</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:18px 0 6px;color:var(--brand)}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .commit{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+  .ambar{color:#b5670f}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  .pill{display:inline-block;background:var(--ambar);color:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .pill.ok{background:#2f9e6f}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Informe diario · Claude Code</h1>
+    <p>Jueves 23 de julio de 2026 · trabajo global de la jornada (ola tarde/noche 22-jul + cierre)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">14</div><div class="l">commits</div></div>
+    <div class="kpi"><div class="n">4</div><div class="l">proyectos tocados</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">workspaces activos</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">apagón resuelto</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Jornada de <strong>rescate del canal de WhatsApp del Observatorio</strong>. Se cazó y resolvió en vivo un
+      <strong>apagón de 6 días</strong>: tras un reinicio de Windows, WinNAT/Hyper-V se reservó los rangos de puertos
+      dinámicos y Docker dejó de publicar el 8080 al host (contenedor "Up" pero puerto mudo). Se corrigió en código,
+      se aplicó el fix en caliente (puertos reservados de forma persistente) y se recuperaron
+      <strong>~2.455 mensajes</strong> de los días caídos desde el Postgres de Evolution.</p>
+      <p>La 2ª ola de la noche ("arregla todo") cerró 6 commits más: un segundo bug ciego (<strong>chat-amor</strong> tras
+      la migración @lid de WhatsApp), la <strong>migración de las alertas del watchdog a email vía n8n</strong> (CallMeBot
+      retirado), <strong>ARC-Whisper verificado en vivo</strong> en pc-casa y Claude Home al 100%. En paralelo, exports
+      de cuadros de turnos de urgencias y publicación del dashboard semanal.</p>
+      <p>
+        <span class="tag">apagón WhatsApp resuelto</span>
+        <span class="tag">WinNAT / puertos</span>
+        <span class="tag">backfill 2.455 msgs</span>
+        <span class="tag">chat-amor @lid</span>
+        <span class="tag">alertas por email (n8n)</span>
+        <span class="tag">ARC-Whisper live</span>
+        <span class="tag">Claude Home 100%</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Por proyecto</h2>
+
+      <h3>iamasters-os · Observatorio + capa OS · <span class="pill ok">apagón resuelto</span></h3>
+      <ul>
+        <li><strong>Apagón WhatsApp de 6 días — causa raíz y fix en vivo.</strong> Tras un reinicio, WinNAT se reservó
+        los rangos dinámicos (3001-3100 y 7979-8178) → Docker no publicó el 8080 y el receiver murió con EACCES en 3001.
+        El watchdog lo veía como "🟡 lenta" durante 6 días (el check del receiver estaba anidado en la rama verde).</li>
+        <li>Fixes: <code>espejo-watchdog.mjs</code> ahora distingue puerto-no-publicado vs cuelgue real vs lentitud y
+        vigila el receiver SIEMPRE; <code>fix-puertos-winnat.cmd</code> nuevo (libera rangos + reserva 3001/8080
+        persistente); <code>wa-backfill.mjs</code> nuevo (rescata mensajes desde el Postgres de Evolution).</li>
+        <li>Resuelto en caliente: Docker vuelve a publicar el 8080, watchdog todo verde, y <strong>backfill de ~2.455
+        mensajes</strong> del 15-22 jul ejecutado.</li>
+        <li><strong>chat-amor ciego desde la migración @lid.</strong> El chat 1:1 migró a direccionamiento @lid; filtrar por
+        el JID clásico quedó ciego justo ese día → el "personal caído" era falso. Fix <code>resolveLid()</code> consulta
+        ambos JIDs con paginación y recupera el mes ciego. Regla nueva: todo filtro por JID debe considerar @lid.</li>
+        <li><strong>Alertas del watchdog por email vía n8n</strong> (webhook → Gmail SMTP); CallMeBot retirado por cuota
+        muerta. Verificado end-to-end. Además <code>chat-amor</code> sin flags ahora es dry-run por defecto.</li>
+        <li>Gap del 07-12 cerrado como <strong>falso positivo</strong> (28 transcripts = tareas programadas, 0 commits);
+        <strong>ARC-Whisper verificado en vivo</strong> en pc-casa (graba → transcribe → pega); <strong>Claude Home 95%→100%</strong>.</li>
+        <li class="commit">8 commits · 9e62c83 · 3e5e9b6 · 972a720 · 0dd66bf · e18b56c · b700543 · 52070fa · e6c892e</li>
+      </ul>
+
+      <h3>cerebro (segundo cerebro / wiki)</h3>
+      <ul>
+        <li>Cierre incremental de la noche + reconstrucción del 07-12 y concepto nuevo <code>winnat-roba-puertos</code>.</li>
+        <li>Cierre LIVE con <strong>/analyze-session</strong>: la noche destiló 3 instincts (cp1252 de doble cara, rutas MSYS
+        en node, assertion de libuv al salir).</li>
+        <li class="commit">3 commits · 2fe6c46 · 7f3f7ca · 705d193 · 94770b5</li>
+      </ul>
+
+      <h3>cuadros-turnos-urgencias (HGM)</h3>
+      <ul>
+        <li>Exports con conteos MA21/NO04 en vivo + horas por prestación y médico en las hojas mensuales del cuadro.</li>
+        <li>Registros de sesión de agosto 2026 (auditoría draft + cambios manuales del jefe).</li>
+        <li class="commit">2 commits · 9b808dd · 157fa9e</li>
+      </ul>
+
+      <h3>reportes-ia-medicina (automático)</h3>
+      <ul>
+        <li>Publicado el dashboard de Sinapsis (corrida programada).</li>
+        <li class="commit">1 commit · ba80d5b</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Decisiones del día</h2>
+      <ul>
+        <li><strong>CallMeBot retirado</strong> del wrapper de notificación (cuota agotada); el failover del watchdog ahora
+        es email vía n8n, probado end-to-end.</li>
+        <li><strong>chat-amor por defecto en dry-run</strong>: enviar requiere <code>--send</code> explícito (cierra el riesgo
+        de envío accidental en una corrida limpia).</li>
+        <li>Reserva de puertos <strong>3001/8080 persistente</strong> a favor del stack, para sobrevivir al próximo reinicio.</li>
+        <li>Regla técnica nueva: cualquier script que filtre mensajes por JID de WhatsApp <strong>debe considerar @lid</strong>.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Pendientes / para mañana</h2>
+      <ul>
+        <li class="ambar">Vigilar <strong>Syncthing:8384</strong> — quedó a 1 puerto del rango robado; si un reinicio se lo lleva,
+        mismo <code>fix-puertos-winnat.cmd</code>. Candidato: chequeo periódico de <code>excludedportrange</code> en el watchdog.</li>
+        <li class="ambar">Verificar en vivo que la <strong>alerta por email</strong> del watchdog dispara ante un fallo real
+        (hoy se probó el email de prueba, no un fallo real).</li>
+        <li class="ambar">Heredado: auditoría de <strong>agosto</strong> de urgencias-HGM a revisar (cuadro draft con hallazgos del motor).</li>
+        <li class="ambar">Heredado: <strong>boda fase 2</strong> — manual de marca, lugares/fotos/lista.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por Dr. Juan Camilo Paris · Informe automático de Claude Code</footer>
+  </div>
+</body>
+</html>
