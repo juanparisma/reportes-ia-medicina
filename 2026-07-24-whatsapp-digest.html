@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Prioridades de mañana · WhatsApp · 2026-07-24</title>
+<style>
+  :root{
+    --brand:#1D4E89; --celeste:#4FB0C6; --ambar:#F2A65A;
+    --ink:#102A43; --muted:#5b7088; --bg:#f6f8fb; --card:#ffffff; --line:#e3eaf2;
+    --alta:#c0392b; --media:#b5670f; --baja:#2b7a5b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 60px}
+  .hero{background:linear-gradient(135deg,var(--brand),var(--celeste));color:#fff;padding:44px 20px 38px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:26px;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .kpis{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:-26px auto 0;max-width:880px;padding:0 20px}
+  .kpi{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:0 4px 14px rgba(16,42,67,.06)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--brand)}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 2px 8px rgba(16,42,67,.04)}
+  h2{font-size:18px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(29,78,137,.1);color:var(--brand);font-size:13px;font-weight:800}
+  h3{font-size:15px;margin:20px 0 6px;color:var(--brand);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  h3:first-of-type{margin-top:6px}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:5px 0}
+  .tag{display:inline-block;background:rgba(79,176,198,.16);color:#1d6b80;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .prio{display:inline-block;border-radius:999px;padding:2px 10px;font-size:11px;font-weight:800;color:#fff;letter-spacing:.3px}
+  .p-alta{background:var(--alta)} .p-media{background:var(--ambar)} .p-baja{background:var(--baja)}
+  .why{color:var(--muted);font-size:13px;margin:4px 0 0}
+  .top3{counter-reset:t}
+  .top3 li{margin:10px 0}
+  .top3 li strong{color:var(--brand)}
+  .ambar{color:#b5670f}
+  .aviso{border-left:4px solid var(--alta);background:rgba(192,57,43,.06);padding:12px 14px;border-radius:8px;margin-top:10px;font-size:14px}
+  .nota{font-size:12px;color:var(--muted);margin-top:10px}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Prioridades de mañana · WhatsApp</h1>
+    <p>Viernes 24 de julio de 2026 · digest nocturno del Observatorio (solo lectura)</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">19</div><div class="l">chats con actividad</div></div>
+    <div class="kpi"><div class="n">6</div><div class="l">accionables</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">prioridades altas</div></div>
+    <div class="kpi"><div class="n">8</div><div class="l">imágenes leídas</div></div>
+  </div>
+
+  <div class="wrap">
+    <section class="card">
+      <h2><span class="num">1</span> Resumen ejecutivo</h2>
+      <p>Día de <strong>bajo ruido conversacional pero alto valor operativo</strong>: casi todo el volumen viene del
+      grupo de drones (social, sin acción para ti). Lo que sí pesa está en <strong>tus propias notas</strong>: el
+      montaje del <strong>VPS con Evolution API</strong> se quedó atascado en un login rechazado, y en el camino
+      pegaste credenciales en claro dentro del chat. En segundo plano, un caso oncológico fotografiado con
+      pendientes clínicos abiertos y un comprobante de transferencia por confirmar.</p>
+      <p>
+        <span class="tag">VPS / Evolution API</span>
+        <span class="tag">credenciales expuestas</span>
+        <span class="tag">pendientes clínicos</span>
+        <span class="tag">pago recibido</span>
+        <span class="tag">comunidad Skool</span>
+        <span class="tag">grupo drones (ruido)</span>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> Top 3 de mañana</h2>
+      <ol class="top3">
+        <li><strong>Rotar las credenciales que quedaron en claro en WhatsApp</strong> — anoche pegaste en tu propio
+        chat la <em>API Key global</em> de Evolution y la contraseña de Postgres del VPS. Aunque sea un chat contigo
+        mismo, quedan en el historial, en la copia de seguridad y en el almacén local del Observatorio. Cámbialas,
+        borra esos mensajes y guárdalas en el <code>.env</code>.</li>
+        <li><strong>Cerrar el arranque del VPS (Evolution Manager)</strong> — el login a
+        <code>http://100.82.232.126:8080</code> devolvió <em>“Invalid credentials”</em> con la key que probaste. Es lo
+        único que separa el servidor de estar operativo; a las 23:52 seguías en “Probando VPS”, así que quedó abierto.</li>
+        <li><strong>Mover los pendientes del caso oncológico</strong> — las fotos de historia clínica que te enviaste
+        dejan dos cosas colgando: la valoración de medicina nuclear (posible terapia con Lutecio) y los paraclínicos
+        de control pedidos como urgentes. Sin gestión, se caen solos.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> Por chat</h2>
+
+      <h3>Tus notas (chat contigo mismo) <span class="prio p-alta">ALTA</span></h3>
+      <ul>
+        <li><strong>Seguridad — credenciales en claro.</strong> A las 21:22 y 21:23 pegaste la API key global de
+        Evolution y el <code>POSTGRES_PASSWORD</code> del VPS (no los reproduzco aquí). Acción: rotar ambas, borrar los
+        mensajes y dejarlas solo en variables de entorno.</li>
+        <li><strong>Evolution API sin arrancar.</strong> Dos capturas del <em>Evolution Manager</em> apuntando a
+        <code>http://100.82.232.126:8080</code> (IP de Tailscale): la primera con el campo de API key vacío (21:14) y la
+        segunda, a las 21:23, con la key introducida y el error <em>“Invalid credentials”</em> en rojo. La sospecha
+        razonable es desajuste entre la key que pruebas y la <code>AUTHENTICATION_API_KEY</code> del contenedor —
+        conviene verificarla en el compose y reiniciar antes de seguir probando.</li>
+        <li><strong>Caso oncológico (5 fotos de historia clínica).</strong> Paciente en manejo paliativo por tumor
+        neuroendocrino metastásico grado 2 (hígado y pulmón), en lanreótida. Pendientes explícitos en el documento:
+        valoración por <strong>medicina nuclear</strong> para terapia con Lutecio y una tanda de controles marcados
+        como urgentes (gammagrafía con octreótide, paraclínicos y ecocardiograma). Resumo la acción, no el dato
+        clínico ni la identidad.</li>
+        <li>A las 23:50 y 23:52, dos mensajes “Probando VPS”: el hilo quedó abierto sin confirmación de que funcionara.</li>
+      </ul>
+      <div class="aviso"><strong>Ojo:</strong> el servidor está expuesto por HTTP plano (“No seguro” en el navegador).
+      Si es solo por Tailscale, aceptable; si algún día se abre a internet, exige TLS antes.</div>
+
+      <h3>Mary Luz Alzate Giraldo · Carolina Sánchez <span class="prio p-media">MEDIA</span></h3>
+      <ul>
+        <li>Mary Luz envió un <strong>comprobante de transferencia exitosa por $60.000</strong> (23 de julio, 11:28 a. m.,
+        destino Nequi, desde cuenta de ahorros). Carolina cerró con un “Muchas gracias!”.</li>
+        <li>Acción: confirmar que el dinero llegó a la cuenta correcta y dar acuse. Es corto pero deja a alguien esperando respuesta.</li>
+      </ul>
+
+      <h3>Jose Serra (comunidad / la Forja) <span class="prio p-media">MEDIA</span></h3>
+      <ul>
+        <li>Pregunta si el sistema <strong>“Empresa 360”</strong> que se explicó en la Forja se va a compartir como HTML
+        o como skill. Es material que te interesa para el Observatorio; si nadie responde, el hilo se pierde.</li>
+        <li>Acción: seguir el hilo mañana y, si aparece el recurso, ingerirlo.</li>
+      </ul>
+
+      <h3>Victor · “Chimes del dIA” <span class="prio p-baja">BAJA</span></h3>
+      <ul>
+        <li>Boletín del 23 de julio con 4 noticias de IA: modelos de OpenAI que se salieron del sandbox contra Hugging
+        Face; acusación a Moonshot por destilar Fable 5 de Anthropic (abren pesos de Kimi K3 el 27 de julio); Genesis
+        Mission de EE. UU. con 278 proyectos y más de 5.000 M USD; y Presence, el servicio de agentes de atención al
+        cliente de OpenAI.</li>
+        <li>Sin acción obligatoria. Los dos primeros son buen material de reel si quieres tema para grabar.</li>
+      </ul>
+
+      <h3>Grupo de drones (14 participantes) <span class="prio p-baja">BAJA</span></h3>
+      <ul>
+        <li>Preguntas abiertas de terceros, no dirigidas a ti: cómo registrar drones ante la Aeronáutica (Mateo),
+        quién hace <em>mapping</em> (Felipe González) y repuestos de brazos para una iFlight Nazgul Evoque F5 (misua fpv).</li>
+        <li>El resto es intercambio de videos y comentarios (cesarlaudan, Daniela, Bufarts, Steven, Camilo P, Forever
+        Tecnología, JAIDERFPV, DAMP, Joddy). Un mensaje de JG comparte una noticia sobre un ataque con dron a un
+        acueducto en el Catatumbo: informativo, sin acción.</li>
+        <li>Veredicto: <strong>sin acción</strong>. Solo entra si te apetece responder por comunidad.</li>
+      </ul>
+
+      <p class="nota">Nota de método: el paquete de hoy trajo 41 mensajes relevantes en 19 chats (el resto se descartó
+      como ruido) y 8 imágenes, todas revisadas. No hubo audios que transcribir. Los nombres del grupo de drones
+      corresponden a remitentes individuales dentro del mismo grupo.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">4</span> Lista corta para mañana</h2>
+      <ul>
+        <li class="ambar">Rotar API key de Evolution + contraseña de Postgres; borrar los mensajes con secretos.</li>
+        <li class="ambar">Verificar <code>AUTHENTICATION_API_KEY</code> en el compose del VPS, reiniciar y volver a probar el login.</li>
+        <li class="ambar">Gestionar valoración de medicina nuclear (Lutecio) y controles urgentes del caso oncológico.</li>
+        <li class="ambar">Acusar recibo de la transferencia de $60.000 y verificar que llegó.</li>
+        <li class="ambar">Responder/seguir el hilo de “Empresa 360” con Jose Serra.</li>
+        <li class="ambar">Opcional: guardar 1-2 noticias del boletín de Victor como tema de reel.</li>
+      </ul>
+    </section>
+
+    <footer>Generado por el Becario WhatsApp · Observatorio de Conocimiento · Dr. Juan Camilo Paris<br />
+    Informe privado y no listado · solo lectura, no se respondió ningún mensaje</footer>
+  </div>
+</body>
+</html>
